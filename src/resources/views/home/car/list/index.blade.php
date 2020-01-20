@@ -11,7 +11,7 @@
     <div class="table-responsive">
 
         <table class="table table-hover">
-            <thead class="thead-light">
+            <thead class="thead-light text-center">
                 <tr>
                     <th scope="col">Chassi</th>
                     <th scope="col">Montadora</th>
@@ -26,7 +26,7 @@
             <tbody>
 
                 @foreach ($dataCar as $dataCar)
-                    <tr>
+                    <tr class="text-center">
                         <td>{{ $dataCar -> chassi }}</td>
                         <td>{{ $dataCar -> name }}</td>
                         <td>{{ $dataCar -> model }}</td>
@@ -36,6 +36,7 @@
                         <td>{{ $dataCar -> id_branch }}</td>
                         <td>
                             <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$dataCar -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" href="#" role="button" title="Excluir" data-toggle="modal" data-target="#removeCar"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -47,9 +48,9 @@
 
     </div>
 
-        <!-- active modal -->
+        <!-- remove modal -->
 
-    <div class="modal fade" id="deleteCar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="removeCar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -58,8 +59,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            <div class="modal-body">
-                    Deseja deletar este automóvel?
+            <div class="modal-body text-center">
+                    Deseja remover este automóvel?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>

@@ -11,7 +11,7 @@
     <div class="table-responsive">
 
         <table class="table table-hover">
-            <thead class="thead-light">
+            <thead class="thead-light text-center">
                 <tr>
                     <th scope="col">CPF</th>
                     <th scope="col">Nome</th>
@@ -23,9 +23,9 @@
 
             @foreach($dataEmployee as $dataEmployee)
                 @if ($dataEmployee -> status === 0)
-                    <tr class="table-danger">
+                    <tr class="table-danger text-center">
                 @else
-                    <tr>
+                    <tr class="text-center">
                 @endif
                     <td>{{ $dataEmployee -> cpf }}</td>
                     <td>{{ $dataEmployee -> full_name }}</td>

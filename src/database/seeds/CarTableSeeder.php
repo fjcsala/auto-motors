@@ -18,7 +18,7 @@ class CarTableSeeder extends Seeder
             'category'      =>      'Entrada',
             'year'          =>      2020,
             'color'         =>      'Preto',
-            'chassi'        =>      '9BARD08X00V123456',
+            'chassi'        =>      '9BA.RD08X0.0V.123456',
             'id_branch'     =>      1
         ]);
     }

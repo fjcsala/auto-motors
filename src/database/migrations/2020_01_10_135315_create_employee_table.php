@@ -28,7 +28,7 @@ class CreateEmployeeTable extends Migration
             $table->string('state');
             $table->integer('id_branch')->unsigned();
             $table->string('function');
-            $table->double('salary');
+            $table->double('salary', 15, 2);
             $table->string('password');
             $table->boolean('status')->default(1);
             

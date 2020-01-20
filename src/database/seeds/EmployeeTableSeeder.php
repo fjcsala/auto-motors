@@ -13,11 +13,11 @@ class EmployeeTableSeeder extends Seeder
     public function run()
     {
         Employee :: create([
-            'cpf'           =>    '12345678900',
+            'cpf'           =>    '123.456.789-00',
             'birth_date'    =>    '1993-11-18',
             'full_name'     =>    'Fábio Sala',
             'sex'           =>    'Masculino',
-            'zip_code'      =>    '29700010',
+            'zip_code'      =>    '29.700-010',
             'address'       =>    'Avenida Getúlio Vargas',
             'number'        =>    145,
             'complement'    =>    'Apartamento 6',
@@ -26,7 +26,7 @@ class EmployeeTableSeeder extends Seeder
             'state'         =>    'ES',
             'id_branch'     =>    1,
             'function'      =>    'Estagiário',
-            'salary'        =>    1000.00,
+            'salary'        =>    123456,
             'password'      =>    md5(123456),
             'status'        =>    1
         ]);

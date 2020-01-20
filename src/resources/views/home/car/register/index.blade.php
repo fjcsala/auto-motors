@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <h1>Automóveis / Cadastrar</h1>
+    <h1>Automóvel / Cadastrar</h1>
 
 @endsection
 
@@ -29,7 +29,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Modelo</label>
-                    <input class="form-control" id="model" name="model" type="text" value="{{ old('model') }}" autofocus>
+                    <input class="form-control" id="model" name="model" type="text" value="{{ old('model') }}" data-mask="0000" autofocus>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label>Categoria</label>
                     <select class="form-control" id="category" name="category">
-                        <option>Selecione</option>
+                        <option value="">Selecione</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category }}">{{ $category }}</option>
                         @endforeach
@@ -49,7 +49,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Ano</label>
-                    <input class="form-control" id="year" name="year" type="text"  value="{{ old('year') }}">
+                    <input class="form-control" id="year" name="year" type="text"  value="{{ old('year') }}" data-mask="0000">
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Chassi</label>
-                    <input class="form-control" id="chassi" name="chassi" type="text"  value="{{ old('chassi') }}" maxlength="17">
+                    <input class="form-control" id="chassi" name="chassi" type="text"  value="{{ old('chassi') }}" data-mask="AAA.AAAAAA.AA.AAAAAA">
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                     <label>Filial</label>
                     @if(count($dataBranch) > 0)
                         <select class="form-control" id="id_branch" name="id_branch" value="{{ old('id_branch') }}">
-                            <option>Selecione</option>
+                            <option value="">Selecione</option>
                                 @foreach ($dataBranch as $dataBranch)
                                     @if ($dataBranch -> status === 1)
                                         <option value="{{ $dataBranch -> id }}">{{ $dataBranch -> social_name }}</option>
@@ -92,8 +92,8 @@
             </div>
         </div>
 
-        <button class="btn btn-primary" type="submit">Cadastrar</button>
-        <a class="btn btn-info" href="/home" role="button">Voltar</a>
+        <button class="btn btn-primary" type="submit" title="Salvar as alterações.">Salvar</button>
+        <a class="btn btn-info" href="/home" role="button" title="Retornar à lista.">Voltar</a>
     </form>
 
 @endsection

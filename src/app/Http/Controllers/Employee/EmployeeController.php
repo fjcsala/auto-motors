@@ -54,22 +54,10 @@ class EmployeeController extends Controller
     {
         $dataForm = $request -> all();
 
-        // format cpf
-        $dataForm['cpf'] = str_replace('.', '', $dataForm['cpf']);
-        $dataForm['cpf'] = str_replace('-', '', $dataForm['cpf']);
-
         // format birth_date
         $dataForm['birth_date'] = str_replace('/', '-', $dataForm['birth_date']);
         $dataForm['birth_date'] = explode('-', $dataForm['birth_date']);
         $dataForm['birth_date'] = $dataForm['birth_date'][2].'-'.$dataForm['birth_date'][1].'-'.$dataForm['birth_date'][0];
-
-        // format zip_code
-        $dataForm['zip_code'] = str_replace('.', '', $dataForm['zip_code']);
-        $dataForm['zip_code'] = str_replace('-', '', $dataForm['zip_code']);
-
-        // format salary
-        $dataForm['salary'] = str_replace('.', '', $dataForm['salary']);
-        $dataForm['salary'] = str_replace(',', '.', $dataForm['salary']);
 
         // encrypt password
         $dataForm['password'] = md5($dataForm['password']);
@@ -90,10 +78,6 @@ class EmployeeController extends Controller
     {
         $dataEmployee = $this -> employee -> find($id);
 
-        // format cpf
-        $dataEmployee['cpf'] = str_replace('.', '', $dataEmployee['cpf']);
-        $dataEmployee['cpf'] = str_replace('-', '', $dataEmployee['cpf']);
-
         // format birth_date
         $dataEmployee['birth_date'] = explode('-', $dataEmployee['birth_date']);
         $dataEmployee['birth_date'] = $dataEmployee['birth_date'][2].'-'.$dataEmployee['birth_date'][1].'-'.$dataEmployee['birth_date'][0];
@@ -111,21 +95,14 @@ class EmployeeController extends Controller
     {
         $dataForm = $request -> all();
 
-        // format cpf
-        $dataForm['cpf'] = str_replace('.', '', $dataForm['cpf']);
-        $dataForm['cpf'] = str_replace('-', '', $dataForm['cpf']);
-
-        // format birth_date
+        // format brith_date
         $dataForm['birth_date'] = str_replace('/', '-', $dataForm['birth_date']);
         $dataForm['birth_date'] = explode('-', $dataForm['birth_date']);
         $dataForm['birth_date'] = $dataForm['birth_date'][2].'-'.$dataForm['birth_date'][1].'-'.$dataForm['birth_date'][0];
 
-        // format zip_code
-        $dataForm['zip_code'] = str_replace('.', '', $dataForm['zip_code']);
-        $dataForm['zip_code'] = str_replace('-', '', $dataForm['zip_code']);
-
         // format salary
-        $dataForm['salary'] = (double) str_replace(',', '.', $dataForm['salary']);
+        $dataForm['salary'] = str_replace('.', '', $dataForm['salary']);
+        $dataForm['salary'] = str_replace(',', '', $dataForm['salary']);
 
         // encrypt password
         $dataForm['password'] = md5($dataForm['password']);

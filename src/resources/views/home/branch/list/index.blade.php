@@ -11,7 +11,7 @@
     <div class="table-responsive">
 
         <table class="table table-hover">
-            <thead class="thead-light">
+            <thead class="thead-light text-center">
                 <tr>
                 <th scope="col">CNPJ</th>
                 <th scope="col">IE</th>
@@ -24,9 +24,9 @@
             <tbody>
                 @foreach($dataDB as $dataDB)
                     @if ($dataDB -> status == 0)
-                        <tr class="table-danger">
+                        <tr class="table-danger text-center">
                     @else
-                        <tr>
+                        <tr class="text-center">
                     @endif
                         <td>{{ $dataDB -> cnpj }}</td>
                         <td>{{ $dataDB -> ie }}</td>
@@ -86,6 +86,31 @@
                                 </div>
 
                             @endif
+
+                            <a class="btn btn-danger btn-sm" href="#" role="button" title="Excluir" data-toggle="modal" data-target="#removeBranch"><i class="fas fa-trash-alt"></i></a>
+
+                            <!-- remove modal -->
+
+                            <div class="modal fade" id="removeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Deseja remover {{ $dataDB -> social_name }}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                            <a type="button" class="btn btn-primary" href="#">Sim</a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                         </td>
                     </tr>
                 @endforeach

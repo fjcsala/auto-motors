@@ -29,13 +29,6 @@
             <ul class="app-menu">
                 <li><a class="app-menu__item" href="{{ url('/home') }}"><i class="app-menu__icon fas fa-chart-bar"></i><span class="app-menu__label">Dashboard</span></a></li>
                 <li class="treeview">
-                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-car"></i><span class="app-menu__label">Automóveis</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a class="treeview-item" href="{{ url('/home/car/register') }}"><i class="icon fas fa-plus"></i> Cadastrar</a></li>
-                        <li><a class="treeview-item" href="{{ url('/home/car/list') }}"><i class="icon fas fa-list"></i> Listar</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-sitemap"></i><span class="app-menu__label">Filiais</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a class="treeview-item" href="{{ url('/home/branch/register') }}"><i class="icon fas fa-plus"></i> Cadastrar</a></li>
@@ -47,6 +40,13 @@
                     <ul class="treeview-menu">
                         <li><a class="treeview-item" href="{{ url('/home/employee/register') }}"><i class="icon fas fa-plus"></i> Cadastrar</a></li>
                         <li><a class="treeview-item" href="{{ url('/home/employee/list') }}"><i class="icon fas fa-list"></i> Listar</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-car"></i><span class="app-menu__label">Automóveis</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="treeview-item" href="{{ url('/home/car/register') }}"><i class="icon fas fa-plus"></i> Cadastrar</a></li>
+                        <li><a class="treeview-item" href="{{ url('/home/car/list') }}"><i class="icon fas fa-list"></i> Listar</a></li>
                     </ul>
                 </li>
             </ul>

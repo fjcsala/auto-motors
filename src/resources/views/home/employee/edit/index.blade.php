@@ -35,25 +35,16 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label>CPF</label>
                     <input class="form-control" id="cpf" name="cpf" type="text" value="{{ $dataEmployee -> cpf }}" data-mask="000.000.000-00" placeholder="000.000.000-00" autofocus>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <label>Data de Nascimento</label>
                     <input class="form-control" id="birth_date" name="birth_date" type="text" value="{{ $dataEmployee -> birth_date }}" data-mask="00/00/0000" placeholder="00/00/0000">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="form-group">
-                    <label>Nome Completo</label>
-                    <input class="form-control" id="full_name" name="full_name" type="text"  value="{{ $dataEmployee -> full_name }}">
                 </div>
             </div>
             <div class="col-sm-4">
@@ -69,40 +60,43 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input class="form-control" id="full_name" name="full_name" type="text"  value="{{ $dataEmployee -> full_name }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label>CEP</label>
                     <input class="form-control" id="zip_code" name="zip_code" type="text" value="{{ $dataEmployee -> zip_code }}" data-mask="00.000-000">
                 </div>
             </div>
-            <div class="col-sm-6">
-                <!-- empty space -->
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <div class="form-group">
                     <label>Endereço</label>
                     <input class="form-control" id="address" name="address" type="text" value="{{ $dataEmployee -> address }}">
                 </div>
             </div>
+        </div>
+
+        <div class="row">
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Número</label>
                     <input class="form-control" id="number" name="number" type="text" value="{{ $dataEmployee -> number }}">
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <div class="form-group">
                     <label>Complemento</label>
                     <input class="form-control" id="complement" name="complement" type="text" value="{{ $dataEmployee -> complement }}">
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <div class="form-group">
                     <label>Bairro</label>
                     <input class="form-control" id="district" name="district" type="text" value="{{ $dataEmployee -> district }}">
@@ -111,13 +105,13 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-10">
                 <div class="form-group">
                     <label>Cidade</label>
                     <input class="form-control" id="city" name="city" type="text" value="{{ $dataEmployee -> city }}">
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-2">
                 <div class="form-group">
                     <label>Estado</label>
                     <select class="form-control" id="state" name="state">
@@ -161,7 +155,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Salário</label>
-                    <input class="form-control" id="salary" name="salary" type="text" value="{{ $dataEmployee -> salary }}" data-mask="##0,00" data-mask-reverse="true">
+                    <input class="form-control" id="salary" name="salary" type="text" value="{{ $dataEmployee -> salary }}" data-mask="###.###.###.###.###,00" data-mask-reverse="true">
                 </div> 
             </div>
         </div>
@@ -169,19 +163,16 @@
         <div class="dropdown-divider"></div>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label>Senha</label>
                     <input class="form-control" id="password" name="password" type="password" placeholder="Senha">
                 </div>
             </div>
-            <div class="col-sm-6">
-                <!-- empty space -->
-            </div>
         </div>
 
-        <button class="btn btn-primary" type="submit">Atualizar</button>
-        <a class="btn btn-info" href="/home/employee/list" role="button">Voltar</a>
+        <button class="btn btn-primary" type="submit" title="Atualizar Cadastro.">Atualizar</button>
+        <a class="btn btn-info" href="/home/employee/list" role="button" title="Retornar à Dashboard.">Voltar</a>
     </form>
 
 @endsection

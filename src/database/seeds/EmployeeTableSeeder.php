@@ -2,7 +2,6 @@
 
 use App\Models\Employee;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class EmployeeTableSeeder extends Seeder
 {
@@ -28,7 +27,7 @@ class EmployeeTableSeeder extends Seeder
             'id_branch'     =>    1,
             'function'      =>    'Estagiário',
             'salary'        =>    1000.00,
-            'password'      =>    Hash :: make(123456),
+            'password'      =>    md5(123456),
             'status'        =>    1
         ]);
     }

@@ -16,9 +16,7 @@
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body">
-                    <div class="table-responsive">
-                        @yield('body')
-                    </div>
+                    @yield('body')
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 @section ('header')
 
-    <h1 class="text-center">Listagem de Filiais</h1>
+    <h1 class="text-center">Listagem de Funcionários</h1>
 
 @endsection
 
@@ -15,16 +15,14 @@
         <thead class="thead-light">
             <!-- cols -->
             <tr>
-                <!-- cnpj -->
-                <th scope="col">CNPJ</th>
-                <!-- ie -->
-                <th scope="col">IE</th>
-                <!-- social_name -->
-                <th scope="col">RAZÃO SOCIAL</th>
-                <!-- city -->
-                <th scope="col">CIDADE</th>
-                <!-- state -->
-                <th scope="col">ESTADO</th>
+                <!-- cpf -->
+                <th scope="col">CPF</th>
+                <!-- full_name -->
+                <th scope="col">NOME</th>
+                <!-- function -->
+                <th scope="col">FUNÇÃO</th>
+                <!-- branch -->
+                <th scope="col">FILIAL</th>
                 <!-- action buttons -->
                 <th scope="col">AÇÕES</th>
             </tr>
@@ -33,7 +31,7 @@
         <tbody>
 
             <!-- data loop -->
-            @foreach ($dataBranch as $data)
+            @foreach ($dataEmployee as $data)
 
                 <!-- rows -->
                     
@@ -48,46 +46,43 @@
 
                 @endif
 
-                <!-- cnpj -->
-                <td> {{ $data -> cnpj }} </td>
+                    <!-- cpf -->
+                    <td> {{ $data -> cpf }} </td>
 
-                <!-- ie -->
-                <td> {{ $data -> ie }} </td>
+                    <!-- full_name -->
+                    <td> {{ $data -> full_name }} </td>
 
-                <!-- social_name -->
-                <td> {{ $data -> social_name }} </td>
+                    <!-- function -->
+                    <td> {{ $data -> function }} </td>
 
-                <!-- city -->
-                <td> {{ $data -> city }} </td>
+                    <!-- branch -->
+                    <td> {{ $data -> id_branch }} </td>
+                        
+                    <!-- action buttons -->
+                    <td>
+                        <!-- edit -->
+                        <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
-                <!-- state -->
-                <td> {{ $data -> state }} </td>
-                    
-                <!-- action buttons -->
-                <td>
-                    <!-- edit -->
-                    <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+                        <!-- status verification -->
+                        @if ($data -> status === 0)
 
-                    <!-- status verification -->
-                    @if ($data -> status === 0)
+                            <!-- active -->
+                            <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar" data-toggle="modal" data-target="#activeEmployee"><i class="fas fa-check-circle"></i></a>
 
-                        <!-- active -->
-                        <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar"><i class="fas fa-check-circle"></i></a>
+                        @else
 
-                    @else
+                        <!-- inactive -->
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar" data-toggle="modal" data-target="#inactiveEmployee"><i class="fas fa-ban"></i></a>
 
-                    <!-- inactive -->
-                    <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar"><i class="fas fa-ban"></i></a>
+                        @endif
 
-                    @endif
+                        <!-- delete -->
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeEmployee"><i class="fas fa-trash-alt"></i></a>
+                    </td>
 
-                    <!-- delete -->
-                    <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
-                </td>
+                </tr>
 
             @endforeach
-            
-            </tr>
 
         </tbody>
     
@@ -96,7 +91,7 @@
     <!-- modals -->
 
     <!-- active modal -->
-    <div class="modal fade" id="activeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="activeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -117,7 +112,7 @@
     </div>
     
     <!-- inactive modal -->
-    <div class="modal fade" id="inactiveBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="inactiveEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -138,7 +133,7 @@
     </div>
     
     <!-- remove modal -->
-    <div class="modal fade" id="removeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="removeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -162,6 +157,8 @@
 
 @section ('footer')
 
-    <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+    <div class=text-right>
+        <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+    </div>
 
 @endsection

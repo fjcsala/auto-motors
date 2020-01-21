@@ -35,6 +35,13 @@ class BranchController extends Controller
         return view ('home.branch.register.index',compact('states'));
     }
 
+    public function registerBeta ()
+    {
+        $states = $this -> getStates();
+
+        return view ('home.branch.register.beta.index',compact('states'));
+    }
+
     public function create (Request $request)
     {
         $dataForm = $request -> all();
@@ -107,11 +114,11 @@ class BranchController extends Controller
         return view('home.branch.list.index', compact('dataDB'));
     }
 
-    public function listTest ()
+    public function listBeta ()
     {
         $dataBranch = $this -> branch -> all();
 
-        return view('home.branch.list.v2.index', compact('dataBranch'));
+        return view('home.branch.list.beta.index', compact('dataBranch'));
     }
 
     public function read ()

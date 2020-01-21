@@ -50,6 +50,17 @@ class EmployeeController extends Controller
         return view ('home.employee.register.index', compact('dataDB', 'states', 'sex'));
     }
 
+    public function registerBeta ()
+    {
+        $dataDB = $this -> branch -> all();
+
+        $sex = $this -> getSex();
+
+        $states = $this -> getStates();
+
+        return view ('home.employee.register.beta.index', compact('dataDB', 'states', 'sex'));
+    }
+
     public function create (Request $request)
     {
         $dataForm = $request -> all();
@@ -148,5 +159,12 @@ class EmployeeController extends Controller
         $dataEmployee = $this -> employee -> all();
         
         return view('home.employee.list.index', compact('dataEmployee'));
+    }
+
+    public function listBeta ()
+    {
+        $dataEmployee = $this -> employee -> all();
+        
+        return view('home.employee.list.beta.index', compact('dataEmployee'));
     }
 }

@@ -2,7 +2,7 @@
 
 @section ('title')
 
-    <h1>Filiais / Listar</h1>
+    <h1 class="text-center">Filiais / Listar</h1>
 
 @endsection
 
@@ -10,15 +10,15 @@
 
     <div class="table-responsive">
 
-        <table class="table table-hover">
+        <table class="table table-bordered table-hover">
             <thead class="thead-light text-center">
                 <tr>
                 <th scope="col">CNPJ</th>
                 <th scope="col">IE</th>
-                <th scope="col">Razão Social</th>
-                <th scope="col">Cidade</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Ações</th>
+                <th scope="col">RAZÃO SOCIAL</th>
+                <th scope="col">CIDADE</th>
+                <th scope="col">ESTADO</th>
+                <th scope="col">AÇÕES</th>
                 </tr>
             </thead>
             <tbody>

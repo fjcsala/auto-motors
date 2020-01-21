@@ -11,6 +11,8 @@
 |
 */
 
+Route::view('/branch/list/test', 'templates.list');
+
 Route::get  ('/',                                   ['as' => 'redirect.login',      'uses' => 'Login\LoginController@index']);
 
 Route::get  ('/login',                              ['as' => 'login',               'uses' => 'Login\LoginController@index']);
@@ -31,6 +33,7 @@ Route::put  ('/home/branch/edit/{id}/update',       ['as' => 'branch.update',   
 Route::get  ('/home/branch/edit/{id}/active',       ['as' => 'branch.active',       'uses' => 'Branch\BranchController@active']);
 Route::get  ('/home/branch/edit/{id}/inactive',     ['as' => 'branch.inactive',     'uses' => 'Branch\BranchController@inactive']);
 Route::get  ('/home/branch/list',                   ['as' => 'branch.list',         'uses' => 'Branch\BranchController@list']);
+Route::get  ('/home/branch/list/test',              ['as' => 'branch.list.test',    'uses' => 'Branch\BranchController@listTest']);
 
 Route::get  ('/home/employee/register',             ['as' => 'employee.register',   'uses' => 'Employee\EmployeeController@register']);
 Route::post ('/home/employee/create',               ['as' => 'employee.create',     'uses' => 'Employee\EmployeeController@create']);

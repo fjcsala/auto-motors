@@ -80,7 +80,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Complemento</label>
-                    <input class="form-control" id="complement" name="complement" type="text" value="{{ old('complment') }}" required>
+                    <input class="form-control" id="complement" name="complement" type="text" value="{{ old('complement') }}" required>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -101,7 +101,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Estado</label>
-                    <select class="form-control" id="state" name="state" required>
+                    <select class="form-control" id="state" name="state" value="{{ old('state') }}" required>
                         <option value="">Selecione</option>
                         @foreach ($states as $state)
                             <option value="{{ $state }}">{{ $state }}</option>

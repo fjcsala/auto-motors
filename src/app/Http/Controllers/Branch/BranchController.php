@@ -107,6 +107,13 @@ class BranchController extends Controller
         return view('home.branch.list.index', compact('dataDB'));
     }
 
+    public function listTest ()
+    {
+        $dataBranch = $this -> branch -> all();
+
+        return view('home.branch.list.v2.index', compact('dataBranch'));
+    }
+
     public function read ()
     {
         // read

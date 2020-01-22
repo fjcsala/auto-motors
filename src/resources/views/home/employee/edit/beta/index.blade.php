@@ -1,8 +1,8 @@
-@extends ('templates.register')
+@extends ('templates.edit')
 
 @section ('header')
 
-    <h1 class="text-center">Cadastro de Funcionários</h1>
+    <h1 class="text-center">Editar Funcionário</h1>
 
 @endsection
 
@@ -18,7 +18,7 @@
             <div class="col-sm-4">
                 <div class="form-group">
                     <label>CPF</label>
-                    <input class="form-control" id="cpf" name="cpf" type="text" value="{{ old('cpf') }}" data-mask="000.000.000-00" placeholder="000.000.000-00" autofocus>
+                    <input class="form-control" id="cpf" name="cpf" type="text" value="{{ $dataEmployee -> cpf }}" data-mask="000.000.000-00" placeholder="000.000.000-00" autofocus>
                 </div>
             </div>
 
@@ -26,7 +26,7 @@
             <div class="col-sm-4">
                 <div class="form-group">
                     <label>Data de Nascimento</label>
-                    <input class="form-control" id="birth_date" name="birth_date" type="text" value="{{ old('birth_date') }}" data-mask="00/00/0000" placeholder="00/00/0000">
+                    <input class="form-control" id="birth_date" name="birth_date" type="text" value="{{ $dataEmployee -> birth_date }}" data-mask="00/00/0000" placeholder="00/00/0000">
                 </div>
             </div>
 
@@ -41,7 +41,10 @@
 
                         <!-- list sex -->
                         @foreach ($sex as $sex)
-                            <option value="{{ $sex }}">{{ $sex }}</option>
+
+                            <!-- return option value based on employee data -->
+                            <option value="{{ $sex }}" @if ($sex === $dataEmployee -> sex) selected @endif> {{ $sex }} </option>
+                        
                         @endforeach
 
                     </select>
@@ -56,7 +59,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label>Nome Completo</label>
-                    <input class="form-control" id="full_name" name="full_name" type="text" value="{{ old('full_name') }}" placeholder="Insira o nome completo do funcionário.">
+                    <input class="form-control" id="full_name" name="full_name" type="text" value="{{ $dataEmployee -> full_name }}" placeholder="Insira o nome completo do funcionário.">
                 </div>
             </div>
 
@@ -68,14 +71,14 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>CEP</label>
-                    <input class="form-control" id="zip_code" name="zip_code" type="text" value="{{ old('zip_code') }}" data-mask="00.000-000" placeholder="00.000-000">
+                    <input class="form-control" id="zip_code" name="zip_code" type="text" value="{{ $dataEmployee -> zip_code }}" data-mask="00.000-000" placeholder="00.000-000">
                 </div>
             </div>
 
             <!-- address -->
             <div class="col-sm-9">
                 <label>Endereço</label>
-                <input class="form-control" id="addres" name="address" type="text" value="{{ old('address') }}" placeholder="Insira o endereço do funcionário.">
+                <input class="form-control" id="addres" name="address" type="text" value="{{ $dataEmployee -> address }}" placeholder="Insira o endereço do funcionário.">
             </div>
 
         </div>
@@ -86,7 +89,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Número</label>
-                    <input class="form-control" id="number" name="number" type="text" value="{{ old('number') }}" data-mask="#" placeholder="Nº">
+                    <input class="form-control" id="number" name="number" type="text" value="{{ $dataEmployee -> number }}" data-mask="#" placeholder="Nº">
                 </div>
             </div>
 
@@ -94,7 +97,7 @@
             <div class="col-sm-5">
                 <div class="form-group">
                     <label>Complemento</label>
-                    <input class="form-control" id="complement" name="complement" type="text" value="{{ old('complement') }}" placeholder="Complemento do endereço.">
+                    <input class="form-control" id="complement" name="complement" type="text" value="{{ $dataEmployee -> complement }}" placeholder="Complemento do endereço.">
                 </div>
             </div>
 
@@ -102,7 +105,7 @@
             <div class="col-sm-5">
                 <div class="form-group">
                     <label>Bairro</label>
-                    <input class="form-control" id="district" name="district" type="text" value="{{ old('district') }}" placeholder="Insira o bairro do funcionário.">
+                    <input class="form-control" id="district" name="district" type="text" value="{{ $dataEmployee -> district }}" placeholder="Insira o bairro do funcionário.">
                 </div>
             </div>
 
@@ -114,7 +117,7 @@
             <div class="col-sm-10">
                 <div class="form-group">
                     <label>Cidade</label>
-                    <input class="form-control" id="city" name="city" type="text" value="{{ old('city') }}" placeholder="Insira a cidade do funcionário.">
+                    <input class="form-control" id="city" name="city" type="text" value="{{ $dataEmployee -> city }}" placeholder="Insira a cidade do funcionário.">
                 </div>
             </div>
 
@@ -130,7 +133,8 @@
                         <!-- list states -->
                         @foreach ($states as $state)
 
-                            <option value="{{ $state }}">{{ $state }}</option>
+                            <!-- return option value based on employee data -->
+                            <option value="{{ $state }}" @if ($state === $dataEmployee -> state) selected @endif > {{ $state }} </option>
 
                         @endforeach
 
@@ -148,20 +152,21 @@
                     <label>Filial</label>
 
                         <!-- count result branches condition -->
-                        @if (count ($dataDB) > 0)
+                        @if (count ($dataBranch) > 0)
 
-                            <select class="form-control" id="id_branch" name="id_branch" value="{{ old('branch') }}">
+                            <select class="form-control" id="id_branch" name="id_branch">
 
                                 <!-- default value -->
                                 <option value="">Selecione</option>
 
                                     <!-- list branches -->
-                                    @foreach ($dataDB as $dataDB)
+                                    @foreach ($dataBranch as $branch)
 
                                         <!-- condition branch check status -->
-                                        @if ($dataDB -> status === 1)
+                                        @if ($branch -> status === 1)
 
-                                            <option value="{{ $dataDB -> id }}">{{ $dataDB -> social_name }}</option>
+                                            <!-- return option value based on branch data -->
+                                            <option value="{{ $branch -> id }}" @if ($branch -> id === $dataEmployee -> id_branch) selected @endif> {{ $branch -> social_name }} </option>
 
                                         @endif
 
@@ -182,24 +187,19 @@
             </div>
 
             <!-- function -->
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <div class="form-group">
                     <label>Cargo</label>
-                    <input class="form-control" id="function" name="function" type="text" value="{{ old('function') }}" placeholder="Insira o cargo do funcionário.">
+                    <input class="form-control" id="function" name="function" type="text" value="{{ $dataEmployee -> function }}" placeholder="Insira a função do funcionário.">
                 </div>
             </div>
 
             <!-- salary -->
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div class="form-group">
-                    <label class="control-label">Salário</label>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text">R$</span></div>
-                            <input class="form-control" id="exampleInputAmount" type="text" placeholder="R$ 000.000,00">
-                        </div>
-                    </div>
-                </div>
+                    <label>Salário</label>
+                    <input class="form-control" id="salary" name="salary" type="text" value="{{ $dataEmployee -> salary }}" data-mask="###.###.###.###.###,00" data-mask-reverse="true" placeholder="R$ 00.000,00">
+                </div> 
             </div>
 
         </div>
@@ -223,7 +223,7 @@
 @section ('footer')
 
         <div class=text-right>
-            <button class="btn btn-primary" type="submit" title="Salvar Cadastro.">Salvar</button>
+            <button class="btn btn-primary" type="submit" title="Atualizar Cadastro.">Atualizar</button>
             <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
         </div>
 

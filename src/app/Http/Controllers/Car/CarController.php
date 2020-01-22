@@ -78,6 +78,17 @@ class CarController extends Controller
         return view("home.car.edit.index", compact('dataCar', 'categories', 'dataBranch'));
     }
 
+    public function editBeta (Request $request, $id)
+    {
+        $dataCar = $this -> car -> find($id);
+
+        $categories = $this -> getCategory();
+
+        $dataBranch = $this -> branch -> all();
+
+        return view("home.car.edit.beta.index", compact('dataCar', 'categories', 'dataBranch'));
+    }
+
     public function update (Request $request, $id)
     {
         $dataForm = $request -> all();
@@ -101,6 +112,13 @@ class CarController extends Controller
         $dataCar = $this -> car -> all();
 
         return view('home.car.list.index', compact('dataCar'));
+    }
+
+    public function view (Request $request, $id)
+    {
+        $dataCar = $this -> car -> find($id);
+
+        return view('home.car.view.index', compact('dataCar'));
     }
 
     public function listBeta ()

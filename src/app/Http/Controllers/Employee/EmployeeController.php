@@ -33,6 +33,18 @@ class EmployeeController extends Controller
         );
     }
 
+    // function format birth date
+    // (0000-00-00) -> (00-00-0000)
+    // (00-00-0000) -> (0000-00-00)
+    public function formatBirthDate ($data)
+    {
+        $data = str_replace('/', '-', $data);
+        $data = explode('-', $data);
+        $data = $data[2].'-'.$data[1].'-'.$data[0];
+
+        return $data;
+    }
+
     public function __construct (Employee $employee, Branch $branch)
     {
         $this -> employee = $employee;
@@ -65,10 +77,8 @@ class EmployeeController extends Controller
     {
         $dataForm = $request -> all();
 
-        // format birth_date
-        $dataForm['birth_date'] = str_replace('/', '-', $dataForm['birth_date']);
-        $dataForm['birth_date'] = explode('-', $dataForm['birth_date']);
-        $dataForm['birth_date'] = $dataForm['birth_date'][2].'-'.$dataForm['birth_date'][1].'-'.$dataForm['birth_date'][0];
+        // format brith_date
+        $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);
 
         // encrypt password
         $dataForm['password'] = md5($dataForm['password']);
@@ -89,9 +99,8 @@ class EmployeeController extends Controller
     {
         $dataEmployee = $this -> employee -> find($id);
 
-        // format birth_date
-        $dataEmployee['birth_date'] = explode('-', $dataEmployee['birth_date']);
-        $dataEmployee['birth_date'] = $dataEmployee['birth_date'][2].'-'.$dataEmployee['birth_date'][1].'-'.$dataEmployee['birth_date'][0];
+        // format brith_date
+        $dataEmployee['birth_date'] = $this -> formatBirthDate($dataEmployee['birth_date']);
 
         $dataBranch = $this -> branch -> all();
 
@@ -102,14 +111,28 @@ class EmployeeController extends Controller
         return view('home.employee.edit.index', compact('dataEmployee', 'dataBranch', 'states', 'sex'));
     }
 
+    public function editBeta (Request $request, $id)
+    {
+        $dataEmployee = $this -> employee -> find($id);
+
+        // format brith_date
+        $dataEmployee['birth_date'] = $this -> formatBirthDate($dataEmployee['birth_date']);
+
+        $dataBranch = $this -> branch -> all();
+
+        $states = $this -> getStates();
+
+        $sex = $this -> getSex();
+        
+        return view('home.employee.edit.beta.index', compact('dataEmployee', 'dataBranch', 'states', 'sex'));
+    }
+
     public function update (Request $request, $id)
     {
         $dataForm = $request -> all();
 
         // format brith_date
-        $dataForm['birth_date'] = str_replace('/', '-', $dataForm['birth_date']);
-        $dataForm['birth_date'] = explode('-', $dataForm['birth_date']);
-        $dataForm['birth_date'] = $dataForm['birth_date'][2].'-'.$dataForm['birth_date'][1].'-'.$dataForm['birth_date'][0];
+        $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);
 
         // format salary
         $dataForm['salary'] = str_replace('.', '', $dataForm['salary']);
@@ -159,6 +182,16 @@ class EmployeeController extends Controller
         $dataEmployee = $this -> employee -> all();
         
         return view('home.employee.list.index', compact('dataEmployee'));
+    }
+
+    public function view (Request $request, $id)
+    {
+        $dataEmployee = $this -> employee -> find($id);
+
+        // format brith_date
+        $dataEmployee['birth_date'] = $this -> formatBirthDate($dataEmployee['birth_date']);
+
+        return view('home.employee.view.index', compact('dataEmployee'));
     }
 
     public function listBeta ()

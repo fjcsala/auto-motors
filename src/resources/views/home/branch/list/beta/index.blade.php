@@ -65,6 +65,9 @@
                         
                     <!-- action buttons -->
                     <td>
+                        <!-- view -->
+                        <a class="btn btn-info btn-sm" href="#" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
+                        
                         <!-- edit -->
                         <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
@@ -72,17 +75,17 @@
                         @if ($data -> status === 0)
 
                             <!-- active -->
-                            <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar"><i class="fas fa-check-circle"></i></a>
+                            <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar" data-toggle="modal" data-target="#activeBranch"><i class="fas fa-check-circle"></i></a>
 
                         @else
 
                         <!-- inactive -->
-                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar"><i class="fas fa-ban"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar" data-toggle="modal" data-target="#inactiveBranch"><i class="fas fa-ban"></i></a>
 
                         @endif
 
                         <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeBranch"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>

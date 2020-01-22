@@ -15,10 +15,10 @@
         <thead class="thead-light">
             <!-- cols -->
             <tr>
-                <!-- cpf -->
-                <th scope="col">CPF</th>
                 <!-- full_name -->
                 <th scope="col">NOME</th>
+                <!-- cpf -->
+                <th scope="col">CPF</th>
                 <!-- function -->
                 <th scope="col">FUNÇÃO</th>
                 <!-- branch -->
@@ -46,11 +46,11 @@
 
                 @endif
 
-                    <!-- cpf -->
-                    <td> {{ $data -> cpf }} </td>
-
                     <!-- full_name -->
                     <td> {{ $data -> full_name }} </td>
+
+                    <!-- cpf -->
+                    <td> {{ $data -> cpf }} </td>
 
                     <!-- function -->
                     <td> {{ $data -> function }} </td>
@@ -60,6 +60,9 @@
                         
                     <!-- action buttons -->
                     <td>
+                        <!-- view -->
+                        <a class="btn btn-info btn-sm" href="#" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
+                        
                         <!-- edit -->
                         <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 

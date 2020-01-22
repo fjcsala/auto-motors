@@ -67,6 +67,15 @@ class BranchController extends Controller
         return view('home.branch.edit.index', compact('dataDB', 'states'));
     }
 
+    public function editBeta (Request $request, $id)
+    {
+        $dataBranch = $this -> branch -> find($id);
+
+        $states = $this -> getStates();
+
+        return view('home.branch.edit.beta.index', compact('dataBranch', 'states'));
+    }
+
     public function update (Request $request, $id)
     {
         $dataForm = $request -> all();
@@ -114,15 +123,17 @@ class BranchController extends Controller
         return view('home.branch.list.index', compact('dataDB'));
     }
 
+    public function view (Request $request, $id)
+    {
+        $dataBranch = $this -> branch -> find($id);
+
+        return view('home.branch.view.index', compact('dataBranch'));
+    }
+
     public function listBeta ()
     {
         $dataBranch = $this -> branch -> all();
 
         return view('home.branch.list.beta.index', compact('dataBranch'));
-    }
-
-    public function read ()
-    {
-        // read
     }
 }

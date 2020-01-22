@@ -23,9 +23,7 @@ Route::post ('/home/car/create',                    ['as' => 'car.create',      
 Route::get  ('/home/car/edit/{id}',                 ['as' => 'car.edit',            'uses' => 'Car\CarController@edit']);
 Route::put  ('/home/car/edit/{id}/update',          ['as' => 'car.update',          'uses' => 'Car\CarController@update']);
 Route::get  ('/home/car/list',                      ['as' => 'car.list',            'uses' => 'Car\CarController@list']);
-
-Route::get  ('/home/car/register/beta',             ['as' => 'car.register.beta',        'uses' => 'Car\CarController@registerBeta']);
-Route::get  ('/home/car/list/beta',                 ['as' => 'car.list.beta',       'uses' => 'Car\CarController@listBeta']);
+Route::get  ('/home/car/view/{id}',                 ['as' => 'car.view',            'uses' => 'Car\CarController@view']);
 
 Route::get  ('/home/branch/register',               ['as' => 'branch.register',     'uses' => 'Branch\BranchController@register']);
 Route::post ('/home/branch/create',                 ['as' => 'branch.create',       'uses' => 'Branch\BranchController@create']);
@@ -34,9 +32,7 @@ Route::put  ('/home/branch/edit/{id}/update',       ['as' => 'branch.update',   
 Route::get  ('/home/branch/edit/{id}/active',       ['as' => 'branch.active',       'uses' => 'Branch\BranchController@active']);
 Route::get  ('/home/branch/edit/{id}/inactive',     ['as' => 'branch.inactive',     'uses' => 'Branch\BranchController@inactive']);
 Route::get  ('/home/branch/list',                   ['as' => 'branch.list',         'uses' => 'Branch\BranchController@list']);
-
-Route::get  ('/home/branch/register/beta',          ['as' => 'branch.register.beta','uses' => 'Branch\BranchController@registerBeta']);
-Route::get  ('/home/branch/list/beta',              ['as' => 'branch.list.beta',    'uses' => 'Branch\BranchController@listBeta']);
+Route::get  ('/home/branch/view/{id}',              ['as' => 'branch.view',         'uses' => 'Branch\BranchController@view']);
 
 Route::get  ('/home/employee/register',             ['as' => 'employee.register',   'uses' => 'Employee\EmployeeController@register']);
 Route::post ('/home/employee/create',               ['as' => 'employee.create',     'uses' => 'Employee\EmployeeController@create']);
@@ -45,6 +41,19 @@ Route::put  ('/home/employee/edit/{id}/update',     ['as' => 'employee.update', 
 Route::get  ('/home/employee/edit/{id}/active',     ['as' => 'employee.active',     'uses' => 'Employee\EmployeeController@active']);
 Route::get  ('/home/employee/edit/{id}/inactive',   ['as' => 'employee.inactive',   'uses' => 'Employee\EmployeeController@inactive']);
 Route::get  ('/home/employee/list',                 ['as' => 'employee.list',       'uses' => 'Employee\EmployeeController@list']);
+Route::get  ('/home/employee/view/{id}',            ['as' => 'employee.view',       'uses' => 'Employee\EmployeeController@view']);
 
-Route::get  ('/home/employee/register/beta',        ['as' => 'employee.register.beta', 'uses' => 'Employee\EmployeeController@registerBeta']);
-Route::get  ('/home/employee/list/beta',            ['as' => 'employee.list.beta',  'uses' => 'Employee\EmployeeController@listBeta']);
+//=======================================================================================================================================================
+//     Beta (Tests)
+//=======================================================================================================================================================
+
+Route::get  ('/home/car/register/beta',             ['as' => 'car.register.beta',           'uses' => 'Car\CarController@registerBeta']);
+Route::get  ('/home/car/list/beta',                 ['as' => 'car.list.beta',               'uses' => 'Car\CarController@listBeta']);
+Route::get  ('/home/branch/register/beta',          ['as' => 'branch.register.beta',        'uses' => 'Branch\BranchController@registerBeta']);
+Route::get  ('/home/branch/list/beta',              ['as' => 'branch.list.beta',            'uses' => 'Branch\BranchController@listBeta']);
+Route::get  ('/home/employee/register/beta',        ['as' => 'employee.register.beta',      'uses' => 'Employee\EmployeeController@registerBeta']);
+Route::get  ('/home/employee/list/beta',            ['as' => 'employee.list.beta',          'uses' => 'Employee\EmployeeController@listBeta']);
+Route::get  ('/home/employee/edit/beta/{id}',       ['as' => 'employee.edit.beta',          'uses' => 'Employee\EmployeeController@editBeta']);
+Route::get  ('/home/branch/edit/beta/{id}',         ['as' => 'branch.edit.beta',            'uses' => 'Branch\BranchController@editBeta']);
+Route::get  ('/home/employee/edit/beta/{id}',       ['as' => 'employee.edit.beta',          'uses' => 'Employee\EmployeeController@editBeta']);
+Route::get  ('/home/car/edit/beta/{id}',            ['as' => 'car.edit.beta',               'uses' => 'Car\CarController@editBeta']);

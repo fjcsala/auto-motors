@@ -17,18 +17,18 @@
             <tr>
                 <!-- chassi -->
                 <th scope="col">CHASSI</th>
-                <!-- name/factory -->
-                <th scope="col">MONTADORA</th>
-                <!-- model -->
-                <th scope="col">MODELO</th>
                 <!-- category -->
                 <th scope="col">CATEGORIA</th>
+                <!-- name -->
+                <th scope="col">NOME</th>
                 <!-- year -->
                 <th scope="col">ANO</th>
+                <!-- model -->
+                <th scope="col">MODELO</th>
                 <!-- color -->
                 <th scope="col">COR</th>
                 <!-- production branch -->
-                <th scope="col">FILIAL DE PROD.</th>
+                <th scope="col">FILIAL</th>
                 <!-- action buttons -->
                 <th scope="col">AÇÕES</th>
             </tr>
@@ -45,17 +45,17 @@
                     <!-- chassi -->
                     <td> {{ $data -> chassi }} </td>
 
-                    <!-- name/factory -->
-                    <td> {{ $data -> name }} </td>
-
-                    <!-- model -->
-                    <td> {{ $data -> model }} </td>
-
                     <!-- category -->
                     <td> {{ $data -> category }} </td>
 
+                    <!-- name -->
+                    <td> {{ $data -> name }} </td>
+
                     <!-- year -->
                     <td> {{ $data -> year }} </td>
+
+                    <!-- model -->
+                    <td> {{ $data -> model }} </td>
 
                     <!-- color -->
                     <td> {{ $data -> color }} </td>
@@ -65,6 +65,9 @@
                         
                     <!-- action buttons -->
                     <td>
+                        <!-- edit -->
+                        <a class="btn btn-info btn-sm" href="#" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        
                         <!-- edit -->
                         <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 

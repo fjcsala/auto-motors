@@ -1,96 +1,167 @@
-@extends('templates.home')
+@extends ('templates.list')
 
-@section('title')
+@section ('header')
 
-    <h1>Funcionários / Listar</h1>
+    <h1 class="text-center">Listagem de Funcionários</h1>
 
 @endsection
 
-@section('content')
+@section ('body')
 
-    <div class="table-responsive">
+    <!-- table -->
+    <table class="table table-bordered table-hover text-center">
 
-        <table class="table table-hover">
-            <thead class="thead-light text-center">
-                <tr>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Função</th>
-                    <th scope="col">Filial</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
+        <!-- header -->
+        <thead class="thead-light">
+            <!-- cols -->
+            <tr>
+                <!-- full_name -->
+                <th scope="col">NOME</th>
+                <!-- cpf -->
+                <th scope="col">CPF</th>
+                <!-- function -->
+                <th scope="col">FUNÇÃO</th>
+                <!-- branch -->
+                <th scope="col">FILIAL</th>
+                <!-- action buttons -->
+                <th scope="col">AÇÕES</th>
+            </tr>
+        </thead>
 
-            @foreach($dataEmployee as $dataEmployee)
-                @if ($dataEmployee -> status === 0)
-                    <tr class="table-danger text-center">
+        <tbody>
+
+            <!-- data loop -->
+            @foreach ($dataEmployee as $data)
+
+                <!-- rows -->
+                    
+                <!-- status verification -->
+                @if ($data -> status === 0)
+
+                    <tr  class="table-danger">
+
                 @else
-                    <tr class="text-center">
+
+                    <tr>
+
                 @endif
-                    <td>{{ $dataEmployee -> cpf }}</td>
-                    <td>{{ $dataEmployee -> full_name }}</td>
-                    <td>{{ $dataEmployee -> function }}</td>
-                    <td>{{ $dataEmployee -> id_branch }}</td>
+
+                    <!-- full_name -->
+                    <td> {{ $data -> full_name }} </td>
+
+                    <!-- cpf -->
+                    <td> {{ $data -> cpf }} </td>
+
+                    <!-- function -->
+                    <td> {{ $data -> function }} </td>
+
+                    <!-- branch -->
+                    <td> {{ $data -> id_branch }} </td>
+                        
+                    <!-- action buttons -->
                     <td>
-                        <a class="btn btn-primary btn-sm" href="{{ url("home/employee/edit/{$dataEmployee -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
-                        @if ($dataEmployee -> status === 0)
-                            <a class="btn btn-success btn-sm" href="#" title="Ativar" role="button" data-toggle="modal" data-target="#activeEmployee"><i class="fas fa-check-circle"></i></a>
+                        <!-- view -->
+                        <a class="btn btn-info btn-sm" href="#" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
+                        
+                        <!-- edit -->
+                        <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
-                            <!-- active modal -->
+                        <!-- status verification -->
+                        @if ($data -> status === 0)
 
-                            <div class="modal fade" id="activeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Deseja ativar {{ $dataEmployee -> full_name }}?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                        <a type="button" class="btn btn-primary" href="{{ url("/home/employee/edit/{$dataEmployee -> id}/active") }}">Sim</a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- active -->
+                            <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar" data-toggle="modal" data-target="#activeEmployee"><i class="fas fa-check-circle"></i></a>
 
                         @else
-                            <a class="btn btn-danger btn-sm" href="#" title="Inativar" role="button" data-toggle="modal" data-target="#inactiveEmployee"><i class="fas fa-ban"></i></a>
-                        
-                            <!-- inactive modal -->
 
-                            <div class="modal fade" id="inactiveEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Deseja inativar {{ $dataEmployee -> full_name }}?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                        <a type="button" class="btn btn-primary" href="{{ url("/home/employee/edit/{$dataEmployee -> id}/inactive") }}">Sim</a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- inactive -->
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar" data-toggle="modal" data-target="#inactiveEmployee"><i class="fas fa-ban"></i></a>
 
                         @endif
 
+                        <!-- delete -->
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeEmployee"><i class="fas fa-trash-alt"></i></a>
                     </td>
+
                 </tr>
+
             @endforeach
 
-        </table>
+        </tbody>
+    
+    </table>
 
-        <a class="btn btn-info" href="/home" role="button" title="Retornar à Dashboard.">Voltar</a>
+    <!-- modals -->
+
+    <!-- active modal -->
+    <div class="modal fade" id="activeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja ativar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- inactive modal -->
+    <div class="modal fade" id="inactiveEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja inativar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- remove modal -->
+    <div class="modal fade" id="removeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja remover?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+@section ('footer')
+
+    <div class=text-right>
+        <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+    </div>
 
 @endsection

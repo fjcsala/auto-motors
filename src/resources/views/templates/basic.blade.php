@@ -103,6 +103,7 @@
         <script src="https://pratikborsadiya.in/vali-admin/js/main.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/plugins/pace.min.js"></script>
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+        <script src="http://bootstrap-notify.remabledesigns.com/js/bootstrap-notify.min.js"></script>
 
     </body>
 

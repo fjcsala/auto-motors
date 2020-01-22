@@ -60,11 +60,11 @@ class BranchController extends Controller
 
     public function edit (Request $request, $id)
     {
-        $dataDB = $this -> branch -> find($id);
+        $dataBranch = $this -> branch -> find($id);
 
         $states = $this -> getStates();
 
-        return view('home.branch.edit.index', compact('dataDB', 'states'));
+        return view('home.branch.edit.index', compact('dataBranch', 'states'));
     }
 
     public function editBeta (Request $request, $id)
@@ -118,9 +118,9 @@ class BranchController extends Controller
 
     public function list ()
     {
-        $dataDB = $this -> branch -> all();
+        $dataBranch = $this -> branch -> all();
         
-        return view('home.branch.list.index', compact('dataDB'));
+        return view('home.branch.list.index', compact('dataBranch'));
     }
 
     public function view (Request $request, $id)

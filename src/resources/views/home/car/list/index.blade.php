@@ -1,72 +1,117 @@
-@extends('templates.home')
+@extends ('templates.list')
 
-@section('title')
+@section ('header')
 
-    <h1>Automóveis / Listar</h1>
+    <h1 class="text-center">Listagem de Automóveis</h1>
 
 @endsection
 
-@section('content')
+@section ('body')
 
-    <div class="table-responsive">
+    <!-- table -->
+    <table class="table table-bordered table-hover text-center">
 
-        <table class="table table-hover">
-            <thead class="thead-light text-center">
+        <!-- header -->
+        <thead class="thead-light">
+            <!-- cols -->
+            <tr>
+                <!-- chassi -->
+                <th scope="col">CHASSI</th>
+                <!-- category -->
+                <th scope="col">CATEGORIA</th>
+                <!-- name -->
+                <th scope="col">NOME</th>
+                <!-- year -->
+                <th scope="col">ANO</th>
+                <!-- model -->
+                <th scope="col">MODELO</th>
+                <!-- color -->
+                <th scope="col">COR</th>
+                <!-- production branch -->
+                <th scope="col">FILIAL</th>
+                <!-- action buttons -->
+                <th scope="col">AÇÕES</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <!-- data loop -->
+            @foreach ($dataCar as $data)
+
+                <!-- rows -->
                 <tr>
-                    <th scope="col">Chassi</th>
-                    <th scope="col">Montadora</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Ano</th>
-                    <th scope="col">Cor</th>
-                    <th scope="col">Filial de Produção</th>
-                    <th scope="col">Ações</th>
+
+                    <!-- chassi -->
+                    <td> {{ $data -> chassi }} </td>
+
+                    <!-- category -->
+                    <td> {{ $data -> category }} </td>
+
+                    <!-- name -->
+                    <td> {{ $data -> name }} </td>
+
+                    <!-- year -->
+                    <td> {{ $data -> year }} </td>
+
+                    <!-- model -->
+                    <td> {{ $data -> model }} </td>
+
+                    <!-- color -->
+                    <td> {{ $data -> color }} </td>
+
+                    <!-- production branch -->
+                    <td> {{ $data -> id_branch }} </td>
+                        
+                    <!-- action buttons -->
+                    <td>
+                        <!-- edit -->
+                        <a class="btn btn-info btn-sm" href="#" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        
+                        <!-- edit -->
+                        <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+
+                        <!-- delete -->
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeCar"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+
                 </tr>
-            </thead>
-            <tbody>
 
-                @foreach ($dataCar as $dataCar)
-                    <tr class="text-center">
-                        <td>{{ $dataCar -> chassi }}</td>
-                        <td>{{ $dataCar -> name }}</td>
-                        <td>{{ $dataCar -> model }}</td>
-                        <td>{{ $dataCar -> category }}</td>
-                        <td>{{ $dataCar -> year }}</td>
-                        <td>{{ $dataCar -> color }}</td>
-                        <td>{{ $dataCar -> id_branch }}</td>
-                        <td>
-                            <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$dataCar -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#" role="button" title="Excluir" data-toggle="modal" data-target="#removeCar"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                @endforeach
+            @endforeach
 
-            </tbody>
-        </table>
+        </tbody>
+    
+    </table>
 
-        <a class="btn btn-info" href="/home" role="button" title="Retornar à Dashboard.">Voltar</a>
-
-    </div>
-
-        <!-- remove modal -->
-
+    <!-- modals -->
+    
+    <!-- remove modal -->
     <div class="modal fade" id="removeCar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            <div class="modal-body text-center">
-                    Deseja remover este automóvel?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                <button type="button" class="btn btn-primary">Sim</button>
+                <div class="modal-body">
+                    Deseja remover?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                </div>
             </div>
         </div>
+    </div>
+
+@endsection
+
+@section ('footer')
+
+    <div class=text-right>
+        <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
     </div>
 
 @endsection

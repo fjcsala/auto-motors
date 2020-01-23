@@ -12,6 +12,8 @@ class EmployeeController extends Controller
     private $employee;
     private $branch;
 
+    private $itensPage = 3;
+
     protected function getStates ()
     {
         return array
@@ -201,7 +203,7 @@ class EmployeeController extends Controller
 
     public function list ()
     {
-        $dataEmployee = $this -> employee -> all();
+        $dataEmployee = $this -> employee -> paginate($this -> itensPage);
         
         return view('home.employee.list.index', compact('dataEmployee'));
     }

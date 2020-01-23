@@ -91,6 +91,8 @@
     
     </table>
 
+    {!! $dataEmployee -> links() !!}
+
     <!-- modals -->
 
     <!-- active modal -->

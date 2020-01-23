@@ -10,8 +10,6 @@ class BranchController extends Controller
 {
     private $branch;
 
-    private $itensPage = 3;
-
     protected function getStates ()
     {
         return array
@@ -120,7 +118,7 @@ class BranchController extends Controller
 
     public function list ()
     {
-        $dataBranch = $this -> branch -> paginate($this -> itensPage);
+        $dataBranch = $this -> branch -> all();
         
         return view('home.branch.list.index', compact('dataBranch'));
     }

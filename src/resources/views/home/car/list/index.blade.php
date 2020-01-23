@@ -83,8 +83,6 @@
     
     </table>
 
-    {!! $dataCar -> links() !!}
-
     <!-- modals -->
     
     <!-- remove modal -->

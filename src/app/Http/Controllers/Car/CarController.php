@@ -12,8 +12,6 @@ class CarController extends Controller
     private $car;
     private $branch;
 
-    private $itensPage = 3;
-
     protected function getCategory()
     {
         return array
@@ -124,7 +122,7 @@ class CarController extends Controller
 
     public function list ()
     {
-        $dataCar = $this -> car -> paginate($this -> itensPage);
+        $dataCar = $this -> car -> all();
 
         return view('home.car.list.index', compact('dataCar'));
     }

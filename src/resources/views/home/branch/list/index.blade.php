@@ -96,8 +96,6 @@
     
     </table>
 
-    {!! $dataBranch -> links() !!}
-
     <!-- modals -->
 
     <!-- active modal -->

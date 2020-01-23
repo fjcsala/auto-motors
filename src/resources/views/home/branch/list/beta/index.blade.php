@@ -2,7 +2,7 @@
 
 @section ('header')
 
-    <h1 class="text-center">Listagem de Funcionários</h1>
+    <h1 class="text-center">Listagem de Filiais</h1>
 
 @endsection
 
@@ -15,14 +15,16 @@
         <thead class="thead-light">
             <!-- cols -->
             <tr>
-                <!-- full_name -->
-                <th scope="col">NOME</th>
-                <!-- cpf -->
-                <th scope="col">CPF</th>
-                <!-- function -->
-                <th scope="col">FUNÇÃO</th>
-                <!-- branch -->
-                <th scope="col">FILIAL</th>
+                <!-- cnpj -->
+                <th scope="col">CNPJ</th>
+                <!-- ie -->
+                <th scope="col">IE</th>
+                <!-- social_name -->
+                <th scope="col">RAZÃO SOCIAL</th>
+                <!-- city -->
+                <th scope="col">CIDADE</th>
+                <!-- state -->
+                <th scope="col">ESTADO</th>
                 <!-- action buttons -->
                 <th scope="col">AÇÕES</th>
             </tr>
@@ -31,7 +33,7 @@
         <tbody>
 
             <!-- data loop -->
-            @foreach ($dataEmployee as $data)
+            @foreach ($dataBranch as $data)
 
                 <!-- rows -->
                     
@@ -46,41 +48,44 @@
 
                 @endif
 
-                    <!-- full_name -->
-                    <td class="align-middle"> {{ $data -> full_name }} </td>
+                    <!-- cnpj -->
+                    <td> {{ $data -> cnpj }} </td>
 
-                    <!-- cpf -->
-                    <td class="align-middle"> {{ $data -> cpf }} </td>
+                    <!-- ie -->
+                    <td> {{ $data -> ie }} </td>
 
-                    <!-- function -->
-                    <td class="align-middle"> {{ $data -> function }} </td>
+                    <!-- social_name -->
+                    <td> {{ $data -> social_name }} </td>
 
-                    <!-- branch -->
-                    <td class="align-middle"> {{ $data -> id_branch }} </td>
+                    <!-- city -->
+                    <td> {{ $data -> city }} </td>
+
+                    <!-- state -->
+                    <td> {{ $data -> state }} </td>
                         
                     <!-- action buttons -->
-                    <td class="align-middle">
+                    <td>
                         <!-- view -->
-                        <a class="btn btn-info btn-sm" href="{{ url("/home/employee/view/{$data -> id}") }}" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-info btn-sm" href="#" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
                         
                         <!-- edit -->
-                        <a class="btn btn-primary btn-sm" href="{{ url("/home/employee/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
                         <!-- status verification -->
                         @if ($data -> status === 0)
 
                             <!-- active -->
-                            <a class="btn btn-success btn-sm" href="{{ url("/home/employee/edit/{$data -> id}/active") }}" role="button" title="Ativar"><i class="fas fa-check-circle"></i></a>
+                            <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar" data-toggle="modal" data-target="#activeBranch"><i class="fas fa-check-circle"></i></a>
 
                         @else
 
                         <!-- inactive -->
-                        <a class="btn btn-danger btn-sm" href="{{ url("/home/employee/edit/{$data -> id}/inactive") }}" role="button" title="Inativar"><i class="fas fa-ban"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar" data-toggle="modal" data-target="#inactiveBranch"><i class="fas fa-ban"></i></a>
 
                         @endif
 
                         <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="{{ url("/home/employee/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeBranch"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>
@@ -94,7 +99,7 @@
     <!-- modals -->
 
     <!-- active modal -->
-    <div class="modal fade" id="activeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="activeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -115,7 +120,7 @@
     </div>
     
     <!-- inactive modal -->
-    <div class="modal fade" id="inactiveEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="inactiveBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,7 +141,7 @@
     </div>
     
     <!-- remove modal -->
-    <div class="modal fade" id="removeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="removeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

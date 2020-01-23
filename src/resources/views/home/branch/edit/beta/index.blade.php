@@ -8,18 +8,7 @@
 
 @section ('body')
 
-    @if (isset($errors) && count($errors) > 0)
-        @foreach($errors -> all() as $error)
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>{{ $error }}</strong>
-            </div>
-        @endforeach
-    @endif
-
-    <form method="post" action="{{ url("/home/branch/edit/{$dataBranch -> id}/update") }}">
-    
-    {!! method_field('PUT') !!}
+    <form method="post" action="{{ route('branch.create') }}">
 
     {{ csrf_field() }}
 
@@ -142,7 +131,7 @@
 
         <div class=text-right>
             <button class="btn btn-primary" type="submit" title="Atualizar Cadastro.">Atualizar</button>
-            <a class="btn btn-info" href="{{ route('branch.list') }}" role="button" title="Retornar à Listagem.">Voltar</a>
+            <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
         </div>
 
     </form>

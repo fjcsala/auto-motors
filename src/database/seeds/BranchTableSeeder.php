@@ -26,5 +26,65 @@ class BranchTableSeeder extends Seeder
             'state'             =>      'ES',
             'status'            =>      1
         ]);
+
+        Branch :: create([
+            'cnpj'              =>      '45.198.107/0001-24',
+            'ie'                =>      '831279157819',
+            'social_name'       =>      'Auto Motors de São Paulo S/A',
+            'fantasy_name'      =>      'Auto Motors',
+            'zip_code'          =>      '13.335-235',
+            'address'           =>      'Rua Cora Tommaso Lopes',
+            'number'            =>      792,
+            'complement'        =>      'Armazém 07',
+            'district'          =>      'Jardim Valença',
+            'city'              =>      'Indaiatuba',
+            'state'             =>      'SP',
+            'status'            =>      1
+        ]);
+
+        Branch :: create([
+            'cnpj'              =>      '51.835.385/0001-48',
+            'ie'                =>      '103256326',
+            'social_name'       =>      'Auto Motors de Goiás S/A',
+            'fantasy_name'      =>      'Auto Motors',
+            'zip_code'          =>      '74.555-515',
+            'address'           =>      'Rua T',
+            'number'            =>      221,
+            'complement'        =>      'Armazém 07',
+            'district'          =>      'Vila Ofugi',
+            'city'              =>      'Goiânia',
+            'state'             =>      'GO',
+            'status'            =>      0
+        ]);
+
+        Branch :: create([
+            'cnpj'              =>      '88.852.468/0001-55',
+            'ie'                =>      '465388442',
+            'social_name'       =>      'Auto Motors de Manaus S/A',
+            'fantasy_name'      =>      'Auto Motors',
+            'zip_code'          =>      '69.037-179',
+            'address'           =>      'Rua Litorânea',
+            'number'            =>      765,
+            'complement'        =>      'Polo Industrial de Manaus - Armazém 447',
+            'district'          =>      'Ponta Negra',
+            'city'              =>      'Manaus',
+            'state'             =>      'AM',
+            'status'            =>      1
+        ]);
+
+        Branch :: create([
+            'cnpj'              =>      '00.612.668/0001-90',
+            'ie'                =>      '439032679',
+            'social_name'       =>      'Auto Motors do Sul S/A',
+            'fantasy_name'      =>      'Auto Motors',
+            'zip_code'          =>      '89.026-420',
+            'address'           =>      'Rua Ourinhos',
+            'number'            =>      138,
+            'complement'        =>      'Auto Motors',
+            'district'          =>      'Progresso',
+            'city'              =>      'Blumenau',
+            'state'             =>      'SC',
+            'status'            =>      1
+        ]);
     }
 }

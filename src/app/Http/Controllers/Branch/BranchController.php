@@ -35,6 +35,13 @@ class BranchController extends Controller
         return view ('home.branch.register.index',compact('states'));
     }
 
+    public function registerBeta ()
+    {
+        $states = $this -> getStates();
+
+        return view ('home.branch.register.beta.index',compact('states'));
+    }
+
     public function create (Request $request)
     {
         $dataForm = $request -> all();
@@ -46,18 +53,27 @@ class BranchController extends Controller
             return redirect('home/branch/register') -> withErrors($validateForm) -> withInput();
         }
 
-        $create = $this -> branch -> create($dataForm);
+        $newBranch = $this -> branch -> create($dataForm);
 
         return redirect('home/branch/list');
     }
 
     public function edit (Request $request, $id)
     {
-        $dataDB = $this -> branch -> find($id);
+        $dataBranch = $this -> branch -> find($id);
 
         $states = $this -> getStates();
 
-        return view('home.branch.edit.index', compact('dataDB', 'states'));
+        return view('home.branch.edit.index', compact('dataBranch', 'states'));
+    }
+
+    public function editBeta (Request $request, $id)
+    {
+        $dataBranch = $this -> branch -> find($id);
+
+        $states = $this -> getStates();
+
+        return view('home.branch.edit.beta.index', compact('dataBranch', 'states'));
     }
 
     public function update (Request $request, $id)
@@ -82,9 +98,9 @@ class BranchController extends Controller
     {
         $dataForm = $request -> only('id');
 
-        $branchEdit = $this -> branch -> find($id);
+        $branchActive = $this -> branch -> find($id);
 
-        $branchEdit -> where('id', '=', $id) -> update(['status' => 1]);
+        $branchActive -> where('id', '=', $id) -> update(['status' => 1]);
 
         return redirect('/home/branch/list');
     }
@@ -93,22 +109,42 @@ class BranchController extends Controller
     {
         $dataForm = $request -> only('id');
 
-        $branchEdit = $this -> branch -> find($id);
+        $branchInactive = $this -> branch -> find($id);
 
-        $branchEdit -> where('id', '=', $id) -> update(['status' => 0]);
+        $branchInactive -> where('id', '=', $id) -> update(['status' => 0]);
 
         return redirect('/home/branch/list');
     }
 
     public function list ()
     {
-        $dataDB = $this -> branch -> all();
+        $dataBranch = $this -> branch -> all();
         
-        return view('home.branch.list.index', compact('dataDB'));
+        return view('home.branch.list.index', compact('dataBranch'));
     }
 
-    public function read ()
+    public function view (Request $request, $id)
     {
-        // read
+        $dataBranch = $this -> branch -> find($id);
+
+        return view('home.branch.view.index', compact('dataBranch'));
+    }
+
+    public function listBeta ()
+    {
+        $dataBranch = $this -> branch -> all();
+
+        return view('home.branch.list.beta.index', compact('dataBranch'));
+    }
+
+    public function remove (Request $request, $id)
+    {
+        $dataForm = $request -> only('id');
+
+        $branchRemove = $this -> branch -> find($id);
+
+        $branchRemove -> delete();
+
+        return redirect() -> route('branch.list');
     }
 }

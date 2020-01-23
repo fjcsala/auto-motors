@@ -47,40 +47,40 @@
                 @endif
 
                     <!-- full_name -->
-                    <td class="align-middle"> {{ $data -> full_name }} </td>
+                    <td> {{ $data -> full_name }} </td>
 
                     <!-- cpf -->
-                    <td class="align-middle"> {{ $data -> cpf }} </td>
+                    <td> {{ $data -> cpf }} </td>
 
                     <!-- function -->
-                    <td class="align-middle"> {{ $data -> function }} </td>
+                    <td> {{ $data -> function }} </td>
 
                     <!-- branch -->
-                    <td class="align-middle"> {{ $data -> id_branch }} </td>
+                    <td> {{ $data -> id_branch }} </td>
                         
                     <!-- action buttons -->
-                    <td class="align-middle">
+                    <td>
                         <!-- view -->
-                        <a class="btn btn-info btn-sm" href="{{ url("/home/employee/view/{$data -> id}") }}" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-info btn-sm" href="#" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
                         
                         <!-- edit -->
-                        <a class="btn btn-primary btn-sm" href="{{ url("/home/employee/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
                         <!-- status verification -->
                         @if ($data -> status === 0)
 
                             <!-- active -->
-                            <a class="btn btn-success btn-sm" href="{{ url("/home/employee/edit/{$data -> id}/active") }}" role="button" title="Ativar"><i class="fas fa-check-circle"></i></a>
+                            <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar" data-toggle="modal" data-target="#activeEmployee"><i class="fas fa-check-circle"></i></a>
 
                         @else
 
                         <!-- inactive -->
-                        <a class="btn btn-danger btn-sm" href="{{ url("/home/employee/edit/{$data -> id}/inactive") }}" role="button" title="Inativar"><i class="fas fa-ban"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar" data-toggle="modal" data-target="#inactiveEmployee"><i class="fas fa-ban"></i></a>
 
                         @endif
 
                         <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="{{ url("/home/employee/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeEmployee"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>

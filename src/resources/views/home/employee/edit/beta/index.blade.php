@@ -8,18 +8,7 @@
 
 @section ('body')
 
-    @if (isset($errors) && count($errors) > 0)
-        @foreach($errors -> all() as $error)
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>{{ $error }}</strong>
-            </div>
-        @endforeach
-    @endif
-
-    <form method="post" action="{{ url("/home/employee/edit/{$dataEmployee -> id}/update") }}">
-
-        {!! method_field('PUT') !!}
+    <form method="post" action="{{ route('employee.create') }}">
 
         {{ csrf_field() }}
 
@@ -198,7 +187,7 @@
             </div>
 
             <!-- function -->
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <div class="form-group">
                     <label>Cargo</label>
                     <input class="form-control" id="function" name="function" type="text" value="{{ $dataEmployee -> function }}" placeholder="Insira a função do funcionário.">
@@ -206,15 +195,24 @@
             </div>
 
             <!-- salary -->
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label>Salário</label>
+                    <input class="form-control" id="salary" name="salary" type="text" value="{{ $dataEmployee -> salary }}" data-mask="###.###.###.###.###,00" data-mask-reverse="true" placeholder="R$ 00.000,00">
+                </div> 
+            </div>
+
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <div class="row">
+
+            <!-- password -->
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label class="control-label">Salário</label>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend"><span class="input-group-text">R$</span></div>
-                            <input class="form-control" id="salary" name="salary" type="text" value="{{ $dataEmployee -> salary }}" placeholder="R$ 000.000,00" data-mask="##0.000,00" data-mask-reverse="true">
-                        </div>
-                    </div>
+                    <label>Senha</label>
+                    <input class="form-control" id="password" name="password" type="password" placeholder="Insira a senha para acesso.">
                 </div>
             </div>
 
@@ -226,7 +224,7 @@
 
         <div class=text-right>
             <button class="btn btn-primary" type="submit" title="Atualizar Cadastro.">Atualizar</button>
-            <a class="btn btn-info" href="{{ route('employee.list') }}" role="button" title="Retornar à Listagem.">Voltar</a>
+            <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
         </div>
 
     </form>

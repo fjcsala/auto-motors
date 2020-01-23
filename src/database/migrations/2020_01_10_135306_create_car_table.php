@@ -15,12 +15,12 @@ class CreateCarTable extends Migration
     {
         Schema::create('car', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->string('name');
-            $table->string('model');
-            $table->string('category');
-            $table->integer('year');
-            $table->string('color');
             $table->string('chassi');
+            $table->string('category');
+            $table->string('name');
+            $table->integer('year');
+            $table->integer('model');
+            $table->string('color');
             $table->integer('id_branch')->unsigned();
 
             $table->foreign('id_branch')->references('id')->on('branch');

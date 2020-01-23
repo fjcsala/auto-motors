@@ -11,23 +11,23 @@ class Car extends Model
     public $timestamps = false;
 
     public $rules = [
-        'name'      =>  'required',
-        'model'     =>  'required',
-        'category'  =>  'required',
-        'year'      =>  'required',
-        'color'     =>  'required',
         'chassi'    =>  'required',
+        'category'  =>  'required',
+        'name'      =>  'required',
+        'year'      =>  'required',
+        'model'     =>  'required',
+        'color'     =>  'required',
         'id_branch' =>  'required'
     ];
 
     public $errorMessages = [
-        'name.required'         =>  'Insira o Nome da montadora.',
-        'model.required'        =>  'Insira o Modelo do automóvel.',
-        'category.required'     =>  'Insira a Categoria do automóvel.',
-        'year.required'         =>  'Insira o Ano do automóvel.',
-        'color.required'        =>  'Insira a Cor do automóvel.',
-        'chassi.required'       =>  'Insira o Chassi do automóvel.',
-        'id_branch.required'    =>  'Selecione a FIlial de montagem do automóvel.'
+        'chassi.required'       =>  'Insira o CHASSI do automóvel.',
+        'category.required'     =>  'Insira a CATEGORIA do automóvel.',
+        'name.required'         =>  'Insira o NOME do automóvel.',
+        'year.required'         =>  'Insira o ANO do automóvel.',
+        'model.required'        =>  'Insira o MODELO do automóvel.',
+        'color.required'        =>  'Insira a COR do automóvel.',
+        'id_branch.required'    =>  'Selecione a FILIAL de montagem do automóvel.'
     ];
 
     protected $fillable = [

@@ -1,124 +1,172 @@
-@extends('templates.home')
+@extends ('templates.list')
 
-@section ('title')
+@section ('header')
 
-    <h1>Filiais / Listar</h1>
+    <h1 class="text-center">Listagem de Filiais</h1>
 
 @endsection
 
-@section('content')
+@section ('body')
 
-    <div class="table-responsive">
+    <!-- table -->
+    <table class="table table-bordered table-hover text-center">
 
-        <table class="table table-hover">
-            <thead class="thead-light text-center">
-                <tr>
+        <!-- header -->
+        <thead class="thead-light">
+            <!-- cols -->
+            <tr>
+                <!-- cnpj -->
                 <th scope="col">CNPJ</th>
+                <!-- ie -->
                 <th scope="col">IE</th>
-                <th scope="col">Razão Social</th>
-                <th scope="col">Cidade</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Ações</th>
+                <!-- social_name -->
+                <th scope="col">RAZÃO SOCIAL</th>
+                <!-- city -->
+                <th scope="col">CIDADE</th>
+                <!-- state -->
+                <th scope="col">ESTADO</th>
+                <!-- action buttons -->
+                <th scope="col">AÇÕES</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <!-- data loop -->
+            @foreach ($dataBranch as $data)
+
+                <!-- rows -->
+                    
+                <!-- status verification -->
+                @if ($data -> status === 0)
+
+                    <tr  class="table-danger">
+
+                @else
+
+                    <tr>
+
+                @endif
+
+                    <!-- cnpj -->
+                    <td class="align-middle"> {{ $data -> cnpj }} </td>
+
+                    <!-- ie -->
+                    <td class="align-middle"> {{ $data -> ie }} </td>
+
+                    <!-- social_name -->
+                    <td class="align-middle"> {{ $data -> social_name }} </td>
+
+                    <!-- city -->
+                    <td class="align-middle"> {{ $data -> city }} </td>
+
+                    <!-- state -->
+                    <td class="align-middle"> {{ $data -> state }} </td>
+                        
+                    <!-- action buttons -->
+                    <td>
+                        <!-- view -->
+                        <a class="btn btn-info btn-sm" href="{{ url("/home/branch/view/{$data -> id}") }}" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
+                        
+                        <!-- edit -->
+                        <a class="btn btn-primary btn-sm" href="{{ url("/home/branch/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+
+                        <!-- status verification -->
+                        @if ($data -> status === 0)
+
+                            <!-- active -->
+                            <a class="btn btn-success btn-sm" href="{{ url("/home/branch/edit/{$data -> id}/active") }}" role="button" title="Ativar"><i class="fas fa-check-circle"></i></a>
+
+                        @else
+
+                        <!-- inactive -->
+                        <a class="btn btn-danger btn-sm" href="{{ url("/home/branch/edit/{$data -> id}/inactive") }}" role="button" title="Inativar"><i class="fas fa-ban"></i></a>
+
+                        @endif
+
+                        <!-- delete -->
+                        <a class="btn btn-danger btn-sm" href="{{ url("/home/branch/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+
                 </tr>
-            </thead>
-            <tbody>
-                @foreach($dataDB as $dataDB)
-                    @if ($dataDB -> status == 0)
-                        <tr class="table-danger text-center">
-                    @else
-                        <tr class="text-center">
-                    @endif
-                        <td>{{ $dataDB -> cnpj }}</td>
-                        <td>{{ $dataDB -> ie }}</td>
-                        <td>{{ $dataDB -> social_name }}</td>
-                        <td>{{ $dataDB -> city }}</td>
-                        <td>{{ $dataDB -> state }}</td>
-                        <td>
-                            <a class="btn btn-primary btn-sm" href="{{ url("home/branch/edit/{$dataDB -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
-                            @if ($dataDB -> status === 0)
-                                <a class="btn btn-success btn-sm" href="#" title="Ativar" role="button" data-toggle="modal" data-target="#activeEmployee"><i class="fas fa-check-circle"></i></a>
 
-                                <!-- active modal -->
+            @endforeach
 
-                                <div class="modal fade" id="activeEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Deseja ativar {{ $dataDB -> social_name }}?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                            <a type="button" class="btn btn-primary" href="{{ url("/home/branch/edit/{$dataDB -> id}/active") }}">Sim</a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
+        </tbody>
+    
+    </table>
 
-                            @else
-                                <a class="btn btn-danger btn-sm" href="#" title="Inativar" role="button" data-toggle="modal" data-target="#inactiveEmployee"><i class="fas fa-ban"></i></a>
-                            
-                                <!-- inactive modal -->
+    <!-- modals -->
 
-                                <div class="modal fade" id="inactiveEmployee" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Deseja inativar {{ $dataDB -> social_name }}?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                            <a type="button" class="btn btn-primary" href="{{ url("/home/branch/edit/{$dataDB -> id}/inactive") }}">Sim</a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <!-- active modal -->
+    <div class="modal fade" id="activeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja ativar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- inactive modal -->
+    <div class="modal fade" id="inactiveBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja inativar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- remove modal -->
+    <div class="modal fade" id="removeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja remover?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                            @endif
+@endsection
 
-                            <a class="btn btn-danger btn-sm" href="#" role="button" title="Excluir" data-toggle="modal" data-target="#removeBranch"><i class="fas fa-trash-alt"></i></a>
+@section ('footer')
 
-                            <!-- remove modal -->
-
-                            <div class="modal fade" id="removeBranch" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Informação!</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Deseja remover {{ $dataDB -> social_name }}?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                            <a type="button" class="btn btn-primary" href="#">Sim</a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        <a class="btn btn-info" href="/home" role="button" title="Retornar à Dashboard.">Voltar</a>
-
+    <div class=text-right>
+        <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
     </div>
 
 @endsection

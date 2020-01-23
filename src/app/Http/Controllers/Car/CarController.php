@@ -26,6 +26,15 @@ class CarController extends Controller
         );
     }
 
+    public function upperCaseChassi ($data)
+    {
+        if (isset($data))
+        {
+            $data = strtoupper($data);
+        }
+        return $data;
+    }
+
     public function __construct (Car $car, Branch $branch)
     {
         $this -> car = $car;
@@ -41,9 +50,20 @@ class CarController extends Controller
         return view ('home.car.register.index', compact('dataBranch', 'categories'));
     }
 
+    public function registerBeta ()
+    {
+        $dataBranch = $this -> branch -> all();
+
+        $categories = $this -> getCategory();
+
+        return view ('home.car.register.beta.index', compact('dataBranch', 'categories'));
+    }
+
     public function create (Request $request)
     {
         $dataForm = $request -> all();
+
+        $dataForm['chassi'] = $this -> upperCaseChassi($dataForm['chassi']);
 
         $validateForm = validator($dataForm, $this -> car -> rules, $this -> car -> errorMessages);
 
@@ -69,9 +89,22 @@ class CarController extends Controller
         return view("home.car.edit.index", compact('dataCar', 'categories', 'dataBranch'));
     }
 
+    public function editBeta (Request $request, $id)
+    {
+        $dataCar = $this -> car -> find($id);
+
+        $categories = $this -> getCategory();
+
+        $dataBranch = $this -> branch -> all();
+
+        return view("home.car.edit.beta.index", compact('dataCar', 'categories', 'dataBranch'));
+    }
+
     public function update (Request $request, $id)
     {
         $dataForm = $request -> all();
+
+        $dataForm['chassi'] = $this -> upperCaseChassi($dataForm['chassi']);
 
         $carEdit = $this -> car -> find($id);
 
@@ -84,7 +117,7 @@ class CarController extends Controller
 
         $carEdit -> update($dataForm);
 
-        return redirect('/home/car/list');
+        return redirect() -> route('car.list');
     }
 
     public function list ()
@@ -92,5 +125,27 @@ class CarController extends Controller
         $dataCar = $this -> car -> all();
 
         return view('home.car.list.index', compact('dataCar'));
+    }
+
+    public function view (Request $request, $id)
+    {
+        $dataCar = $this -> car -> find($id);
+
+        return view('home.car.view.index', compact('dataCar'));
+    }
+
+    public function listBeta ()
+    {
+        $dataCar = $this -> car -> all();
+
+        return view('home.car.list.beta.index', compact('dataCar', 'nameBranch'));
+    }
+
+    public function remove (Request $request, $id)
+    {
+        $dataForm = $request -> only('id');
+        $dataCar = $this -> car -> find($id);
+        $dataCar -> delete();
+        return redirect() -> route('car.list');
     }
 }

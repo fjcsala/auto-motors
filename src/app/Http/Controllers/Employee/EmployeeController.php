@@ -213,7 +213,9 @@ class EmployeeController extends Controller
         // format brith_date
         $dataEmployee['birth_date'] = $this -> formatBirthDate($dataEmployee['birth_date']);
 
-        return view('home.employee.view.index', compact('dataEmployee'));
+        $dataBranch = $this -> branch -> all();
+
+        return view('home.employee.view.index', compact('dataEmployee', 'dataBranch'));
     }
 
     public function listBeta ()

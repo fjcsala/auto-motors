@@ -47,19 +47,19 @@
                 @endif
 
                     <!-- full_name -->
-                    <td> {{ $data -> full_name }} </td>
+                    <td class="align-middle"> {{ $data -> full_name }} </td>
 
                     <!-- cpf -->
-                    <td> {{ $data -> cpf }} </td>
+                    <td class="align-middle"> {{ $data -> cpf }} </td>
 
                     <!-- function -->
-                    <td> {{ $data -> function }} </td>
+                    <td class="align-middle"> {{ $data -> function }} </td>
 
                     <!-- branch -->
-                    <td> {{ $data -> id_branch }} </td>
+                    <td class="align-middle"> {{ $data -> id_branch }} </td>
                         
                     <!-- action buttons -->
-                    <td>
+                    <td class="align-middle">
                         <!-- view -->
                         <a class="btn btn-info btn-sm" href="{{ url("/home/employee/view/{$data -> id}") }}" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
                         

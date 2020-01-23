@@ -49,19 +49,19 @@
                 @endif
 
                     <!-- cnpj -->
-                    <td> {{ $data -> cnpj }} </td>
+                    <td class="align-middle"> {{ $data -> cnpj }} </td>
 
                     <!-- ie -->
-                    <td> {{ $data -> ie }} </td>
+                    <td class="align-middle"> {{ $data -> ie }} </td>
 
                     <!-- social_name -->
-                    <td> {{ $data -> social_name }} </td>
+                    <td class="align-middle"> {{ $data -> social_name }} </td>
 
                     <!-- city -->
-                    <td> {{ $data -> city }} </td>
+                    <td class="align-middle"> {{ $data -> city }} </td>
 
                     <!-- state -->
-                    <td> {{ $data -> state }} </td>
+                    <td class="align-middle"> {{ $data -> state }} </td>
                         
                     <!-- action buttons -->
                     <td>

@@ -43,25 +43,25 @@
                 <tr>
 
                     <!-- chassi -->
-                    <td> {{ $data -> chassi }} </td>
+                    <td class="align-middle"> {{ $data -> chassi }} </td>
 
                     <!-- category -->
-                    <td> {{ $data -> category }} </td>
+                    <td class="align-middle"> {{ $data -> category }} </td>
 
                     <!-- name -->
-                    <td> {{ $data -> name }} </td>
+                    <td class="align-middle"> {{ $data -> name }} </td>
 
                     <!-- year -->
-                    <td> {{ $data -> year }} </td>
+                    <td class="align-middle"> {{ $data -> year }} </td>
 
                     <!-- model -->
-                    <td> {{ $data -> model }} </td>
+                    <td class="align-middle"> {{ $data -> model }} </td>
 
                     <!-- color -->
-                    <td> {{ $data -> color }} </td>
+                    <td class="align-middle"> {{ $data -> color }} </td>
 
                     <!-- production branch -->
-                    <td> {{ $data -> id_branch }} </td>
+                    <td class="align-middle"> {{ $data -> id_branch }} </td>
                         
                     <!-- action buttons -->
                     <td>

@@ -69,23 +69,23 @@
                         <a class="btn btn-info btn-sm" href="{{ url("/home/branch/view/{$data -> id}") }}" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
                         
                         <!-- edit -->
-                        <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-primary btn-sm" href="{{ url("/home/branch/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
                         <!-- status verification -->
                         @if ($data -> status === 0)
 
                             <!-- active -->
-                            <a class="btn btn-success btn-sm" href="#" role="button" title="Ativar" data-toggle="modal" data-target="#activeBranch"><i class="fas fa-check-circle"></i></a>
+                            <a class="btn btn-success btn-sm" href="{{ url("/home/branch/edit/{$data -> id}/active") }}" role="button" title="Ativar"><i class="fas fa-check-circle"></i></a>
 
                         @else
 
                         <!-- inactive -->
-                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Inativar" data-toggle="modal" data-target="#inactiveBranch"><i class="fas fa-ban"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{{ url("/home/branch/edit/{$data -> id}/inactive") }}" role="button" title="Inativar"><i class="fas fa-ban"></i></a>
 
                         @endif
 
                         <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeBranch"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{{ url("/home/branch/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>

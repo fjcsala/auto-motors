@@ -17,8 +17,10 @@
         @endforeach
     @endif
 
-    <form method="post" action="{{ route('car.create') }}">
+    <form method="post" action="{{ url("/home/car/edit/{$dataCar -> id}/update") }}">
 
+        {!! method_field('PUT') !!}
+        
         {{ csrf_field() }}
 
         <div class="row">
@@ -131,7 +133,7 @@
 
         <div class=text-right>
             <button class="btn btn-primary" type="submit" title="Atualizar Cadastro.">Atualizar</button>
-            <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+            <a class="btn btn-info" href="{{ route('car.list') }}" role="button" title="Retornar à Listagem.">Voltar</a>
         </div>
 
     </form>

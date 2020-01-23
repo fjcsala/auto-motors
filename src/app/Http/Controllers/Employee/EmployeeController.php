@@ -38,10 +38,33 @@ class EmployeeController extends Controller
     // (00-00-0000) -> (0000-00-00)
     public function formatBirthDate ($data)
     {
-        $data = str_replace('/', '-', $data);
-        $data = explode('-', $data);
-        $data = $data[2].'-'.$data[1].'-'.$data[0];
+        if (isset($data))
+        {
+            $data = str_replace('/', '-', $data);
+            $data = explode('-', $data);
+            $data = $data[2].'-'.$data[1].'-'.$data[0];
+        }
+        return $data;
+    }
 
+    // function format salary
+    // (1.234,56) -> (1234.56)
+    function formatSalary ($data)
+    {
+        if (isset($data))
+        {
+            $data = str_replace('.', '', $data);
+            $data = str_replace(',', '.', $data);
+        }
+        return $data;
+    }
+
+    function cryptPassword ($data)
+    {
+        if (isset($data))
+        {
+            $data = md5($data);
+        }
         return $data;
     }
 
@@ -80,8 +103,11 @@ class EmployeeController extends Controller
         // format brith_date
         $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);
 
-        // encrypt password
-        $dataForm['password'] = md5($dataForm['password']);
+        // format salary
+        $dataForm['salary'] = $this -> formatSalary($dataForm['salary']);
+
+        // crypt password
+        $dataForm['password'] = $this -> cryptPassword($dataForm['password']);
 
         $validateForm = validator($dataForm, $this -> employee -> rules, $this -> employee -> errorMessages);
 
@@ -90,9 +116,9 @@ class EmployeeController extends Controller
             return redirect('/home/employee/register') -> withErrors($validateForm) -> withInput();
         }
         
-        $create = $this -> employee -> create($dataForm);
+        $newEmployee = $this -> employee -> create($dataForm);
 
-        return redirect('/home/employee/list');
+        return redirect() -> route('employee.list');
     }
 
     public function edit (Request $request, $id)
@@ -135,15 +161,11 @@ class EmployeeController extends Controller
         $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);
 
         // format salary
-        $dataForm['salary'] = str_replace('.', '', $dataForm['salary']);
-        $dataForm['salary'] = str_replace(',', '', $dataForm['salary']);
-
-        // encrypt password
-        $dataForm['password'] = md5($dataForm['password']);
+        $dataForm['salary'] = $this -> formatSalary($dataForm['salary']);
 
         $employeeEdit = $this -> employee -> find($id);
 
-        $dataValidate = validator($dataForm, $this -> employee -> rules, $this -> employee -> errorMessages);
+        $dataValidate = validator($dataForm, $this -> employee -> updateRules, $this -> employee -> errorMessages);
 
         if ($dataValidate -> fails())
         {
@@ -152,7 +174,7 @@ class EmployeeController extends Controller
 
         $employeeEdit -> update($dataForm);
 
-        return redirect ('/home/employee/list');
+        return redirect() -> route('employee.list');
     }
 
     public function active (Request $request, $id)
@@ -163,7 +185,7 @@ class EmployeeController extends Controller
 
         $employeeEdit -> where('id', '=', $id) -> update(['status' => 1]);
 
-        return redirect ('/home/employee/list');
+        return redirect() -> route('employee.list');
     }
 
     public function inactive (Request $request, $id)
@@ -174,7 +196,7 @@ class EmployeeController extends Controller
 
         $employeeEdit -> where('id', '=', $id) -> update(['status' => 0]);
 
-        return redirect ('/home/employee/list');
+        return redirect() -> route('employee.list');
     }
 
     public function list ()
@@ -199,5 +221,16 @@ class EmployeeController extends Controller
         $dataEmployee = $this -> employee -> all();
         
         return view('home.employee.list.beta.index', compact('dataEmployee'));
+    }
+
+    public function remove (Request $request, $id)
+    {
+        $dataForm = $request -> only('id');
+
+        $dataEmployee = $this -> employee -> find($id);
+
+        $dataEmployee -> delete();
+
+        return redirect() -> route('employee.list');
     }
 }

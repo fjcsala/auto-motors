@@ -142,7 +142,7 @@
 
         <div class=text-right>
             <button class="btn btn-primary" type="submit" title="Atualizar Cadastro.">Atualizar</button>
-            <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+            <a class="btn btn-info" href="{{ route('branch.list') }}" role="button" title="Retornar à Listagem.">Voltar</a>
         </div>
 
     </form>

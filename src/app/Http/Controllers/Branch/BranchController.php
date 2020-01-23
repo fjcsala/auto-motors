@@ -53,7 +53,7 @@ class BranchController extends Controller
             return redirect('home/branch/register') -> withErrors($validateForm) -> withInput();
         }
 
-        $create = $this -> branch -> create($dataForm);
+        $newBranch = $this -> branch -> create($dataForm);
 
         return redirect('home/branch/list');
     }
@@ -98,9 +98,9 @@ class BranchController extends Controller
     {
         $dataForm = $request -> only('id');
 
-        $branchEdit = $this -> branch -> find($id);
+        $branchActive = $this -> branch -> find($id);
 
-        $branchEdit -> where('id', '=', $id) -> update(['status' => 1]);
+        $branchActive -> where('id', '=', $id) -> update(['status' => 1]);
 
         return redirect('/home/branch/list');
     }
@@ -109,9 +109,9 @@ class BranchController extends Controller
     {
         $dataForm = $request -> only('id');
 
-        $branchEdit = $this -> branch -> find($id);
+        $branchInactive = $this -> branch -> find($id);
 
-        $branchEdit -> where('id', '=', $id) -> update(['status' => 0]);
+        $branchInactive -> where('id', '=', $id) -> update(['status' => 0]);
 
         return redirect('/home/branch/list');
     }
@@ -135,5 +135,16 @@ class BranchController extends Controller
         $dataBranch = $this -> branch -> all();
 
         return view('home.branch.list.beta.index', compact('dataBranch'));
+    }
+
+    public function remove (Request $request, $id)
+    {
+        $dataForm = $request -> only('id');
+
+        $branchRemove = $this -> branch -> find($id);
+
+        $branchRemove -> delete();
+
+        return redirect() -> route('branch.list');
     }
 }

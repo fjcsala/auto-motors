@@ -66,13 +66,13 @@
                     <!-- action buttons -->
                     <td>
                         <!-- edit -->
-                        <a class="btn btn-info btn-sm" href="#" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-info btn-sm" href="{{ url("/home/car/view/{$data -> id}") }}" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
                         
                         <!-- edit -->
-                        <a class="btn btn-primary btn-sm" href="#" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
                         <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="#" role="button" title="Remover" data-toggle="modal" data-target="#removeCar"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{{ url("/home/car/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>

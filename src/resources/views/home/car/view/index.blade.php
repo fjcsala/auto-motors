@@ -78,7 +78,7 @@
 @section ('footer')
 
     <div class=text-right>
-        <a class="btn btn-primary" href="{{ url("home/car/edit/{$dataCar -> id}") }}" role="button" title="Editar Informações.">Editar</a>
+        <a class="btn btn-primary" href="{{ url("/home/car/edit/{$dataCar -> id}") }}" role="button" title="Editar Informações.">Editar</a>
         <a class="btn btn-info" href="{{ route('car.list') }}" role="button" title="Retornar à Listagem.">Voltar</a>
     </div>
 

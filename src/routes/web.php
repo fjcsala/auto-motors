@@ -22,6 +22,7 @@ Route::get  ('/home/car/register',                  ['as' => 'car.register',    
 Route::post ('/home/car/create',                    ['as' => 'car.create',          'uses' => 'Car\CarController@create']);
 Route::get  ('/home/car/edit/{id}',                 ['as' => 'car.edit',            'uses' => 'Car\CarController@edit']);
 Route::put  ('/home/car/edit/{id}/update',          ['as' => 'car.update',          'uses' => 'Car\CarController@update']);
+Route::get  ('/home/car/edit/{id}/remove',          ['as' => 'car.remove',          'uses' => 'Car\CarController@remove']);
 Route::get  ('/home/car/list',                      ['as' => 'car.list',            'uses' => 'Car\CarController@list']);
 Route::get  ('/home/car/view/{id}',                 ['as' => 'car.view',            'uses' => 'Car\CarController@view']);
 
@@ -31,6 +32,7 @@ Route::get  ('/home/branch/edit/{id}',              ['as' => 'branch.edit',     
 Route::put  ('/home/branch/edit/{id}/update',       ['as' => 'branch.update',       'uses' => 'Branch\BranchController@update']);
 Route::get  ('/home/branch/edit/{id}/active',       ['as' => 'branch.active',       'uses' => 'Branch\BranchController@active']);
 Route::get  ('/home/branch/edit/{id}/inactive',     ['as' => 'branch.inactive',     'uses' => 'Branch\BranchController@inactive']);
+Route::get  ('/home/branch/edit/{id}/remove',       ['as' => 'branch.remove',       'uses' => 'Branch\BranchController@remove']);
 Route::get  ('/home/branch/list',                   ['as' => 'branch.list',         'uses' => 'Branch\BranchController@list']);
 Route::get  ('/home/branch/view/{id}',              ['as' => 'branch.view',         'uses' => 'Branch\BranchController@view']);
 
@@ -40,6 +42,7 @@ Route::get  ('/home/employee/edit/{id}',            ['as' => 'employee.edit',   
 Route::put  ('/home/employee/edit/{id}/update',     ['as' => 'employee.update',     'uses' => 'Employee\EmployeeController@update']);
 Route::get  ('/home/employee/edit/{id}/active',     ['as' => 'employee.active',     'uses' => 'Employee\EmployeeController@active']);
 Route::get  ('/home/employee/edit/{id}/inactive',   ['as' => 'employee.inactive',   'uses' => 'Employee\EmployeeController@inactive']);
+Route::get  ('/home/employee/edit/{id}/remove',     ['as' => 'employee.remove',     'uses' => 'Employee\EmployeeController@remove']);
 Route::get  ('/home/employee/list',                 ['as' => 'employee.list',       'uses' => 'Employee\EmployeeController@list']);
 Route::get  ('/home/employee/view/{id}',            ['as' => 'employee.view',       'uses' => 'Employee\EmployeeController@view']);
 

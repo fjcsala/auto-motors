@@ -26,16 +26,16 @@ class Branch extends Model
 
     public $errorMessages = [
         'cnpj.required'             =>  'Informe o CNPJ da filial.',
-        'ie.required'               =>  'Informe a Inscrição Estadual da filial.',
-        'social_name.required'      =>  'Informe a Razão Social da filial.',
-        'fantasy_name.required'     =>  'Informe o Nome Fantasia da filial.',
+        'ie.required'               =>  'Informe a INSCRIÇÃO ESTADUAL da filial.',
+        'social_name.required'      =>  'Informe a RAZÃO SOCIAL da filial.',
+        'fantasy_name.required'     =>  'Informe o NOME FANTASIA da filial.',
         'zip_code.required'         =>  'Informe o CEP da filial.',
-        'address.required'          =>  'Informe o Endereço da filial.',
-        'number.required'           =>  'Informe o Número do Endereço da filial.',
-        'complement.required'       =>  'Informe o Complemento do Endereço da filial.',
-        'district.required'         =>  'Informe o Bairro da filial.',
-        'city.required'             =>  'Informe a Cidade da filial.',
-        'state.required'            =>  'Informe o Estado da filial.'
+        'address.required'          =>  'Informe o ENDEREÇO da filial.',
+        'number.required'           =>  'Informe o NÚMERO do endereço da filial.',
+        'complement.required'       =>  'Informe o COMPLEMENTO do endereço da filial.',
+        'district.required'         =>  'Informe o BAIRRO da filial.',
+        'city.required'             =>  'Informe a CIDADE da filial.',
+        'state.required'            =>  'Informe o ESTADO da filial.'
     ];
 
     protected $fillable = [

@@ -156,35 +156,35 @@
                 <div class="form-group">
                     <label>Filial</label>
 
-                        <!-- count result branches condition -->
-                        @if (count ($dataDB) > 0)
+                    <!-- count result branches condition -->
+                    @if (count ($dataDB) > 0)
 
-                            <select class="form-control" id="id_branch" name="id_branch" value="{{ old('branch') }}">
+                        <select class="form-control" id="id_branch" name="id_branch" value="{{ old('branch') }}">
 
-                                <!-- default value -->
-                                <option value="">Selecione</option>
+                            <!-- default value -->
+                            <option value="">Selecione</option>
 
-                                    <!-- list branches -->
-                                    @foreach ($dataDB as $dataDB)
+                                <!-- list branches -->
+                                @foreach ($dataDB as $dataDB)
 
-                                        <!-- condition branch check status -->
-                                        @if ($dataDB -> status === 1)
+                                    <!-- condition branch check status -->
+                                    @if ($dataDB -> status === 1)
 
-                                            <option value="{{ $dataDB -> id }}">{{ $dataDB -> social_name }}</option>
+                                        <option value="{{ $dataDB -> id }}">{{ $dataDB -> social_name }}</option>
 
-                                        @endif
+                                    @endif
 
-                                    @endforeach
+                                @endforeach
 
-                            </select>
+                        </select>
+                            
+                    @else
 
-                        @else
+                        <div class="form-group">
+                            <input class="form-control" type="text" value="Nenhuma Filial Cadastrada" readonly>
+                        </div>
 
-                            <div class="form-group">
-                                <input class="form-control" type="text" value="Nenhuma Filial Cadastrada" readonly>
-                            </div>
-
-                        @endif
+                    @endif
 
                 </div>
 
@@ -205,7 +205,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text">R$</span></div>
-                            <input class="form-control" id="exampleInputAmount" type="text" placeholder="R$ 000.000,00" data-mask="##.0000,00" data-mask-reverse="true">
+                            <input class="form-control" id="salary" name="salary" type="text" placeholder="R$ 000.000,00" data-mask="##0.000,00" data-mask-reverse="true">
                         </div>
                     </div>
                 </div>

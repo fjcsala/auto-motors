@@ -132,7 +132,9 @@ class CarController extends Controller
     {
         $dataCar = $this -> car -> find($id);
 
-        return view('home.car.view.index', compact('dataCar'));
+        $dataBranch = $this -> branch -> all();
+
+        return view('home.car.view.index', compact('dataCar', 'dataBranch'));
     }
 
     public function listBeta ()

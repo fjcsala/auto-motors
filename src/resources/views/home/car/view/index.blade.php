@@ -68,7 +68,13 @@
             <div class="col-sm-5">
                 <div class="form-group">
                     <label>Filial</label>
-                    <input class="form-control" id="branch" name="branch" type="text" value="{{ $dataCar -> id_branch }}" disabled>
+                    @foreach ($dataBranch as $branch)
+
+                        @if ($dataCar -> id_branch === $branch -> id)
+                        <input class="form-control" id="branch" name="branch" type="text" value="{{ $branch -> social_name }}" disabled>
+                        @endif
+
+                    @endforeach
                     </div>
             </div>
         </div>

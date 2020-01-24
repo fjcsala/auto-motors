@@ -48,9 +48,19 @@
                         <!-- default value -->
                         <option value="">Selecione</option>
 
-                        <!-- list sex -->
+                        <!-- sex option and old verification -->
                         @foreach ($sex as $sex)
-                            <option value="{{ $sex }}">{{ $sex }}</option>
+                            
+                            @if (old('sex') === $sex)
+
+                                <option value="{{ $sex }}" selected>{{ $sex }}</option>
+
+                            @else
+
+                                <option value="{{ $sex }}">{{ $sex }}</option>
+
+                            @endif
+
                         @endforeach
 
                     </select>
@@ -139,7 +149,15 @@
                         <!-- list states -->
                         @foreach ($states as $state)
 
-                            <option value="{{ $state }}">{{ $state }}</option>
+                            @if (old('state') === $state)
+
+                                <option value="{{ $state }}" selected>{{ $state }}</option>
+                            
+                            @else
+
+                                <option value="{{ $state }}">{{ $state }}</option>
+
+                            @endif
 
                         @endforeach
 
@@ -159,7 +177,7 @@
                     <!-- count result branches condition -->
                     @if (count ($dataDB) > 0)
 
-                        <select class="form-control" id="id_branch" name="id_branch" value="{{ old('branch') }}">
+                        <select class="form-control" id="id_branch" name="id_branch">
 
                             <!-- default value -->
                             <option value="">Selecione</option>
@@ -170,7 +188,15 @@
                                     <!-- condition branch check status -->
                                     @if ($dataDB -> status === 1)
 
-                                        <option value="{{ $dataDB -> id }}">{{ $dataDB -> social_name }}</option>
+                                        @if (old('id_branch') == $dataDB -> id))
+
+                                            <option value="{{ $dataDB -> id }}" selected>{{ $dataDB -> social_name }}</option>
+
+                                        @else
+
+                                            <option value="{{ $dataDB -> id }}">{{ $dataDB -> social_name }}</option>
+
+                                        @endif
 
                                     @endif
 

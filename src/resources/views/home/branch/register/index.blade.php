@@ -116,7 +116,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Estado</label>
-                    <select class="form-control" id="state" name="state" value="{{ old('state') }}">
+                    <select class="form-control" id="state" name="state">
 
                         <!-- default select -->
                         <option value="">Selecione</option>
@@ -124,7 +124,15 @@
                         <!-- create state options -->
                         @foreach ($states as $state)
 
-                            <option value="{{ $state }}">{{ $state }}</option>
+                            @if (old('state') === $state))
+
+                                <option value="{{ $state }}" selected>{{ $state }}</option>
+
+                            @else
+
+                                <option value="{{ $state }}">{{ $state }}</option>
+
+                            @endif
                                 
                         @endforeach
 

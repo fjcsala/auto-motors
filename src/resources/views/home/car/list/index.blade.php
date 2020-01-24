@@ -11,7 +11,7 @@
     @if (session('message'))
         <div class="alert alert-success alert-dismissible text-center" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>{{ session('message') }}</strong>
+            <strong class="align-middle">{{ session('message') }}</strong>
         </div>
     @endif
 
@@ -22,12 +22,10 @@
         <thead class="thead-light">
             <!-- cols -->
             <tr>
-                <!-- chassi -->
-                <th scope="col">CHASSI</th>
-                <!-- category -->
-                <th scope="col">CATEGORIA</th>
                 <!-- name -->
                 <th scope="col">NOME</th>
+                <!-- category -->
+                <th scope="col">CATEGORIA</th>
                 <!-- year -->
                 <th scope="col">ANO</th>
                 <!-- model -->
@@ -36,6 +34,8 @@
                 <th scope="col">COR</th>
                 <!-- production branch -->
                 <th scope="col">FILIAL</th>
+                <!-- chassi -->
+                <th scope="col">CHASSI</th>
                 <!-- action buttons -->
                 <th scope="col">AÇÕES</th>
             </tr>
@@ -49,14 +49,11 @@
                 <!-- rows -->
                 <tr>
 
-                    <!-- chassi -->
-                    <td class="align-middle"> {{ $data -> chassi }} </td>
+                    <!-- name -->
+                    <td class="align-middle text-left"> {{ $data -> name }} </td>
 
                     <!-- category -->
                     <td class="align-middle"> {{ $data -> category }} </td>
-
-                    <!-- name -->
-                    <td class="align-middle"> {{ $data -> name }} </td>
 
                     <!-- year -->
                     <td class="align-middle"> {{ $data -> year }} </td>
@@ -68,18 +65,27 @@
                     <td class="align-middle"> {{ $data -> color }} </td>
 
                     <!-- production branch -->
-                    <td class="align-middle"> {{ $data -> id_branch }} </td>
+                    @foreach ($dataBranch as $branch)
+
+                        @if ($data -> id_branch === $branch -> id)
+                            <td class="align-middle"> {{ $branch -> social_name }} </td>
+                        @endif
+
+                    @endforeach
+
+                    <!-- chassi -->
+                    <td class="align-middle"> {{ $data -> chassi }} </td>
                         
                     <!-- action buttons -->
                     <td>
-                        <!-- edit -->
+                        <!-- view -->
                         <a class="btn btn-info btn-sm" href="{{ url("/home/car/view/{$data -> id}") }}" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
                         
                         <!-- edit -->
                         <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
                         <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="" data-js="{{ $data -> id }}" role="button" title="Remover" data-toggle="modal" data-target="#removeCar"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{{ url("/home/car/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>

@@ -43,7 +43,15 @@
                         <!-- list categories -->
                         @foreach ($categories as $category)
 
-                            <option value="{{ $category }}">{{ $category }}</option>
+                            @if (old('category') === $category)
+
+                                <option value="{{ $category }}" selected>{{ $category }}</option>
+
+                            @else
+
+                                <option value="{{ $category }}">{{ $category }}</option>
+
+                            @endif
 
                         @endforeach
 
@@ -107,7 +115,15 @@
                                 <!-- condition for banch inactive -->
                                 @if ($dataBranch -> status === 1)
 
-                                    <option value="{{ $dataBranch -> id }}">{{ $dataBranch -> social_name }}</option>
+                                    @if (old('id_branch') == $dataBranch -> id)
+
+                                        <option value="{{ $dataBranch -> id }}" selected>{{ $dataBranch -> social_name }}</option>
+
+                                    @else
+
+                                        <option value="{{ $dataBranch -> id }}">{{ $dataBranch -> social_name }}</option>
+
+                                    @endif
                                     
                                 @endif
 

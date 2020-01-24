@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Branch;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Branch;
+use App\Models\Employee;
+use App\Models\Car;
 
 class BranchController extends Controller
 {
@@ -23,9 +25,29 @@ class BranchController extends Controller
         );
     }
 
-    public function __construct (Branch $branch)
+    public function __construct (Branch $branch, Employee $employee, Car $car)
     {
         $this -> branch = $branch;
+        $this -> employee = $employee;
+        $this -> car = $car;
+    }
+
+    public function verifyEmployee ($id)
+    {
+        $verifyEmployee = 0;
+
+        $verifyEmployee = $this -> employee :: where('id_branch', $id) -> count();
+
+        return ($verifyEmployee);
+    }
+
+    public function verifyCar ($id)
+    {
+        $verifyCar = 0;
+
+        $verifyCar = $this -> car :: where('id_branch', $id) -> count();
+
+        return ($verifyCar);
     }
 
     public function register ()
@@ -55,7 +77,7 @@ class BranchController extends Controller
 
         $newBranch = $this -> branch -> create($dataForm);
 
-        return redirect('home/branch/list');
+        return redirect() -> route('branch.list') -> with('message', 'FILIAL CADASTRADA COM SUCESSO!');
     }
 
     public function edit (Request $request, $id)
@@ -91,7 +113,7 @@ class BranchController extends Controller
 
         $branchEdit -> update($dataForm);
 
-        return redirect('/home/branch/list');
+        return redirect() -> route('branch.list') -> with('message', 'FILIAL ATUALIZADA COM SUCESSO!');
     }
 
     public function active (Request $request, $id)
@@ -102,7 +124,7 @@ class BranchController extends Controller
 
         $branchActive -> where('id', '=', $id) -> update(['status' => 1]);
 
-        return redirect('/home/branch/list');
+        return redirect() -> route('branch.list') -> with('message', 'FILIAL ATIVA COM SUCESSO!');
     }
 
     public function inactive (Request $request, $id)
@@ -113,7 +135,7 @@ class BranchController extends Controller
 
         $branchInactive -> where('id', '=', $id) -> update(['status' => 0]);
 
-        return redirect('/home/branch/list');
+        return redirect() -> route('branch.list') -> with('message', 'FILIAL DESATIVADA COM SUCESSO!');
     }
 
     public function list ()
@@ -141,10 +163,31 @@ class BranchController extends Controller
     {
         $dataForm = $request -> only('id');
 
-        $branchRemove = $this -> branch -> find($id);
+        $verifyEmployee = $this -> verifyEmployee($id);
 
-        $branchRemove -> delete();
+        $verifyCar = $this -> verifyCar($id);
 
-        return redirect() -> route('branch.list');
+        if (($verifyEmployee != 0) && ($verifyCar != 0))
+        {
+            return redirect() -> route('branch.list') -> with('message', 'ERRO! - FUNCIONÁRIOS E AUTOMÓVEIS VINCULADOS');
+        }
+
+        elseif (($verifyEmployee != 0))
+        {
+            return redirect() -> route('branch.list') -> with('message', 'ERRO! - FUNCIONÁRIOS VINCULADOS');
+        }
+
+        elseif (($verifyCar != 0))
+        {
+            return redirect() -> route('branch.list') -> with('message', 'ERRO! - AUTOMÓVEIS VINCULADOS');
+        }
+
+        else
+        {
+            $dataBranch = $this -> branch -> find($id);
+            $dataBranch -> delete();
+        
+            return redirect() -> route('branch.list') -> with('message', 'FILIAL REMOVIDA COM SUCESSO!');
+        }
     }
 }

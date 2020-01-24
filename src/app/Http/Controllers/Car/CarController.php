@@ -74,7 +74,7 @@ class CarController extends Controller
 
         $create = $this -> car -> create($dataForm);
 
-        return redirect() -> route('car.list') -> with('message', 'Automóvel cadastrado com sucesso!');
+        return redirect() -> route('car.list') -> with('message', 'AUTOMÓVEL CADASTRADO COM SUCESSO!');
 
     }
 
@@ -117,14 +117,15 @@ class CarController extends Controller
 
         $carEdit -> update($dataForm);
 
-        return redirect() -> route('car.list');
+        return redirect() -> route('car.list') -> with('message', 'AUTOMÓVEL ATUALIZADO COM SUCESSO!');
     }
 
     public function list ()
     {
         $dataCar = $this -> car -> all();
+        $dataBranch = $this -> branch -> all();
 
-        return view('home.car.list.index', compact('dataCar'));
+        return view('home.car.list.index', compact('dataCar', 'dataBranch'));
     }
 
     public function view (Request $request, $id)
@@ -144,8 +145,11 @@ class CarController extends Controller
     public function remove (Request $request, $id)
     {
         $dataForm = $request -> only('id');
+
         $dataCar = $this -> car -> find($id);
+
         $dataCar -> delete();
-        return redirect() -> route('car.list');
+        
+        return redirect() -> route('car.list') -> with('message', 'AUTOMÓVEL REMOVIDO COM SUCESSO!');
     }
 }

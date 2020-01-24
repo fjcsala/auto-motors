@@ -100,6 +100,13 @@ class EmployeeController extends Controller
     {
         $dataForm = $request -> all();
 
+        $validateForm = validator($dataForm, $this -> employee -> rules, $this -> employee -> errorMessages);
+
+        if ($validateForm -> fails())
+        {
+            return redirect('/home/employee/register') -> withErrors($validateForm) -> withInput();
+        }
+
         // format brith_date
         $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);
 
@@ -108,17 +115,10 @@ class EmployeeController extends Controller
 
         // crypt password
         $dataForm['password'] = $this -> cryptPassword($dataForm['password']);
-
-        $validateForm = validator($dataForm, $this -> employee -> rules, $this -> employee -> errorMessages);
-
-        if ($validateForm -> fails())
-        {
-            return redirect('/home/employee/register') -> withErrors($validateForm) -> withInput();
-        }
         
         $newEmployee = $this -> employee -> create($dataForm);
 
-        return redirect() -> route('employee.list');
+        return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO CADASTRADO COM SUCESSO!');
     }
 
     public function edit (Request $request, $id)
@@ -157,12 +157,6 @@ class EmployeeController extends Controller
     {
         $dataForm = $request -> all();
 
-        // format brith_date
-        $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);
-
-        // format salary
-        $dataForm['salary'] = $this -> formatSalary($dataForm['salary']);
-
         $employeeEdit = $this -> employee -> find($id);
 
         $dataValidate = validator($dataForm, $this -> employee -> updateRules, $this -> employee -> errorMessages);
@@ -172,9 +166,15 @@ class EmployeeController extends Controller
             return redirect ("/home/employee/edit/{$id}") -> withErrors($dataValidate) -> withInput();
         }
 
+        // format brith_date
+        $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);
+
+        // format salary
+        $dataForm['salary'] = $this -> formatSalary($dataForm['salary']);
+
         $employeeEdit -> update($dataForm);
 
-        return redirect() -> route('employee.list');
+        return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO ATUALIZADO COM SUCESSO!');
     }
 
     public function active (Request $request, $id)
@@ -185,7 +185,7 @@ class EmployeeController extends Controller
 
         $employeeEdit -> where('id', '=', $id) -> update(['status' => 1]);
 
-        return redirect() -> route('employee.list');
+        return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO ATIVO COM SUCESSO!');
     }
 
     public function inactive (Request $request, $id)
@@ -196,14 +196,16 @@ class EmployeeController extends Controller
 
         $employeeEdit -> where('id', '=', $id) -> update(['status' => 0]);
 
-        return redirect() -> route('employee.list');
+        return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO DESATIVADO COM SUCESSO!');
     }
 
     public function list ()
     {
         $dataEmployee = $this -> employee -> all();
+
+        $dataBranch = $this -> branch -> all();
         
-        return view('home.employee.list.index', compact('dataEmployee'));
+        return view('home.employee.list.index', compact('dataEmployee', 'dataBranch'));
     }
 
     public function view (Request $request, $id)
@@ -233,6 +235,6 @@ class EmployeeController extends Controller
 
         $dataEmployee -> delete();
 
-        return redirect() -> route('employee.list');
+        return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO REMOVIDO COM SUCESSO!');
     }
 }

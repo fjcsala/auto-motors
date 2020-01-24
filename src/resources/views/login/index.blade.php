@@ -31,7 +31,7 @@
                     <h3 class="login-head"><i class="fas fa-sign-in-alt"></i> Login</h3>
                     <div class="form-group">
                         <label class="control-label">CPF</label>
-                        <input class="form-control" name="cpf" id="cpf" type="text" placeholder="Insira o seu CPF" required autofocus>
+                        <input class="form-control" name="cpf" id="cpf" type="text" placeholder="Insira o seu CPF" data-mask="000.000.000-00" required autofocus>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Senha</label>
@@ -71,6 +71,7 @@
         <script src="https://pratikborsadiya.in/vali-admin/js/bootstrap.min.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/main.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/plugins/pace.min.js"></script>
+        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
         <!--
         <script type="text/javascript">
             $('.login-content [data-toggle="flip"]').click(function() {

@@ -8,6 +8,13 @@
 
 @section ('body')
 
+@if (session('message'))
+        <div class="alert alert-success alert-dismissible text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong class="align-middle">{{ session('message') }}</strong>
+        </div>
+    @endif
+
     <!-- table -->
     <table class="table table-bordered table-hover text-center">
 

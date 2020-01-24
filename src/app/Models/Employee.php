@@ -11,11 +11,11 @@ class Employee extends Model
     public $timestamps = false;
 
     public $rules = [
-        'cpf'           =>  'required',
-        'birth_date'    =>  'required',
+        'cpf'           =>  'required | min: 14',
+        'birth_date'    =>  'required | min: 10',
         'full_name'     =>  'required',
         'sex'           =>  'required',
-        'zip_code'      =>  'required',
+        'zip_code'      =>  'required | min: 10',
         'address'       =>  'required',
         'number'        =>  'required',
         'complement'    =>  'required',
@@ -29,11 +29,11 @@ class Employee extends Model
     ];
 
     public $updateRules = [
-        'cpf'           =>  'required',
-        'birth_date'    =>  'required',
+        'cpf'           =>  'required | min: 14',
+        'birth_date'    =>  'required | min: 10',
         'full_name'     =>  'required',
         'sex'           =>  'required',
-        'zip_code'      =>  'required',
+        'zip_code'      =>  'required | min: 10',
         'address'       =>  'required',
         'number'        =>  'required',
         'complement'    =>  'required',
@@ -46,21 +46,24 @@ class Employee extends Model
     ];
 
     public $errorMessages = [
-    	'cpf.required'          =>  'Informe o CPF do funcionário.',
-    	'birth_date.required'   =>  'Informe a DATA DE NASCIMENTO do funcionário.',
-    	'full_name.required'    =>  'Informe o NOME COMPLETO do funcionário.',
-    	'sex.required'          =>  'Informe o SEXO do funcionário.',
-        'zip_code.required'     =>  'Informe o CEP do funcionário.',
-        'address.required'      =>  'Informe o ENDEREÇO do funcionário.',
-        'number.required'       =>  'Informe o NÚMERO do Endereço do funcionário.',
-        'complement.required'   =>  'Informe o COMPLEMENTO do Endereço do funcionário.',
-        'district.required'     =>  'Informe o BAIRRO do funcionário.',
-        'city.required'         =>  'Informe a CIDADE do funcionário.',
-        'state.required'        =>  'Informe o ESTADO do funcionário.',
-        'id_branch.required'    =>  'Informe a FILIAL do funcionário.',
-        'function.required'     =>  'Informe a CARGO do funcionário.',
-        'salary.required'       =>  'Informe o SALÁRIO do funcionário.',
-        'password.required'     =>  'Informe a SENHA para acesso ao sistema.'
+        'cpf.required'          =>  'INFORME O CPF DO FUNCIONÁRIO.',
+        'cpf.min'               =>  'O CPF DEVE CONTER 11 ALGARISMOS.',
+        'birth_date.required'   =>  'INFORME A DATA DE NASCIMENTO DO FUNCIONÁRIO.',
+        'birth_date.min'        =>  'A DATA DE NASCIMENTO DEVE CONTER 8 ALGARISMOS.',
+    	'full_name.required'    =>  'INFORME O NOME COMPLETO DO FUNCIONÁRIO.',
+    	'sex.required'          =>  'INFORME O SEXO DO FUNCIONÁRIO.',
+        'zip_code.required'     =>  'INFORME O CEP DO FUNCIONÁRIO.',
+        'zip_code.min'          =>  'O CEP DEVE CONTER 8 ALGARISMOS.',
+        'address.required'      =>  'INFORME O ENDEREÇO DO FUNCIONÁRIO.',
+        'number.required'       =>  'INFORME O NÚMERO DO ENDEREÇO DO FUNCIONÁRIO.',
+        'complement.required'   =>  'INFORME O COMPLEMENTO DO ENDEREÇO DO FUNCIONÁRIO.',
+        'district.required'     =>  'INFORME O BAIRRO DO FUNCIONÁRIO.',
+        'city.required'         =>  'INFORME A CIDADE DO FUNCIONÁRIO.',
+        'state.required'        =>  'INFORME O ESTADO DO FUNCIONÁRIO.',
+        'id_branch.required'    =>  'INFORME A FILIAL DO FUNCIONÁRIO.',
+        'function.required'     =>  'INFORME O CARGO DO FUNCIONÁRIO.',
+        'salary.required'       =>  'INFORME O SALÁRIO DO FUNCIONÁRIO.',
+        'password.required'     =>  'INFORME A SENHA PARA ACESSO AO SISTEMA..'
     ];
 
     protected $fillable = [

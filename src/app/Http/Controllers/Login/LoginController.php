@@ -36,7 +36,9 @@ class LoginController extends Controller
 
         $formPassword = md5($password);
 
-        $dataEmployee = $this -> employee -> where('cpf','=',$cpf) -> first();
+        $dataEmployee = $this -> employee :: where('cpf', $cpf) -> get();
+
+        dd($dataEmployee);
 
         if ($dataEmployee['password'] === $formPassword)
         {

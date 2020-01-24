@@ -8,6 +8,13 @@
 
 @section ('body')
 
+    @if (session('message'))
+        <div class="alert alert-success alert-dismissible text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong class="align-middle">{{ session('message') }}</strong>
+        </div>
+    @endif
+
     <!-- table -->
     <table class="table table-bordered table-hover text-center">
 
@@ -47,7 +54,7 @@
                 @endif
 
                     <!-- full_name -->
-                    <td class="align-middle"> {{ $data -> full_name }} </td>
+                    <td class="align-middle text-left"> {{ $data -> full_name }} </td>
 
                     <!-- cpf -->
                     <td class="align-middle"> {{ $data -> cpf }} </td>
@@ -56,7 +63,13 @@
                     <td class="align-middle"> {{ $data -> function }} </td>
 
                     <!-- branch -->
-                    <td class="align-middle"> {{ $data -> id_branch }} </td>
+                    @foreach ($dataBranch as $branch)
+
+                        @if ($data -> id_branch === $branch -> id)
+                            <td class="align-middle"> {{ $branch -> social_name }} </td>
+                        @endif
+
+                    @endforeach
                         
                     <!-- action buttons -->
                     <td class="align-middle">

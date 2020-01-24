@@ -21,16 +21,16 @@ class Car extends Model
     ];
 
     public $errorMessages = [
-        'chassi.required'           =>      'Insira o CHASSI do automóvel.',
-        'chassi.min'                =>      'O CHASSI deve possuir 17 caracteres.',
-        'category.required'         =>      'Insira a CATEGORIA do automóvel.',
-        'name.required'             =>      'Insira o NOME do automóvel.',
-        'year.required'             =>      'Insira o ANO do automóvel.',
-        'year.min'                  =>      'O ANO deve possuir 4 algarismos.',
-        'model.required'            =>      'Insira o MODELO do automóvel.',
-        'model.min'                 =>      'O MODELO deve possuir 4 algarismos.',
-        'color.required'            =>      'Insira a COR do automóvel.',
-        'id_branch.required'        =>      'Selecione a FILIAL de montagem do automóvel.'
+        'chassi.required'           =>      'INSIRA O CHASSI DO AUTOMÓVEL.',
+        'chassi.min'                =>      'O CHASSI DEVE POSSUIR 17 CARACTERES.',
+        'category.required'         =>      'INSIRA A CATEGORIA DO AUTOMÓVEL.',
+        'name.required'             =>      'INSIRA O NOME DO AUTOMÓVEL.',
+        'year.required'             =>      'INSIRA O ANO DO AUTOMÓVEL.',
+        'year.min'                  =>      'O ANO DEVE POSSUIR 4 ALGARISMOS.',
+        'model.required'            =>      'INSIRA O MODELO DO AUTOMÓVEL.',
+        'model.min'                 =>      'O MODELO DEVE POSSUIR 4 ALGARISMOS.',
+        'color.required'            =>      'INSIRA A COR DO AUTOMÓVEL.',
+        'id_branch.required'        =>      'INSIRA A FILIAL DE PRODUÇÃO DO AUTOMÓVEL.'
     ];
 
     protected $fillable = [

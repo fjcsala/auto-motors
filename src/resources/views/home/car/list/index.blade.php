@@ -8,6 +8,13 @@
 
 @section ('body')
 
+    @if (session('message'))
+        <div class="alert alert-success alert-dismissible text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>{{ session('message') }}</strong>
+        </div>
+    @endif
+
     <!-- table -->
     <table class="table table-bordered table-hover text-center">
 
@@ -72,7 +79,7 @@
                         <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
                         <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="{{ url("/home/car/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="" data-js="{{ $data -> id }}" role="button" title="Remover" data-toggle="modal" data-target="#removeCar"><i class="fas fa-trash-alt"></i></a>
                     </td>
 
                 </tr>
@@ -96,11 +103,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Deseja remover?
+                    Deseja remover este automóvel?
+                    <input type="hidden" id="id_car" name="id_car" value="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                    <a type="button" class="btn btn-primary" href="#">Sim</a>
+                    <a type="button" class="btn btn-primary" href="{{ url("/home/car/edit/") }}">Sim</a>
                 </div>
             </div>
         </div>

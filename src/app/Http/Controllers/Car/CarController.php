@@ -74,7 +74,7 @@ class CarController extends Controller
 
         $create = $this -> car -> create($dataForm);
 
-        return redirect('/home/car/list');
+        return redirect() -> route('car.list') -> with('message', 'Automóvel cadastrado com sucesso!');
 
     }
 

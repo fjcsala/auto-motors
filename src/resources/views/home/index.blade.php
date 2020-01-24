@@ -8,42 +8,35 @@
 
 @section('cards')
 
-    <div class="row">
-
-        <div class="col-md-6 col-lg-4">
-          <a class="nav-link" href="{{ url('/home/branch/list') }}">
-            <div class="widget-small primary coloured-icon"><i class="icon fas fa-sitemap fa-3x"></i>
-              <div class="info">
-                <h4>Filiais</h4>
-                <p><b>{{ $totalBranch }}</b></p>
-              </div>
-            </div>
-          </a>
+  <div class="row">
+  
+    <div class="col-md-4">
+      <div class="widget-small primary"><i class="icon fa fa-sitemap fa-3x"></i>
+        <div class="info">
+          <h4>FILIAIS</h4>
+          <p><b>{{ $totalBranch }}</b></p>
         </div>
-
-        <div class="col-md-6 col-lg-4">
-          <a class="nav-link" href="{{ url('/home/employee/list') }}">
-            <div class="widget-small info coloured-icon"><i class="icon fas fa-users fa-3x"></i>
-              <div class="info">
-                <h4>Funcionários</h4>
-                <p><b>{{ $totalEmployee }}</b></p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <a class="nav-link" href="{{ url('/home/car/list') }}">
-            <div class="widget-small warning coloured-icon"><i class="icon fas fa-car fa-3x"></i>
-              <div class="info">
-                <h4>Automóveis</h4>
-                <p><b>{{ $totalCar }}</b></p>
-              </div>
-            </div>
-          </a>
-        </div>
-
+      </div>
     </div>
+
+    <div class="col-md-4">
+      <div class="widget-small info"><i class="icon fa fa-users fa-3x"></i>
+        <div class="info">
+          <h4>FUNCIONÁRIOS</h4>
+          <p><b>{{ $totalEmployee }}</b></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="widget-small danger"><i class="icon fa fa-car fa-3x"></i>
+        <div class="info">
+          <h4>AUTOMÓVEIS</h4>
+          <p><b>{{ $totalCar }}</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!--
 

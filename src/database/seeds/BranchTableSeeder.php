@@ -14,7 +14,7 @@ class BranchTableSeeder extends Seeder
     {
         Branch :: create([
             'cnpj'              =>      '16.232.382/0001-19',
-            'ie'                =>      '029626056',
+            'ie'                =>      '02962605-6',
             'social_name'       =>      'Auto Motors do Espírito Santo S/A',
             'fantasy_name'      =>      'Auto Motors',
             'zip_code'          =>      '29.106-460',
@@ -29,7 +29,7 @@ class BranchTableSeeder extends Seeder
 
         Branch :: create([
             'cnpj'              =>      '45.198.107/0001-24',
-            'ie'                =>      '831279157819',
+            'ie'                =>      '831.279.157',
             'social_name'       =>      'Auto Motors de São Paulo S/A',
             'fantasy_name'      =>      'Auto Motors',
             'zip_code'          =>      '13.335-235',
@@ -44,7 +44,7 @@ class BranchTableSeeder extends Seeder
 
         Branch :: create([
             'cnpj'              =>      '51.835.385/0001-48',
-            'ie'                =>      '103256326',
+            'ie'                =>      '10.325.632-6',
             'social_name'       =>      'Auto Motors de Goiás S/A',
             'fantasy_name'      =>      'Auto Motors',
             'zip_code'          =>      '74.555-515',
@@ -59,7 +59,7 @@ class BranchTableSeeder extends Seeder
 
         Branch :: create([
             'cnpj'              =>      '88.852.468/0001-55',
-            'ie'                =>      '465388442',
+            'ie'                =>      '46.538.844-2',
             'social_name'       =>      'Auto Motors de Manaus S/A',
             'fantasy_name'      =>      'Auto Motors',
             'zip_code'          =>      '69.037-179',
@@ -74,7 +74,7 @@ class BranchTableSeeder extends Seeder
 
         Branch :: create([
             'cnpj'              =>      '00.612.668/0001-90',
-            'ie'                =>      '439032679',
+            'ie'                =>      '439.032.679',
             'social_name'       =>      'Auto Motors do Sul S/A',
             'fantasy_name'      =>      'Auto Motors',
             'zip_code'          =>      '89.026-420',

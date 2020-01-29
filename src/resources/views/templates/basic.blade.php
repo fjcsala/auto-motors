@@ -131,6 +131,7 @@
                     if ($ajax.readyState === 4 && $ajax.status === 200)
                     {
                         $ie_mask = $ajax.responseText;
+                        cleanField();
                         setMask($ie_mask);
                         setPlaceholder($ie_mask);
 
@@ -147,6 +148,11 @@
                 // debug zone
                 // console.log($uf);
                 // console.log($data);
+
+                function cleanField()
+                {
+                    $ie.value = "";
+                }
                 
                 function setMask($mask)
                 {

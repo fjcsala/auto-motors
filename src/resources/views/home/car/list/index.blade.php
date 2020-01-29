@@ -23,7 +23,7 @@
             <!-- cols -->
             <tr>
                 <!-- name -->
-                <th scope="col">NOME</th>
+                <th scope="col" class="text-left">NOME</th>
                 <!-- category -->
                 <th scope="col">CATEGORIA</th>
                 <!-- year -->

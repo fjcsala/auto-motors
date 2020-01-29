@@ -23,7 +23,7 @@
             <!-- cols -->
             <tr>
                 <!-- full_name -->
-                <th scope="col">NOME</th>
+                <th scope="col" class="text-left">NOME</th>
                 <!-- cpf -->
                 <th scope="col">CPF</th>
                 <!-- function -->
@@ -63,13 +63,14 @@
                     <td class="align-middle"> {{ $data -> function }} </td>
 
                     <!-- branch -->
-                    @foreach ($dataBranch as $branch)
+
+                        @foreach ($dataBranch as $branch)
 
                         @if ($data -> id_branch === $branch -> id)
                             <td class="align-middle"> {{ $branch -> social_name }} </td>
                         @endif
 
-                    @endforeach
+                        @endforeach
                         
                     <!-- action buttons -->
                     <td class="align-middle">

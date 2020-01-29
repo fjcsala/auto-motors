@@ -60,4 +60,9 @@ class Branch extends Model
         'updated_at',
         'created_at'
     ];
+
+    public function employee ()
+    {
+        return $this-> belongsToMany(Employee :: class);
+    }
 }

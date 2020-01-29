@@ -197,8 +197,6 @@ class BranchController extends Controller
     {
         $dataajax = $this -> ie :: where('uf', $uf) -> get() -> first() -> ie_mask;
         $iemask = $dataajax;
-        // debug
-        // dd($uf, $iemask);
         return ($iemask);
     }
 }

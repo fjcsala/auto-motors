@@ -106,12 +106,19 @@
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+        <!--
+            
+        -->
+        <script>
+            $(document).ready(function()
+            {
+                $('.ie').mask('#');
+            });
+        </script>
+
         <script>
             $state = document.querySelector('[data-js="state"]');
             $ie = document.querySelector('[data-js="ie"]');
-
-            // debug zone
-            // console.log ($ie);
 
             $state.addEventListener('change', ie_mask, false);
 
@@ -120,7 +127,6 @@
                 $uf = $state.value;
                 $url = "/home/branch/ie-mask/"+$uf+"/";
 
-                // ajax
                 $ajax = new XMLHttpRequest();
                 $ajax.open("GET", $url);
                 $ajax.send();
@@ -134,20 +140,8 @@
                         cleanField();
                         setMask($ie_mask);
                         setPlaceholder($ie_mask);
-
-                        // debug zone
-                        // console.log($mask);
                     }
-
-                    // debug zone
-                    // console.log($ajax.readyState);
-                    // console.log($ajax.status);
-                    // console.log($data);
                 }
-                
-                // debug zone
-                // console.log($uf);
-                // console.log($data);
 
                 function cleanField()
                 {
@@ -157,17 +151,11 @@
                 function setMask($mask)
                 {
                     $('.ie').mask($mask);
-
-                    // debug zone
-                    // console.log($mask);
                 }
 
                 function setPlaceholder($mask)
                 {
                     $ie.setAttribute("placeholder", $mask);
-
-                    // debug zone
-                    // console.log($mask)
                 }
             }
         </script>

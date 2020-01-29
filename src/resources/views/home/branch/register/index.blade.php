@@ -121,7 +121,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Número</label>
-                    <input class="form-control" id="number" name="number" type="text" value="{{ old('number') }}" data-mask="00000" placeholder="Nº">
+                    <input class="form-control" id="number" name="number" type="text" value="{{ old('number') }}" data-mask="#" placeholder="Nº">
                 </div>
             </div>
 

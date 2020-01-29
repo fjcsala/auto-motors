@@ -24,6 +24,39 @@
     {{ csrf_field() }}
 
     <div class="row">
+
+        <!-- state -->
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label>Estado</label>
+                <select class="form-control" id="state" name="state">
+
+                    <!-- default select -->
+                    <option value="">Selecione</option>
+
+                    <!-- create state options -->
+                    @foreach ($states as $state)
+
+                    <!-- return option value based on branch data -->
+                    <option value="{{ $state }}" @if ($state === $dataBranch -> state) selected @endif> {{ $state }} </option>
+                            
+                    @endforeach
+
+                </select>
+            </div>
+        </div>
+        
+        <!-- city -->
+        <div class="col-sm-10">
+            <div class="form-group">
+                <label>Cidade</label>
+                <input class="form-control" id="city" name="city" type="text" value="{{ $dataBranch -> city }}" placeholder="Insira a cidade da filial.">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
         <!-- cnpj -->
         <div class="col-sm-6">
             <div class="form-group">

@@ -106,16 +106,6 @@
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-        <script>
-            $(#removeCar).on('show.bs.modal', function(event)
-            {
-                var button = $(event.relatedTarget);
-                var idCar = button.data('id_car');
-                var modal = $(this)
-                modal.find('.modal-body #id_car').val(idCar);
-            })
-        </script>
-
     </body>
 
 </html>

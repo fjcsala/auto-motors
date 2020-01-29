@@ -22,11 +22,50 @@
         {{ csrf_field() }}
 
         <div class="row">
+            <!-- state -->
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label>Estado</label>
+                    <select class="form-control" id="state" name="state" autofocus>
+
+                        <!-- default select -->
+                        <option value="">Selecione</option>
+
+                        <!-- create state options -->
+                        @foreach ($states as $state)
+
+                            @if (old('state') === $state))
+
+                                <option value="{{ $state }}" selected>{{ $state }}</option>
+
+                            @else
+
+                                <option value="{{ $state }}">{{ $state }}</option>
+
+                            @endif
+                                
+                        @endforeach
+
+                    </select>
+                </div>
+            </div>
+
+            <!-- city -->
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <label>Cidade</label>
+                    <input class="form-control" id="city" name="city" type="text" value="{{ old('city') }}" placeholder="Insira a cidade da filial.">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
             <!-- cnpj -->
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>CNPJ</label>
-                    <input class="form-control" id="cnpj" name="cnpj" type="text" value="{{ old('cnpj') }}" data-mask="00.000.000/0000-00" placeholder="00.000.000/0000-00" autofocus>
+                    <input class="form-control" id="cnpj" name="cnpj" type="text" value="{{ old('cnpj') }}" data-mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
                 </div>
             </div>
 
@@ -99,44 +138,6 @@
                 <div class="form-group">
                     <label>Bairro</label>
                     <input class="form-control" id="district" name="district" type="text" value="{{ old('district') }}" placeholder="Insira o bairro da filial.">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- city -->
-            <div class="col-sm-10">
-                <div class="form-group">
-                    <label>Cidade</label>
-                    <input class="form-control" id="city" name="city" type="text" value="{{ old('city') }}" placeholder="Insira a cidade da filial.">
-                </div>
-            </div>
-
-            <!-- state -->
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label>Estado</label>
-                    <select class="form-control" id="state" name="state">
-
-                        <!-- default select -->
-                        <option value="">Selecione</option>
-
-                        <!-- create state options -->
-                        @foreach ($states as $state)
-
-                            @if (old('state') === $state))
-
-                                <option value="{{ $state }}" selected>{{ $state }}</option>
-
-                            @else
-
-                                <option value="{{ $state }}">{{ $state }}</option>
-
-                            @endif
-                                
-                        @endforeach
-
-                    </select>
                 </div>
             </div>
         </div>

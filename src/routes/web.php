@@ -35,6 +35,7 @@ Route::get  ('/home/branch/edit/{id}/inactive',     ['as' => 'branch.inactive', 
 Route::get  ('/home/branch/edit/{id}/remove',       ['as' => 'branch.remove',       'uses' => 'Branch\BranchController@remove']);
 Route::get  ('/home/branch/list',                   ['as' => 'branch.list',         'uses' => 'Branch\BranchController@list']);
 Route::get  ('/home/branch/view/{id}',              ['as' => 'branch.view',         'uses' => 'Branch\BranchController@view']);
+Route::get  ('/home/branch/ie-mask/{uf}',           ['as' => 'branch.ie-mask',      'uses' => 'Branch\BranchController@ieMask']);
 
 Route::get  ('/home/employee/register',             ['as' => 'employee.register',   'uses' => 'Employee\EmployeeController@register']);
 Route::post ('/home/employee/create',               ['as' => 'employee.create',     'uses' => 'Employee\EmployeeController@create']);

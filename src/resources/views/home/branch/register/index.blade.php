@@ -26,7 +26,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Estado</label>
-                    <select class="form-control" id="state" name="state" autofocus>
+                    <select class="form-control" id="state" name="state" data-js="state" autofocus>
 
                         <!-- default select -->
                         <option value="">Selecione</option>
@@ -73,7 +73,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Inscrição Estadual</label>
-                    <input class="form-control" id="ie" name="ie" type="text" value="{{ old('ie') }}" data-mask="000000000000000" placeholder="000000000000000">
+                    <input class="form-control ie" id="ie" name="ie" type="text" value="{{ old('ie') }}" data-js="ie">
                 </div>
             </div>
         </div>

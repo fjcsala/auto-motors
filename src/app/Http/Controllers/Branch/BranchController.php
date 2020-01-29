@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Branch;
 use App\Models\Employee;
 use App\Models\Car;
+use App\Models\Ie;
 
 class BranchController extends Controller
 {
@@ -25,11 +26,12 @@ class BranchController extends Controller
         );
     }
 
-    public function __construct (Branch $branch, Employee $employee, Car $car)
+    public function __construct (Branch $branch, Employee $employee, Car $car, Ie $ie)
     {
         $this -> branch = $branch;
         $this -> employee = $employee;
         $this -> car = $car;
+        $this -> ie = $ie;
     }
 
     public function verifyEmployee ($id)
@@ -189,5 +191,14 @@ class BranchController extends Controller
         
             return redirect() -> route('branch.list') -> with('message', 'FILIAL REMOVIDA COM SUCESSO!');
         }
+    }
+
+    public function ieMask ($uf)
+    {
+        $dataajax = $this -> ie :: where('uf', $uf) -> get() -> first() -> ie_mask;
+        $iemask = $dataajax;
+        // debug
+        // dd($uf, $iemask);
+        return ($iemask);
     }
 }

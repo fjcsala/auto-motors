@@ -29,7 +29,7 @@
         <div class="col-sm-2">
             <div class="form-group">
                 <label>Estado</label>
-                <select class="form-control" id="state" name="state">
+                <select class="form-control" id="state" name="state" data-js="state" autofocus>
 
                     <!-- default select -->
                     <option value="">Selecione</option>
@@ -45,7 +45,7 @@
                 </select>
             </div>
         </div>
-        
+
         <!-- city -->
         <div class="col-sm-10">
             <div class="form-group">
@@ -61,7 +61,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label>CNPJ</label>
-                <input class="form-control" id="cnpj" name="cnpj" type="text" value="{{ $dataBranch -> cnpj }}" data-mask="00.000.000/0000-00" placeholder="00.000.000/0000-00" autofocus>
+                <input class="form-control" id="cnpj" name="cnpj" type="text" value="{{ $dataBranch -> cnpj }}" data-mask="00.000.000/0000-00" placeholder="00.000.000/0000-00">
             </div>
         </div>
 
@@ -69,7 +69,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label>Inscrição Estadual</label>
-                <input class="form-control" id="ie" name="ie" type="text" value="{{ $dataBranch -> ie }}" data-mask="000000000000000" placeholder="000000000000000">
+                <input class="form-control ie" id="ie" name="ie" type="text" data-js="ie" value="{{ $dataBranch -> ie }}">
             </div>
         </div>
     </div>

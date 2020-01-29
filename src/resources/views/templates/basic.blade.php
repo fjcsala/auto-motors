@@ -106,60 +106,6 @@
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-        <!--
-            
-        -->
-        <script>
-            $(document).ready(function()
-            {
-                $('.ie').mask('#');
-            });
-        </script>
-
-        <script>
-            $state = document.querySelector('[data-js="state"]');
-            $ie = document.querySelector('[data-js="ie"]');
-
-            $state.addEventListener('change', ie_mask, false);
-
-            function ie_mask ()
-            {
-                $uf = $state.value;
-                $url = "/home/branch/ie-mask/"+$uf+"/";
-
-                $ajax = new XMLHttpRequest();
-                $ajax.open("GET", $url);
-                $ajax.send();
-                $ajax.addEventListener('readystatechange', stateChange);
-
-                function stateChange ()
-                {
-                    if ($ajax.readyState === 4 && $ajax.status === 200)
-                    {
-                        $ie_mask = $ajax.responseText;
-                        cleanField();
-                        setMask($ie_mask);
-                        setPlaceholder($ie_mask);
-                    }
-                }
-
-                function cleanField()
-                {
-                    $ie.value = "";
-                }
-                
-                function setMask($mask)
-                {
-                    $('.ie').mask($mask);
-                }
-
-                function setPlaceholder($mask)
-                {
-                    $ie.setAttribute("placeholder", $mask);
-                }
-            }
-        </script>
-
     </body>
 
 </html>

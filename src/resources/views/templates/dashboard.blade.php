@@ -18,7 +18,7 @@
                 <li class="dropdown">
                     <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fas fa-user-alt fa-lg"></i></a>
                     <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                        <li><a class="dropdown-item" href="{{ url('/') }}"><i class="fa fa-sign-out fa-lg"></i> Sair</a></li>
+                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out fa-lg"></i> Sair</a></li>
                     </ul>
                 </li>
             </ul>
@@ -73,5 +73,32 @@
         <script src="https://pratikborsadiya.in/vali-admin/js/bootstrap.min.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/main.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/plugins/pace.min.js"></script>
+
+        <!-- modals -->
+
+        <!-- logout modal -->
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Informação!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <strong>
+                            DESEJA SAIR DO SISTEMA?
+                        </strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        <a class="btn btn-info" href="{{ route('login') }}" role="button">Sim</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

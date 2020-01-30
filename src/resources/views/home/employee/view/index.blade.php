@@ -148,7 +148,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text">R$</span></div>
-                            <input class="form-control" id="exampleInputAmount" type="text" value="{{ $dataEmployee -> salary }}" placeholder="R$ 000.000,00" data-mask="##0.000,00" data-mask-reverse="true" disabled>
+                            <input class="form-control" id="exampleInputAmount" type="text" value="{{ $dataEmployee -> salary }}" placeholder="R$ 000.000,00" data-mask="##0.###,00" data-mask-reverse="true" disabled>
                         </div>
                     </div>
                 </div>

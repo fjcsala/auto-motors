@@ -19,8 +19,9 @@
                 </div>
                 <div class="modal-body">
                     @foreach($errors -> all() as $error)
-                        <strong>{{ $error }}</strong>
-                        <br>
+                        <strong>
+                            <li> {{ $error }} </li>
+                        </strong>
                     @endforeach
                 </div>
                 <div class="modal-footer">
@@ -156,6 +157,96 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $state = document.querySelector('[data-js="state"]');
+        $ie = document.querySelector('[data-js="ie"]');
+        $ajax = new XMLHttpRequest();
+
+        if (stateValueVerify($state.value) !== false)
+        {
+            ie_mask($state.value);
+        }
+
+        else
+        {
+            ieDisabled();
+        }
+
+        $state.addEventListener('change', ie_mask, false);
+
+        function ie_mask ()
+        {
+            $uf = $state.value;
+
+            if (stateValueVerify($uf) === false)
+            {
+                ieDisabled();
+            }
+
+            $url = "/home/branch/ie-mask/"+$uf+"/";
+
+            $ajax.open("GET", $url);
+            $ajax.send();
+            $ajax.addEventListener('readystatechange', stateChange);
+        }
+
+        function stateChange ()
+        {
+            if (requestSuccess())
+            {
+                $ie_mask = $ajax.responseText;
+
+                ieEnabled();
+                // cleanField();
+                setMask($ie_mask);
+                setPlaceholder($ie_mask);
+            }
+        }
+
+        function requestSuccess()
+        {
+            return $ajax.readyState === 4 && $ajax.status === 200;
+        }
+
+        function cleanField()
+        {
+            $ie.value = "";
+        }
+                
+        function setMask($mask)
+        {
+            $('.ie').mask($mask);
+        }
+
+        function setPlaceholder($mask)
+        {
+            $ie.setAttribute("placeholder", $mask);
+        }
+
+        function stateValueVerify($data)
+        {
+            if ($data === "")
+            {
+                return false;
+            }
+        }
+
+        function ieDisabled()
+        {
+            cleanField();
+            $ie.removeAttribute("maxlength");
+            $ie.removeAttribute("autocomplete");
+            $ie.setAttribute("placeholder", "Selecione o estado da filial.");
+            $ie.disabled = true;
+        }
+
+        function ieEnabled()
+        {
+            $ie.removeAttribute("readonly");
+            $ie.disabled = false;
+        }
+    </script>
 
 @endsection
 

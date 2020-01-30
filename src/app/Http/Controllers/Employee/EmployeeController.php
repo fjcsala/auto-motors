@@ -185,7 +185,7 @@ class EmployeeController extends Controller
 
         $employeeEdit -> where('id', '=', $id) -> update(['status' => 1]);
 
-        return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO ATIVO COM SUCESSO!');
+        return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO ATIVADO COM SUCESSO!');
     }
 
     public function inactive (Request $request, $id)

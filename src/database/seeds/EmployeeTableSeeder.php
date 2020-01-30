@@ -27,7 +27,7 @@ class EmployeeTableSeeder extends Seeder
             'id_branch'     =>    1,
             'function'      =>    'Estagiário',
             'salary'        =>    123456,
-            'password'      =>    md5(123456),
+            'password'      =>    md5(12345678),
             'status'        =>    1
         ]);
 
@@ -46,7 +46,7 @@ class EmployeeTableSeeder extends Seeder
             'id_branch'     =>    2,
             'function'      =>    'Gerente de Produção',
             'salary'        =>    9819.45,
-            'password'      =>    md5(123456),
+            'password'      =>    md5(12345678),
             'status'        =>    1
         ]);
 
@@ -65,7 +65,7 @@ class EmployeeTableSeeder extends Seeder
             'id_branch'     =>    3,
             'function'      =>    'Montador',
             'salary'        =>    2326.48,
-            'password'      =>    md5(123456),
+            'password'      =>    md5(12345678),
             'status'        =>    0
         ]);
 
@@ -84,7 +84,7 @@ class EmployeeTableSeeder extends Seeder
             'id_branch'     =>    4,
             'function'      =>    'Auxiliar Administrativo',
             'salary'        =>    2497.57,
-            'password'      =>    md5(123456),
+            'password'      =>    md5(12345678),
             'status'        =>    1
         ]);
 
@@ -103,7 +103,7 @@ class EmployeeTableSeeder extends Seeder
             'id_branch'     =>    5,
             'function'      =>    'Supervisor de Linha de Montagem',
             'salary'        =>    13948.76,
-            'password'      =>    md5(123456),
+            'password'      =>    md5(12345678),
             'status'        =>    1
         ]);
     }

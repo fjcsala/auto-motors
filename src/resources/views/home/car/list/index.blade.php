@@ -37,7 +37,7 @@
     <table class="table table-bordered table-hover text-center">
 
         <!-- header -->
-        <thead class="thead-light">
+        <thead class="thead-light align-middle">
             <!-- cols -->
             <tr>
                 <!-- name -->

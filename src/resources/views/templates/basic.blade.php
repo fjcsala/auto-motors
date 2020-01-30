@@ -88,12 +88,14 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Deseja sair do sistema?
+                    <div class="modal-body text-center">
+                        <strong>
+                            DESEJA SAIR DO SISTEMA?
+                        </strong>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                        <a class="btn btn-primary" href="{{ route('login') }}" role="button">Sim</a>
+                        <a class="btn btn-info" href="{{ route('login') }}" role="button">Sim</a>
                     </div>
                 </div>
             </div>

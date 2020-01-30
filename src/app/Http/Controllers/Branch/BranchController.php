@@ -126,7 +126,7 @@ class BranchController extends Controller
 
         $branchActive -> where('id', '=', $id) -> update(['status' => 1]);
 
-        return redirect() -> route('branch.list') -> with('message', 'FILIAL ATIVA COM SUCESSO!');
+        return redirect() -> route('branch.list') -> with('message', 'FILIAL ATIVADA COM SUCESSO!');
     }
 
     public function inactive (Request $request, $id)

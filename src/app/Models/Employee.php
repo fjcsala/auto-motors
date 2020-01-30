@@ -25,7 +25,7 @@ class Employee extends Model
         'id_branch'     =>  'required',
         'function'      =>  'required',
         'salary'        =>  'required',
-        'password'      =>  'required'
+        'password'      =>  'required | min: 8'
     ];
 
     public $updateRules = [
@@ -63,7 +63,8 @@ class Employee extends Model
         'id_branch.required'    =>  'INFORME A FILIAL DO FUNCIONÁRIO.',
         'function.required'     =>  'INFORME O CARGO DO FUNCIONÁRIO.',
         'salary.required'       =>  'INFORME O SALÁRIO DO FUNCIONÁRIO.',
-        'password.required'     =>  'INFORME A SENHA PARA ACESSO AO SISTEMA..'
+        'password.required'     =>  'INFORME A SENHA PARA ACESSO AO SISTEMA.',
+        'password.min'          =>  'A SENHA DEVE POSSUIR NO MINÍMO 8 CARACTERES.'
     ];
 
     protected $fillable = [

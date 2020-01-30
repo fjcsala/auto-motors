@@ -37,15 +37,15 @@
     <table class="table table-bordered table-hover text-center">
 
         <!-- header -->
-        <thead class="thead-light">
+        <thead class="thead-light align-middle">
             <!-- cols -->
             <tr>
+                <!-- social_name -->
+                <th scope="col" class="text-left">RAZÃO SOCIAL</th>
                 <!-- cnpj -->
                 <th scope="col">CNPJ</th>
                 <!-- ie -->
                 <th scope="col">IE</th>
-                <!-- social_name -->
-                <th scope="col">RAZÃO SOCIAL</th>
                 <!-- city -->
                 <th scope="col">CIDADE</th>
                 <!-- state -->
@@ -73,14 +73,14 @@
 
                 @endif
 
+                    <!-- social_name -->
+                    <td class="align-middle text-left"> {{ $data -> social_name }} </td>
+
                     <!-- cnpj -->
                     <td class="align-middle"> {{ $data -> cnpj }} </td>
 
                     <!-- ie -->
                     <td class="align-middle"> {{ $data -> ie }} </td>
-
-                    <!-- social_name -->
-                    <td class="align-middle"> {{ $data -> social_name }} </td>
 
                     <!-- city -->
                     <td class="align-middle"> {{ $data -> city }} </td>
@@ -159,7 +159,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <strong>DESEJA INATIVAR ESTA FILIAL?</strong>
+                    <strong>DESEJA DESATIVAR ESTA FILIAL?</strong>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>

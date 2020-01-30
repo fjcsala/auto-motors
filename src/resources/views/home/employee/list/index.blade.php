@@ -37,7 +37,7 @@
     <table class="table table-bordered table-hover text-center">
 
         <!-- header -->
-        <thead class="thead-light">
+        <thead class="thead-light align-middle">
             <!-- cols -->
             <tr>
                 <!-- full_name -->
@@ -161,7 +161,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <strong>DESEJA INATIVAR ESTE FUNCIONÁRIO?</strong>
+                    <strong>DESEJA DESATIVAR ESTE FUNCIONÁRIO?</strong>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
@@ -182,7 +182,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <strong>DESJA REMOVER ESTE FUNCIONÁRIO?</strong>
+                    <strong>DESEJA REMOVER ESTE FUNCIONÁRIO?</strong>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>

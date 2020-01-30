@@ -19,8 +19,9 @@
                 </div>
                 <div class="modal-body">
                     @foreach($errors -> all() as $error)
-                        <strong>{{ $error }}</strong>
-                        <br>
+                        <strong>
+                            <li> {{ $error }} </li>
+                        </strong>
                     @endforeach
                 </div>
                 <div class="modal-footer">
@@ -184,10 +185,10 @@
                         <!-- count result branches condition -->
                         @if (count ($dataBranch) > 0)
 
-                            <select class="form-control" id="id_branch" name="id_branch">
+                            <select class="form-control" id="id_branch" name="id_branch" data-js="branch">
 
                                 <!-- default value -->
-                                <option value="">Selecione</option>
+                                <option value="" data-js="optionDefault">Selecione</option>
 
                                     <!-- list branches -->
                                     @foreach ($dataBranch as $branch)
@@ -238,6 +239,17 @@
             </div>
 
         </div>
+
+        <script>
+            $branch = document.querySelector('[data-js="branch"]');
+            $optionDefault = document.querySelector('[data-js="optionDefault"]');
+
+            if ($branch.length <= 1)
+            {
+                $branch.disabled = true;
+                $optionDefault.setAttribute("label", "Não há filiais cadastradas.");
+            }
+        </script>
 
 @endsection
 

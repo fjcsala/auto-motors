@@ -19,8 +19,9 @@
                 </div>
                 <div class="modal-body">
                     @foreach($errors -> all() as $error)
-                        <strong>{{ $error }}</strong>
-                        <br>
+                        <strong>
+                            <li> {{ $error }} </li>
+                        </strong>
                     @endforeach
                 </div>
                 <div class="modal-footer">
@@ -182,7 +183,10 @@
                 ie_mask($state.value);
             }
 
-            ieDisabled();
+            else
+            {
+                ieDisabled();
+            }
 
             $state.addEventListener('change', ie_mask, false);
 
@@ -245,7 +249,7 @@
 
             function ieDisabled()
             {
-                cleanField();
+                // cleanField();
                 $ie.removeAttribute("maxlength");
                 $ie.removeAttribute("autocomplete");
                 $ie.setAttribute("placeholder", "Selecione o estado da filial.");

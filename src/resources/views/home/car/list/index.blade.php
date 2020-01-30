@@ -96,14 +96,16 @@
                         
                     <!-- action buttons -->
                     <td>
-                        <!-- view -->
-                        <a class="btn btn-info btn-sm" href="{{ url("/home/car/view/{$data -> id}") }}" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <form action="" data-js="modal">
+                            <!-- view -->
+                            <a class="btn btn-info btn-sm" href="{{ url("/home/car/view/{$data -> id}") }}" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
                         
-                        <!-- edit -->
-                        <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
+                            <!-- edit -->
+                            <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
 
-                        <!-- delete -->
-                        <a class="btn btn-danger btn-sm" href="{{ url("/home/car/edit/{$data -> id}/remove") }}" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
+                            <!-- delete -->
+                            <a class="btn btn-danger btn-sm" data-js="remove" href="{{ url("/home/car/edit/{$data -> id}/remove") }}" data-toggle="modal" data-target="#removeCar" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
+                        </form>
                     </td>
 
                 </tr>
@@ -126,17 +128,50 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    Deseja remover este automóvel?
+                <div class="modal-body text-center">
+                    <strong>DESEJA REMOVER ESTE AUTOMÓVEL?</strong>
                     <input type="hidden" id="id_car" name="id_car" value="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                    <a type="button" class="btn btn-primary" href="{{ url("/home/car/edit/") }}">Sim</a>
+                    <a class="btn btn-info" role="button" data-js="removeYes" href="#">Sim</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+
+        $remove = document.querySelectorAll('[data-js="remove"]');
+        $removeYes = document.querySelector('[data-js="removeYes"]');
+
+        Array.prototype.forEach.call($remove, function($element, $index, $array)
+        {
+            $element.addEventListener('click', function($e)
+            {
+                $e.preventDefault();
+                remove ($element);
+            });
+        })
+
+        function form ($element)
+        {
+            var $form = document.querySelector('[data-js="modal"]');
+            $form.action = $element.href;
+            $form.submit();
+        }
+
+        function remove ($element)
+        {
+            var $removeYes = document.querySelector('[data-js="removeYes"]');
+
+            $removeYes.addEventListener('click', function($e){
+            $e.preventDefault();
+            form($element);
+            })
+        }
+
+    </script>
 
 @endsection
 

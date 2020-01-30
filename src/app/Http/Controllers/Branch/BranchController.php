@@ -171,17 +171,17 @@ class BranchController extends Controller
 
         if (($verifyEmployee != 0) && ($verifyCar != 0))
         {
-            return redirect() -> route('branch.list') -> with('message', 'ERRO! - FUNCIONÁRIOS E AUTOMÓVEIS VINCULADOS');
+            return redirect() -> route('branch.list') -> with('message', 'AÇÃO NEGADA! - EXISTEM FUNCIONÁRIOS E AUTOMÓVEIS VINCULADOS!');
         }
 
         elseif (($verifyEmployee != 0))
         {
-            return redirect() -> route('branch.list') -> with('message', 'ERRO! - FUNCIONÁRIOS VINCULADOS');
+            return redirect() -> route('branch.list') -> with('message', 'AÇÃO NEGADA! - EXISTEM FUNCIONÁRIOS VINCULADOS!');
         }
 
         elseif (($verifyCar != 0))
         {
-            return redirect() -> route('branch.list') -> with('message', 'ERRO! - AUTOMÓVEIS VINCULADOS');
+            return redirect() -> route('branch.list') -> with('message', 'AÇÃO NEGADA! - EXISTEM AUTOMÓVEIS VINCULADOS!');
         }
 
         else

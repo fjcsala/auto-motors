@@ -8,7 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="https://pratikborsadiya.in/vali-admin/css/main.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://pratikborsadiya.in/vali-admin/js/jquery-3.3.1.min.js"></script>
+        <script src="https://pratikborsadiya.in/vali-admin/js/popper.min.js"></script>
+        <script src="https://pratikborsadiya.in/vali-admin/js/bootstrap.min.js"></script>
     </head>
 
     <body class="app sidebar-mini">
@@ -98,9 +100,6 @@
         </div>
 
         <script src="https://kit.fontawesome.com/8f91a73427.js"></script>
-        <script src="https://pratikborsadiya.in/vali-admin/js/jquery-3.3.1.min.js"></script>
-        <script src="https://pratikborsadiya.in/vali-admin/js/popper.min.js"></script>
-        <script src="https://pratikborsadiya.in/vali-admin/js/bootstrap.min.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/main.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/plugins/pace.min.js"></script>
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>

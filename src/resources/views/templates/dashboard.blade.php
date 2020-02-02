@@ -94,7 +94,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                        <a class="btn btn-info" href="{{ route('login') }}" role="button">Sim</a>
+                        <a class="btn btn-info" href="{{ route('logout') }}" role="button">Sim</a>
                     </div>
                 </div>
             </div>

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Employee extends Model
+class Employee extends Authenticatable
 {
     protected $table = ('employee');
 
@@ -43,6 +43,11 @@ class Employee extends Model
         'id_branch'     =>  'required',
         'function'      =>  'required',
         'salary'        =>  'required',
+    ];
+
+    public $loginRules = [
+        'cpf'           =>  'required | min: 14',
+        'password'      =>  'required | min: 8'
     ];
 
     public $errorMessages = [

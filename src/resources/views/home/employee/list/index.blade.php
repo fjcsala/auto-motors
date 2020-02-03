@@ -82,13 +82,7 @@
 
                     <!-- branch -->
 
-                        @foreach ($dataBranch as $branch)
-
-                        @if ($data -> id_branch === $branch -> id)
-                            <td class="align-middle"> {{ $branch -> social_name }} </td>
-                        @endif
-
-                        @endforeach
+                    <td class="align-middle"> {{ $data -> branch -> social_name }} </td>
                         
                     <!-- action buttons -->
                     <td class="align-middle">

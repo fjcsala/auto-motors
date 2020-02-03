@@ -83,13 +83,7 @@
                     <td class="align-middle"> {{ $data -> color }} </td>
 
                     <!-- production branch -->
-                    @foreach ($dataBranch as $branch)
-
-                        @if ($data -> id_branch === $branch -> id)
-                            <td class="align-middle"> {{ $branch -> social_name }} </td>
-                        @endif
-
-                    @endforeach
+                    <td class="align-middle"> {{ $data -> branch -> social_name }} </td>
 
                     <!-- chassi -->
                     <td class="align-middle"> {{ $data -> chassi }} </td>

@@ -49,4 +49,9 @@ class Car extends Model
         'created_at'
     ];
 
+    public function branch ()
+    {
+        return $this -> belongsTo('App\Models\Branch','id_branch');
+    }
+
 }

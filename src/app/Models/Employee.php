@@ -95,4 +95,9 @@ class Employee extends Authenticatable
         'updated_at',
         'created_at'
     ];
+
+    public function branch ()
+    {
+        return $this -> belongsTo('App\Models\Branch','id_branch');
+    }
 }

@@ -55,7 +55,7 @@
                 <!-- chassi -->
                 <th scope="col">CHASSI</th>
                 <!-- action buttons -->
-                <th scope="col">AÇÕES</th>
+                <th scope="col" width="130px">AÇÕES</th>
             </tr>
         </thead>
 

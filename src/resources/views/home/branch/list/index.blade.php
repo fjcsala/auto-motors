@@ -51,7 +51,7 @@
                 <!-- state -->
                 <th scope="col">ESTADO</th>
                 <!-- action buttons -->
-                <th scope="col">AÇÕES</th>
+                <th scope="col" width="170px">AÇÕES</th>
             </tr>
         </thead>
 

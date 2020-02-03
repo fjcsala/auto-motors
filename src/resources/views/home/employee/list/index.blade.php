@@ -49,7 +49,7 @@
                 <!-- branch -->
                 <th scope="col">FILIAL</th>
                 <!-- action buttons -->
-                <th scope="col">AÇÕES</th>
+                <th scope="col" width="170px">AÇÕES</th>
             </tr>
         </thead>
 

@@ -64,7 +64,7 @@ class EmployeeController extends Controller
     {
         if (isset($data))
         {
-            $data = md5($data);
+            $data = Hash::make($data);
         }
         return $data;
     }

@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="https://pratikborsadiya.in/vali-admin/css/main.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
         <script src="https://pratikborsadiya.in/vali-admin/js/jquery-3.3.1.min.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/popper.min.js"></script>
         <script src="https://pratikborsadiya.in/vali-admin/js/bootstrap.min.js"></script>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Senha</label>
-                        <input class="form-control" name="password" id="password" type="password" placeholder="Insira a sua senha" required>
+                        <input class="form-control" name="password" id="password" type="password" placeholder="Insira a sua senha" maxlength="8" required>
                     </div>
                     <!--
                     <div class="form-group">

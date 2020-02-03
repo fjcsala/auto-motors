@@ -267,7 +267,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Senha</label>
-                    <input class="form-control" id="password" name="password" type="password" placeholder="Insira a senha para acesso.">
+                    <input class="form-control" id="password" name="password" type="password" placeholder="Insira a senha para acesso." maxlength="8">
                 </div>
             </div>
 

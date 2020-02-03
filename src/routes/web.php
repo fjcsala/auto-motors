@@ -12,8 +12,11 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+
     Route::group(['middleware' => 'auth:employee'], function () {
         Route::get  ('/home',                               ['as' => 'dashboard',           'uses' => 'Dashboard\DashboardController@dashboard']);
+
+        Route::get  ('/home/car/register',                  ['as' => 'car.register',        'uses' => 'Car\CarController@register']);
         Route::post ('/home/car/create',                    ['as' => 'car.create',          'uses' => 'Car\CarController@create']);
         Route::get  ('/home/car/edit/{id}',                 ['as' => 'car.edit',            'uses' => 'Car\CarController@edit']);
         Route::put  ('/home/car/edit/{id}/update',          ['as' => 'car.update',          'uses' => 'Car\CarController@update']);
@@ -42,10 +45,14 @@ Route::group(['middleware' => 'web'], function () {
         Route::get  ('/home/employee/list',                 ['as' => 'employee.list',       'uses' => 'Employee\EmployeeController@list']);
         Route::get  ('/home/employee/view/{id}',            ['as' => 'employee.view',       'uses' => 'Employee\EmployeeController@view']);
     });
+
+    Route::get  ('/', function () {
+        return view('login.index');
+    });
+
     Route::get  ('/login',                          ['as' => 'login',               'uses' => 'Employee\EmployeeController@login']);
-    Route::get  ('/logout',                         ['as' => 'logout',               'uses' => 'Employee\EmployeeController@logout']);
+    Route::get  ('/logout',                         ['as' => 'logout',              'uses' => 'Employee\EmployeeController@logout']);
     Route::post ('/login/auth',                     ['as' => 'login.auth',          'uses' => 'Employee\EmployeeController@auth']);
-    Route::get  ('/home/car/register',              ['as' => 'car.register',        'uses' => 'Car\CarController@register']);
 });
 
 //=======================================================================================================================================================

@@ -2,7 +2,7 @@
 
 @section ('content')
 
-  <h1>Bem vindo(a) {{ auth() -> guard('employee') -> user() -> full_name }}!</h1>
+  <h1>Bem vindo(a), {{ auth() -> guard('employee') -> user() -> full_name }}!</h1>
 
 @endsection
 

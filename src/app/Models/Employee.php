@@ -69,7 +69,7 @@ class Employee extends Authenticatable
         'function.required'     =>  'INFORME O CARGO DO FUNCIONÁRIO.',
         'salary.required'       =>  'INFORME O SALÁRIO DO FUNCIONÁRIO.',
         'password.required'     =>  'INFORME A SENHA PARA ACESSO AO SISTEMA.',
-        'password.min'          =>  'A SENHA DEVE POSSUIR NO MINÍMO 8 CARACTERES.'
+        'password.min'          =>  'A SENHA DEVE CONTER 8 CARACTERES.'
     ];
 
     protected $fillable = [

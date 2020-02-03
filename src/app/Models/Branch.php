@@ -65,4 +65,9 @@ class Branch extends Model
     {
         return $this-> belongsToMany(Employee :: class);
     }
+
+    public function car ()
+    {
+        return $this-> belongsToMany(Car :: class);
+    }
 }

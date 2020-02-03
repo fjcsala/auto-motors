@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Branch;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -94,10 +95,10 @@ class EmployeeController extends Controller
     public function create (Request $request)
     {
         $dataForm = $request -> all();
-        $validateForm = validator($dataForm, $this -> employee -> rules, $this -> employee -> errorMessages);
+        $validateForm = validator($dataForm, $this -> employee -> updateRules, $this -> employee -> errorMessages);
         if ($validateForm -> fails())
         {
-            return redirect('/home/employee/register') -> withErrors($validateForm) -> withInput();
+            return back() -> withErrors($validateForm) -> withInput();
         }
         // format brith_date
         $dataForm['birth_date'] = $this -> formatBirthDate($dataForm['birth_date']);

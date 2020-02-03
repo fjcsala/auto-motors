@@ -8,6 +8,7 @@
 
 @section ('body')
 
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -205,18 +206,13 @@
                                 <!-- list branches -->
                                 @foreach ($dataDB as $dataDB)
 
-                                    <!-- condition branch check status -->
-                                    @if ($dataDB -> status === 1)
+                                    @if (old('id_branch') == $dataDB -> id))
 
-                                        @if (old('id_branch') == $dataDB -> id))
+                                        <option value="{{ $dataDB -> id }}" selected>{{ $dataDB -> social_name }}</option>
 
-                                            <option value="{{ $dataDB -> id }}" selected>{{ $dataDB -> social_name }}</option>
+                                    @else
 
-                                        @else
-
-                                            <option value="{{ $dataDB -> id }}">{{ $dataDB -> social_name }}</option>
-
-                                        @endif
+                                        <option value="{{ $dataDB -> id }}">{{ $dataDB -> social_name }}</option>
 
                                     @endif
 

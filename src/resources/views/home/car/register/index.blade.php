@@ -132,19 +132,14 @@
                             <!-- list branches -->
                             @foreach ($dataBranch as $dataBranch)
 
-                                <!-- condition for banch inactive -->
-                                @if ($dataBranch -> status === 1)
+                            @if (old('id_branch') == $dataBranch -> id)
 
-                                    @if (old('id_branch') == $dataBranch -> id)
+                                    <option value="{{ $dataBranch -> id }}" selected>{{ $dataBranch -> social_name }}</option>
 
-                                        <option value="{{ $dataBranch -> id }}" selected>{{ $dataBranch -> social_name }}</option>
+                                @else
 
-                                    @else
+                                    <option value="{{ $dataBranch -> id }}">{{ $dataBranch -> social_name }}</option>
 
-                                        <option value="{{ $dataBranch -> id }}">{{ $dataBranch -> social_name }}</option>
-
-                                    @endif
-                                    
                                 @endif
 
                             @endforeach

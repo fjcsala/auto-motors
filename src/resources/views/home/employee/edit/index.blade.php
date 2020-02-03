@@ -193,13 +193,7 @@
                                     <!-- list branches -->
                                     @foreach ($dataBranch as $branch)
 
-                                        <!-- condition branch check status -->
-                                        @if ($branch -> status === 1)
-
-                                            <!-- return option value based on branch data -->
-                                            <option value="{{ $branch -> id }}" @if ($branch -> id === $dataEmployee -> id_branch) selected @endif> {{ $branch -> social_name }} </option>
-
-                                        @endif
+                                        <option value="{{ $branch -> id }}" @if ($branch -> id === $dataEmployee -> id_branch) selected @endif> {{ $branch -> social_name }} </option>
 
                                     @endforeach
 

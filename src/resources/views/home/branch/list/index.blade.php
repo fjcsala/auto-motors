@@ -270,15 +270,16 @@
         }
 
     </script>
-    <script src="{{ url('assets/js/pdf.js') }}"></script>
 
 @endsection
 
 @section ('footer')
 
     <div class=text-right>
-        <a class="btn btn-danger" href="{{ route('branch.list.pdf') }}" role="button" title="Gerar PDF.">Gerar PDF</a>
+        <a class="btn btn-danger" href="{{ route('branch.list.pdf') }}" data-js="btn-pdf" role="button" title="Gerar PDF.">Gerar PDF</a>
         <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
     </div>
+
+    <script src="{{ url('assets/js/pdf.js') }}"></script>
 
 @endsection

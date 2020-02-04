@@ -8,6 +8,7 @@
 
 @section ('body')
 
+    <!-- modal messages -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -40,6 +41,8 @@
         <thead class="thead-light align-middle">
             <!-- cols -->
             <tr>
+                <!-- check -->
+                <th scope="col"></th>
                 <!-- social_name -->
                 <th scope="col" class="text-left">RAZÃO SOCIAL</th>
                 <!-- cnpj -->
@@ -51,7 +54,7 @@
                 <!-- state -->
                 <th scope="col">ESTADO</th>
                 <!-- action buttons -->
-                <th scope="col" width="170px">AÇÕES</th>
+                <th scope="col" width="200px">AÇÕES</th>
             </tr>
         </thead>
 
@@ -72,6 +75,8 @@
                     <tr>
 
                 @endif
+                    <!-- check -->
+                    <td class="align-middle"><input type="checkbox" id="branchCheck" name="branchCheck" data-js="branchCheck"></td>
 
                     <!-- social_name -->
                     <td class="align-middle text-left"> {{ $data -> social_name }} </td>
@@ -271,6 +276,7 @@
 @section ('footer')
 
     <div class=text-right>
+        <a class="btn btn-danger" href="{{ route('branch.list.pdf') }}" role="button" title="Gerar PDF.">Gerar PDF</a>
         <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
     </div>
 

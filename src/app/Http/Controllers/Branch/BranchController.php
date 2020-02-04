@@ -199,4 +199,9 @@ class BranchController extends Controller
         $iemask = $dataajax;
         return ($iemask);
     }
+
+    public function listPdf ()
+    {
+        return 'Listagem de Filiais';
+    }
 }

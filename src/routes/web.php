@@ -33,7 +33,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get  ('/home/branch/edit/{id}/inactive',     ['as' => 'branch.inactive',     'uses' => 'Branch\BranchController@inactive']);
         Route::get  ('/home/branch/edit/{id}/remove',       ['as' => 'branch.remove',       'uses' => 'Branch\BranchController@remove']);
         Route::get  ('/home/branch/list',                   ['as' => 'branch.list',         'uses' => 'Branch\BranchController@list']);
-        Route::get  ('/home/branch/list/pdf',               ['as' => 'branch.list.pdf',     'uses' => 'Branch\BranchController@listPdf']);
+        Route::get ('/home/branch/list/pdf',               ['as' => 'branch.list.pdf',     'uses' => 'Branch\BranchController@listPdf']);
         Route::get  ('/home/branch/view/{id}',              ['as' => 'branch.view',         'uses' => 'Branch\BranchController@view']);
         Route::get  ('/home/branch/ie-mask/{uf}',           ['as' => 'branch.ie-mask',      'uses' => 'Branch\BranchController@ieMask']);
 

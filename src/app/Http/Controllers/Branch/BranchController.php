@@ -203,8 +203,14 @@ class BranchController extends Controller
 
     public function listPdf ()
     {
-        $dataBranch = Branch :: all();
-        $reportPdf = PDF :: loadview('home.branch.list.pdf.index', compact('dataBranch')) -> download('listagem-de-filiais.pdf');
+        // $dataBranch = Branch :: findMany([1, 4, 5]); // return only array data.
+        $dataBranch = Branch :: find([1, 3, 5]); // return only array data.
+        // $dataBranch = Branch :: whereIn('id', [1, 4, 5]) -> get();  // return only array data.
+        // $dataBranch = Branch :: all(); // return all data.
+        $reportPdf = PDF :: loadview('home.branch.list.pdf.index', compact('dataBranch')) -> setPaper('a4', 'landscape')-> stream('listagem-de-filiais.pdf');
+        // download('listagem-de-filiais.pdf') // download file.
+        // stream('listagem-de-filiais.pdf') // open in browser.
+        // setPaper('a4', 'landscape') // set a4 paper and landscape orientation. default orientation retract.
         return $reportPdf;
     }
 }

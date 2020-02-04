@@ -76,7 +76,7 @@
 
                 @endif
                     <!-- check -->
-                    <td class="align-middle"><input type="checkbox" id="branchCheck" name="branchCheck" data-js="branchCheck"></td>
+                    <td class="align-middle"><input type="checkbox" id="branchCheck" name="branchCheck" data-js="branchCheck" data-id="{{ $data -> id }}"></td>
 
                     <!-- social_name -->
                     <td class="align-middle text-left"> {{ $data -> social_name }} </td>
@@ -270,6 +270,7 @@
         }
 
     </script>
+    <script src="{{ url('assets/js/pdf.js') }}"></script>
 
 @endsection
 

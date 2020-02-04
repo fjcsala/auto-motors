@@ -8,6 +8,7 @@ use App\Models\Branch;
 use App\Models\Employee;
 use App\Models\Car;
 use App\Models\Ie;
+use PDF;
 
 class BranchController extends Controller
 {
@@ -202,6 +203,8 @@ class BranchController extends Controller
 
     public function listPdf ()
     {
-        return 'Listagem de Filiais';
+        $dataBranch = Branch :: all();
+        $reportPdf = PDF :: loadview('home.branch.list.pdf.index', compact('dataBranch')) -> download('listagem-de-filiais.pdf');
+        return $reportPdf;
     }
 }

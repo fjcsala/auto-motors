@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <title>Listagem de Filiais</title>
+        <title>Listagem Detalhada de Filiais</title>
     </head>
     <body>
         <!-- tables -->
@@ -20,7 +20,7 @@
         <table class="table table-sm table-bordered text-center">
             <thead>
                 <tr>
-                    <th scope="col">LISTAGEM DE FILIAIS</th>
+                    <th scope="col">LISTAGEM DETALHADA DE FILIAIS</th>
                 </tr>
             </thead>
         </table>

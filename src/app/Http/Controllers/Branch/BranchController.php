@@ -212,7 +212,7 @@ class BranchController extends Controller
             array_push($newArray, $array[$i]);
         }
         $dataBranch = Branch :: find($newArray); // return only array data.
-        $reportPdf = PDF :: loadview('home.branch.list.pdf.index', compact('dataBranch')) -> setPaper('a4', 'landscape')-> stream('listagem-de-filiais.pdf');
+        $reportPdf = PDF :: loadview('home.branch.list.reports.sintetic.index', compact('dataBranch')) -> setPaper('a4', 'landscape')-> stream('listagem-de-filiais.pdf');
         return $reportPdf;
 
         // =====

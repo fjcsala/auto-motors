@@ -277,7 +277,7 @@
 
 @section ('footer')
 
-    <form method="post" action="{{ route('branch.list.pdf') }}">
+    <form method="post" action="{{ route('branch.list.pdf') }}" target="_blank">
         {{ csrf_field() }}
 
         <input type="hidden" id="branchCheckArray" name="branchCheckArray" data-js="branchCheckArray" value="">

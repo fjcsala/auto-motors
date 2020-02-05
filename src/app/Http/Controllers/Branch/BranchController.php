@@ -201,16 +201,31 @@ class BranchController extends Controller
         return ($iemask);
     }
 
-    public function listPdf ()
+    public function listPdf (Request $request)
     {
+        $pdfRequest = $request -> only('branchCheckArray');
+        $array = ($pdfRequest['branchCheckArray']);
+        $array = explode(',', $array);
+        $newArray = array();
+        for ($i = 0; $i < sizeof($array); $i ++)
+        {
+            array_push($newArray, $array[$i]);
+        }
+        $dataBranch = Branch :: find($newArray); // return only array data.
+        $reportPdf = PDF :: loadview('home.branch.list.pdf.index', compact('dataBranch')) -> setPaper('a4', 'landscape')-> stream('listagem-de-filiais.pdf');
+        return $reportPdf;
+
+        // =====
+        // NOTES
+        // =====
+
         // $dataBranch = Branch :: findMany([1, 4, 5]); // return only array data.
-        $dataBranch = Branch :: find([1, 3, 5]); // return only array data.
+        // $dataBranch = Branch :: find([1, 3, 4]); // return only array data.
         // $dataBranch = Branch :: whereIn('id', [1, 4, 5]) -> get();  // return only array data.
         // $dataBranch = Branch :: all(); // return all data.
-        $reportPdf = PDF :: loadview('home.branch.list.pdf.index', compact('dataBranch')) -> setPaper('a4', 'landscape')-> stream('listagem-de-filiais.pdf');
+        // $reportPdf = PDF :: loadview('home.branch.list.pdf.index', compact('dataBranch')) -> setPaper('a4', 'landscape')-> stream('listagem-de-filiais.pdf');
         // download('listagem-de-filiais.pdf') // download file.
         // stream('listagem-de-filiais.pdf') // open in browser.
         // setPaper('a4', 'landscape') // set a4 paper and landscape orientation. default orientation retract.
-        return $reportPdf;
     }
 }

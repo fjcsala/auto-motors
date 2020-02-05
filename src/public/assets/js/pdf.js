@@ -1,83 +1,50 @@
 /*
-    1 - pegar registros das filiais;
-    2 - pegar o id de cada filial;
-    3 - trabalhar com eventos de seleção no checkbox (check = true, check = false);
-    4 - armazenar o id das filiais em um array;
-    5 - disparar para o controlador utilizando ajax e post;
-    6 - fazer a filtragem das filiais a serem exibidas no relatório através do controller;
-    7 - redirecionar para o relatório.
+    1 - pegar registros das filiais; X
+    2 - pegar o id de cada filial; X
+    3 - trabalhar com eventos de seleção no checkbox (check = true, check = false); X
+    4 - armazenar o id das filiais em um array; X
+    5 - adicionar e remover a id das filiais no array; X
+    6 - disparar para o controlador utilizando ajax e post;
+    7 - fazer a filtragem das filiais a serem exibidas no relatório através do controller;
+    8 - redirecionar para o relatório.
 */
 
-$checkbox = document.querySelector('[data-id="1"]');
+$checkList = [];
+$checkbox = document.querySelectorAll('[data-js="branchCheck"]');
+$branchCheckArray = document.querySelector('[data-js="branchCheckArray"]');
 
-$branchCheck = null;
-
-$btnPdf = document.querySelector('[data-js="btn-pdf"]');
-
-$url = "/home/branch/list/pdf";
-
-$ajax = new XMLHttpRequest();
-
-// console.log($checkbox);
-// console.log($btnPdf);
-// console.log($url);
-
-$btnPdf.addEventListener('click', submitBranchCheck, false);
-
-function submitBranchCheck ()
+Array.prototype.forEach.call($checkbox, function($element, $index, $array)
 {
-    // window.alert('Clicou');
+    // console.log($element.value);
 
-    $ajax.open("POST", $url);
-    $ajax.send($);
-}
-
-/*
-
-$url = "/home/branch/list/pdf";
-
-$branchList = null;
-
-$branchList = [1, 2, 5];
-
-$ajax = new XMLHttpRequest();
-
-$ajax.open('GET', $url);
-
-$ajax.send($branchList);
-
-$ajax.addEventListener('readystatechange', stateChange);
-
-function stateChange ()
-{
-    if (requestSuccess())
+    $element.addEventListener('change', function()
     {
-        
-    }
-}
+        if ($element.checked === true)
+        {
+            $checkList.push($element.value);
+        }
+        else
+        {
+            $index = $checkList.indexOf($element.value);
 
-function requestSuccess()
+            function removeValue ($array)
+            {
+                return $array != $element.value;
+            }
+
+            $newCheckList = $checkList.filter(removeValue);
+
+            $checkList = $newCheckList;
+        }
+        console.log($branchCheckArray.value);
+
+        setValue ($branchCheckArray, $checkList);
+
+        console.log($branchCheckArray.value);
+    }, false);
+});
+
+function setValue($element, $value)
 {
-    return $ajax.readyState === 4 && $ajax.status === 200;
+    $element.setAttribute("value", $value.toString());
 }
-
-$checkbox.addEventListener('change', check, false);
-
-function check ()
-{
-    if ($checkbox.checked)
-    {
-        window.alert('Check!');
-        $branchList = $checkbox.value;
-        console.log($branchList);
-    }
-
-    else
-    {
-        window.alert('Uncheck!');
-        $branchList = $checkbox.value;
-        console.log($branchList);
-    }
-}
-
-*/

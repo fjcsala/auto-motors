@@ -34,6 +34,8 @@
         </script>
     @endif
 
+    <input type="hidden" name="_token" id="token"  data-js="token" value="{{ csrf_token() }}">
+
     <!-- table -->
     <table class="table table-bordered table-hover text-center">
 
@@ -76,7 +78,7 @@
 
                 @endif
                     <!-- check -->
-                    <td class="align-middle"><input type="checkbox" id="branchCheck" name="branchCheck" data-js="branchCheck" data-id="{{ $data -> id }}"></td>
+                    <td class="align-middle"><input type="checkbox" id="branchCheck" name="branchCheck" data-js="branchCheck" value="{{ $data -> id }}"></td>
 
                     <!-- social_name -->
                     <td class="align-middle text-left"> {{ $data -> social_name }} </td>
@@ -275,10 +277,16 @@
 
 @section ('footer')
 
-    <div class=text-right>
-        <a class="btn btn-danger" href="{{ route('branch.list.pdf') }}" data-js="btn-pdf" role="button" title="Gerar PDF.">Gerar PDF</a>
-        <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
-    </div>
+    <form method="post" action="{{ route('branch.list.pdf') }}">
+        {{ csrf_field() }}
+
+        <input type="hidden" id="branchCheckArray" name="branchCheckArray" data-js="branchCheckArray" value="">
+
+        <div class=text-right>
+            <button class="btn btn-danger" type="submit" title="Gerar PDF.">Gerar PDF</button>
+            <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+        </div>
+    </form>
 
     <script src="{{ url('assets/js/pdf.js') }}"></script>
 

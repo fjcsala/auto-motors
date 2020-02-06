@@ -15,7 +15,7 @@
     <body>
         <!-- tables -->
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">AUTO MOTORS S/A</th>
                 </tr>
@@ -23,7 +23,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">{{ $reportTitle }}</th>
                 </tr>
@@ -31,7 +31,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <!-- name -->
                     <th class="text-left">NOME</th>
@@ -47,7 +47,11 @@
             </thead>
             <tbody>
                 @foreach ($dataEmployee as $employee)
-                    <tr>
+                    @if ($employee -> status === 0)
+                        <tr class="table-danger">
+                    @else
+                        <tr>
+                    @endif
                         <!-- name -->
                         <td class="text-left">{{ $employee -> full_name }}</td>
                         <!-- cpf -->
@@ -68,7 +72,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th scope="col">DATA: {{ $dateNow }}</th>
                     <th scope="col">HORA: {{ $timeNow }}</th>

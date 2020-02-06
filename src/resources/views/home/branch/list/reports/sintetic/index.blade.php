@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <style>
             body {
                 font-size: 10;
@@ -15,7 +15,7 @@
     <body>
         <!-- tables -->
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">AUTO MOTORS S/A</th>
                 </tr>
@@ -23,7 +23,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">{{ $reportTitle }}</th>
                 </tr>
@@ -31,7 +31,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <!-- social_name -->
                     <th class="text-left" width="300px">RAZÃO SOCIAL</th>
@@ -49,7 +49,11 @@
             </thead>
             <tbody>
                 @foreach ($dataBranch as $branch)
-                    <tr>
+                    @if ($branch -> status === 0)
+                        <tr class="table-danger">
+                    @else
+                        <tr>
+                    @endif
                         <!-- social_name -->
                         <td class="text-left">{{ $branch -> social_name }}</td>
                         <!-- cnpj -->
@@ -72,7 +76,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th scope="col">DATA: {{ $dateNow }}</th>
                     <th scope="col">HORA: {{ $timeNow }}</th>

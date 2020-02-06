@@ -15,7 +15,7 @@
     <body>
         <!-- tables -->
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">AUTO MOTORS S/A</th>
                 </tr>
@@ -23,7 +23,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">{{ $reportTitle }}</th>
                 </tr>
@@ -31,7 +31,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <!-- name -->
                     <th class="text-left">NOME</th>
@@ -72,7 +72,7 @@
         </table>
 
         <table class="table table-sm table-bordered text-center">
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th scope="col">DATA: {{ $dateNow }}</th>
                     <th scope="col">HORA: {{ $timeNow }}</th>

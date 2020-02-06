@@ -4,9 +4,9 @@
     3 - trabalhar com eventos de seleção no checkbox (check = true, check = false); X
     4 - armazenar o id das filiais em um array; X
     5 - adicionar e remover a id das filiais no array; X
-    6 - disparar para o controlador utilizando ajax e post;
-    7 - fazer a filtragem das filiais a serem exibidas no relatório através do controller;
-    8 - redirecionar para o relatório.
+    6 - disparar para o controlador utilizando post; X
+    7 - fazer a filtragem das filiais a serem exibidas no relatório através do controller; X
+    8 - redirecionar para o relatório. X
 */
 
 $checkList = [];

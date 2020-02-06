@@ -210,12 +210,12 @@ class BranchController extends Controller
         $array = ($pdfRequest['branchCheckArray']);
         $array = explode(',', $array);
         $newArray = array();
-            for ($i = 0; $i < sizeof($array); $i ++)
-            {
-                array_push($newArray, $array[$i]);
-            }
+        for ($i = 0; $i < sizeof($array); $i ++)
+        {
+            array_push($newArray, $array[$i]);
+        }
         $dataBranch = Branch :: find($newArray); // return only array data.
-        $reportPdf = PDF :: loadview('home.branch.list.reports.sintetic.index', compact('dataBranch', 'reportTitle', 'dateNow', 'timeNow')) -> setPaper('a4', 'landscape')-> stream('listagem-de-filiais.pdf');
+        $reportPdf = PDF :: loadview('home.branch.list.reports.sintetic.index', compact('dataBranch', 'reportTitle', 'dateNow', 'timeNow')) -> setPaper('a4', 'landscape') -> stream('listagem-de-filiais.pdf');
         return $reportPdf;
 
         // =====

@@ -165,10 +165,10 @@ class CarController extends Controller
         $array = ($pdfRequest['branchCheckArray']);
         $array = explode(',', $array);
         $newArray = array();
-            for ($i = 0; $i < sizeof($array); $i ++)
-            {
-                array_push($newArray, $array[$i]);
-            }
+        for ($i = 0; $i < sizeof($array); $i ++)
+        {
+            array_push($newArray, $array[$i]);
+        }
         $dataCar = Car :: find($newArray); // return only array data.
         $reportPdf = PDF :: loadview('home.car.list.reports.sintetic.index', compact('dataCar', 'reportTitle', 'dateNow', 'timeNow')) -> setPaper('a4', 'landscape')-> stream('listagem-de-automoveis.pdf');
         return $reportPdf;

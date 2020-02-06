@@ -72,7 +72,7 @@
                 <tr>
                     <th scope="col">DATA: {{ $dateNow }}</th>
                     <th scope="col">HORA: {{ $timeNow }}</th>
-                    <th scope="col">USUÁRIO: {{ auth() -> guard('employee') -> user() -> full_name }}</th>
+                    <th scope="col" class="text-uppercase">USUÁRIO: {{ auth() -> guard('employee') -> user() -> full_name }}</th>
                 </tr>
             </thead>
         </table>

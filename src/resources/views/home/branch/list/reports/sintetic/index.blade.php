@@ -39,8 +39,10 @@
                     <th>CNPJ</th>
                     <!-- ie -->
                     <th>IE</th>
-                    <!-- city / state -->
-                    <th>CIDADE / ESTADO</th>
+                    <!-- city -->
+                    <th>CIDADE</th>
+                    <!-- state -->
+                    <th>UF</th>
                     <!-- status -->
                     <th>SITUAÇÃO</th>
                 </tr>
@@ -54,8 +56,10 @@
                         <td>{{ $branch -> cnpj }}</td>
                         <!-- ie -->
                         <td>{{ $branch -> ie }}</td>
-                        <!-- city / state -->
-                        <td>{{ $branch -> city}} / {{ $branch -> state }}</td>
+                        <!-- city-->
+                        <td>{{ $branch -> city}}</td>
+                        <!-- state -->
+                        <td>{{ $branch -> state }}</td>
                         <!-- status -->
                         @if ($branch -> status === 0)
                             <td>Inativa</td>
@@ -70,7 +74,8 @@
         <table class="table table-sm table-bordered text-center">
             <thead>
                 <tr>
-                    <th scope="col">DATA/HORA: {{ $dateNow }} - {{ $timeNow }}</th>
+                    <th scope="col">DATA: {{ $dateNow }}</th>
+                    <th scope="col">HORA: {{ $timeNow }}</th>
                     <th scope="col">USUÁRIO: {{ auth() -> guard('employee') -> user() -> full_name }}</th>
                 </tr>
             </thead>

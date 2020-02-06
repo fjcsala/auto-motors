@@ -40,7 +40,7 @@
             <!-- cols -->
             <tr>
                 <!-- check -->
-                <th scope="col"></th>
+                <th scope="col"><input type="checkbox" id="checkTitle" name="checkTitle" data-js="checkTitle" value=""></td></th>
                 <!-- full_name -->
                 <th scope="col" class="text-left">NOME</th>
                 <!-- cpf -->

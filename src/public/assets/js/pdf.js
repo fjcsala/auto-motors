@@ -11,11 +11,19 @@
 
 $checkList = [];
 $checkbox = document.querySelectorAll('[data-js="branchCheck"]');
+$titleCheckbox = document.querySelector('[data-js="checkTitle"]');
 $branchCheckArray = document.querySelector('[data-js="branchCheckArray"]');
 
 Array.prototype.forEach.call($checkbox, function($element, $index, $array)
 {
     // console.log($element.value);
+
+    /*
+    $titleCheckbox.addEventListener('change', function()
+    {
+        $element.checked === true;
+    }, false);
+    */
 
     $element.addEventListener('change', function()
     {
@@ -25,22 +33,16 @@ Array.prototype.forEach.call($checkbox, function($element, $index, $array)
         }
         else
         {
-            $index = $checkList.indexOf($element.value);
-
             function removeValue ($array)
             {
                 return $array != $element.value;
             }
-
             $newCheckList = $checkList.filter(removeValue);
-
             $checkList = $newCheckList;
         }
-        console.log($branchCheckArray.value);
-
+        // console.log($branchCheckArray.value);
         setValue ($branchCheckArray, $checkList);
-
-        console.log($branchCheckArray.value);
+        // console.log($branchCheckArray.value);
     }, false);
 });
 

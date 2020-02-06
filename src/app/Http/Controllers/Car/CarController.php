@@ -45,36 +45,27 @@ class CarController extends Controller
     public function register ()
     {
         $dataBranch = $this -> branch -> all();
-
         $categories = $this -> getCategory();
-
         return view ('home.car.register.index', compact('dataBranch', 'categories'));
     }
 
     public function registerBeta ()
     {
         $dataBranch = $this -> branch -> all();
-
         $categories = $this -> getCategory();
-
         return view ('home.car.register.beta.index', compact('dataBranch', 'categories'));
     }
 
     public function create (Request $request)
     {
         $dataForm = $request -> all();
-
         $dataForm['chassi'] = $this -> upperCaseChassi($dataForm['chassi']);
-
         $validateForm = validator($dataForm, $this -> car -> rules, $this -> car -> errorMessages);
-
         if ($validateForm -> fails())
         {
             return redirect('home/car/register') -> withErrors($validateForm) -> withInput();
         }
-
         $create = $this -> car -> create($dataForm);
-
         return redirect() -> route('car.list') -> with('message', 'AUTOMÓVEL CADASTRADO COM SUCESSO!');
 
     }
@@ -82,42 +73,30 @@ class CarController extends Controller
     public function edit (Request $request, $id)
     {
         $dataCar = $this -> car -> find($id);
-
         $categories = $this -> getCategory();
-
         $dataBranch = $this -> branch -> all();
-
         return view("home.car.edit.index", compact('dataCar', 'categories', 'dataBranch'));
     }
 
     public function editBeta (Request $request, $id)
     {
         $dataCar = $this -> car -> find($id);
-
         $categories = $this -> getCategory();
-
         $dataBranch = $this -> branch -> all();
-
         return view("home.car.edit.beta.index", compact('dataCar', 'categories', 'dataBranch'));
     }
 
     public function update (Request $request, $id)
     {
         $dataForm = $request -> all();
-
         $dataForm['chassi'] = $this -> upperCaseChassi($dataForm['chassi']);
-
         $carEdit = $this -> car -> find($id);
-
         $validateForm = validator($dataForm, $this -> car -> rules, $this -> car -> errorMessages);
-
         if ($validateForm -> fails())
         {
             return redirect("/home/car/edit/{$id}") -> withErrors($validateForm) -> withInput();
         }
-
         $carEdit -> update($dataForm);
-
         return redirect() -> route('car.list') -> with('message', 'AUTOMÓVEL ATUALIZADO COM SUCESSO!');
     }
 
@@ -125,34 +104,27 @@ class CarController extends Controller
     {
         $dataCar = $this -> car -> all();
         $dataBranch = $this -> branch -> all();
-
         return view('home.car.list.index', compact('dataCar', 'dataBranch'));
     }
 
     public function view (Request $request, $id)
     {
         $dataCar = $this -> car -> find($id);
-
         $dataBranch = $this -> branch -> all();
-
         return view('home.car.view.index', compact('dataCar', 'dataBranch'));
     }
 
     public function listBeta ()
     {
         $dataCar = $this -> car -> all();
-
         return view('home.car.list.beta.index', compact('dataCar', 'nameBranch'));
     }
 
     public function remove (Request $request, $id)
     {
         $dataForm = $request -> only('id');
-
         $dataCar = $this -> car -> find($id);
-
         $dataCar -> delete();
-        
         return redirect() -> route('car.list') -> with('message', 'AUTOMÓVEL REMOVIDO COM SUCESSO!');
     }
 

@@ -42,11 +42,9 @@ class DashboardController extends Controller
 
     public function dashboard ()
     {
-
         $totalBranch = $this -> totalBranch();
         $totalEmployee = $this -> totalEmployee();
         $totalCar = $this -> totalCar();
-    
         return view('home.index', compact('totalBranch', 'totalEmployee', 'totalCar'));
     }
 }

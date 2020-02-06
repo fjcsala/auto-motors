@@ -1,9 +1,7 @@
 @extends ('templates.edit')
 
 @section ('header')
-
     <h1 class="text-center">Editar Filial</h1>
-
 @endsection
 
 @section ('body')

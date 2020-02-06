@@ -107,7 +107,6 @@ class EmployeeController extends Controller
         $dataForm['salary'] = $this -> formatSalary($dataForm['salary']);
         // crypt password
         $dataForm['password'] = $this -> cryptPassword($dataForm['password']);
-    
         $newEmployee = $this -> employee -> create($dataForm);
         return redirect() -> route('employee.list') -> with('message', 'FUNCIONÁRIO CADASTRADO COM SUCESSO!');
     }
@@ -120,7 +119,6 @@ class EmployeeController extends Controller
         $dataBranch = $this -> branch -> all();
         $states = $this -> getStates();
         $sex = $this -> getSex();
-    
         return view('home.employee.edit.index', compact('dataEmployee', 'dataBranch', 'states', 'sex'));
     }
 

@@ -35,11 +35,12 @@
 
     <!-- table -->
     <table class="table table-bordered table-hover text-center">
-
         <!-- header -->
         <thead class="thead-light align-middle">
             <!-- cols -->
             <tr>
+                <!-- check -->
+                <th scope="col"></th>
                 <!-- full_name -->
                 <th scope="col" class="text-left">NOME</th>
                 <!-- cpf -->
@@ -52,73 +53,48 @@
                 <th scope="col" width="170px">AÇÕES</th>
             </tr>
         </thead>
-
         <tbody>
-
             <!-- data loop -->
             @foreach ($dataEmployee as $data)
-
                 <!-- rows -->
-                    
                 <!-- status verification -->
                 @if ($data -> status === 0)
-
                     <tr  class="table-danger">
-
                 @else
-
                     <tr>
-
                 @endif
-
+                    <!-- check -->
+                    <td class="align-middle"><input type="checkbox" id="branchCheck" name="branchCheck" data-js="branchCheck" value="{{ $data -> id }}"></td>
                     <!-- full_name -->
                     <td class="align-middle text-left"> {{ $data -> full_name }} </td>
-
                     <!-- cpf -->
                     <td class="align-middle"> {{ $data -> cpf }} </td>
-
                     <!-- function -->
                     <td class="align-middle"> {{ $data -> function }} </td>
-
                     <!-- branch -->
-
                     <td class="align-middle"> {{ $data -> branch -> social_name }} </td>
-                        
                     <!-- action buttons -->
                     <td class="align-middle">
-                        
                         <form action="" data-js="modal">
                             <!-- view -->
                             <a class="btn btn-info btn-sm" href="{{ url("/home/employee/view/{$data -> id}") }}" role="button" title="Visualizar"><i class="fas fa-eye"></i></a>
-                            
                             <!-- edit -->
                             <a class="btn btn-primary btn-sm" href="{{ url("/home/employee/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
-
                             <!-- status verification -->
                             @if ($data -> status === 0)
-
                                 <!-- active -->
                                 <a class="btn btn-success btn-sm" data-js="active" href="{{ url("/home/employee/edit/{$data -> id}/active") }}" data-toggle="modal" data-target="#activeEmployee" role="button" title="Ativar"><i class="fas fa-check-circle"></i></a>
-
                             @else
-
                             <!-- inactive -->
                             <a class="btn btn-danger btn-sm" data-js="inactive" href="{{ url("/home/employee/edit/{$data -> id}/inactive") }}" data-toggle="modal" data-target="#inactiveEmployee" role="button" title="Inativar"><i class="fas fa-ban"></i></a>
-
                             @endif
-
                             <!-- delete -->
                             <a class="btn btn-danger btn-sm" data-js="remove" href="{{ url("/home/employee/edit/{$data -> id}/remove") }}" data-toggle="modal" data-target="#removeEmployee" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
                         </form>
-
                     </td>
-
                 </tr>
-
             @endforeach
-
         </tbody>
-    
     </table>
 
     <!-- modals -->
@@ -266,8 +242,15 @@
 
 @section ('footer')
 
-    <div class=text-right>
-        <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
-    </div>
+    <form method="post" action="{{ route('employee.list.pdf') }}" target="_blank">
+        {{ csrf_field() }}
+        <input type="hidden" id="branchCheckArray" name="branchCheckArray" data-js="branchCheckArray" value="">
+        <div class=text-right>
+            <button class="btn btn-danger" type="submit" title="Gerar PDF.">Gerar PDF</button>
+            <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+        </div>
+    </form>
+
+    <script src="{{ url('assets/js/pdf.js') }}"></script>
 
 @endsection

@@ -33,35 +33,39 @@
         <table class="table table-sm table-bordered text-center">
             <thead>
                 <tr>
-                    <!-- social_name -->
-                    <th class="text-left" width="300px">RAZÃO SOCIAL</th>
-                    <!-- cnpj -->
-                    <th>CNPJ</th>
-                    <!-- ie -->
-                    <th>IE</th>
-                    <!-- city / state -->
-                    <th>CIDADE / ESTADO</th>
-                    <!-- status -->
-                    <th>SITUAÇÃO</th>
+                    <!-- name -->
+                    <th class="text-left">NOME</th>
+                    <!-- category -->
+                    <th>CATEGORIA</th>
+                    <!-- year -->
+                    <th>ANO</th>
+                    <!-- color -->
+                    <th>MODELO</th>
+                    <!-- branch -->
+                    <th>COR</th>
+                    <!-- branch -->
+                    <th width="300px">FILIAL</th>
+                    <!-- chassi -->
+                    <th>CHASSI</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($dataBranch as $branch)
+                @foreach ($dataCar as $car)
                     <tr>
-                        <!-- social_name -->
-                        <td class="text-left">{{ $branch -> social_name }}</td>
-                        <!-- cnpj -->
-                        <td>{{ $branch -> cnpj }}</td>
-                        <!-- ie -->
-                        <td>{{ $branch -> ie }}</td>
-                        <!-- city / state -->
-                        <td>{{ $branch -> city}} / {{ $branch -> state }}</td>
-                        <!-- status -->
-                        @if ($branch -> status === 0)
-                            <td>Inativa</td>
-                        @else
-                            <td>Ativa</td>
-                        @endif
+                        <!-- name -->
+                        <td class="text-left">{{ $car -> name }}</td>
+                        <!-- category -->
+                        <td>{{ $car -> category }}</td>
+                        <!-- year -->
+                        <td>{{ $car -> year }}</td>
+                        <!-- model -->
+                        <td>{{ $car -> model}}</td>
+                        <!-- color -->
+                        <td>{{ $car -> color }}</td>
+                        <!-- branch -->
+                        <td>{{ $car -> branch -> social_name }}</td>
+                        <!-- chassi -->
+                        <td>{{ $car -> chassi }}</td>
                     </tr>
                 @endforeach
             </tbody>

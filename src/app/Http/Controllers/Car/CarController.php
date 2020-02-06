@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Branch;
+use PDF;
 
 class CarController extends Controller
 {
@@ -153,5 +154,23 @@ class CarController extends Controller
         $dataCar -> delete();
         
         return redirect() -> route('car.list') -> with('message', 'AUTOMÓVEL REMOVIDO COM SUCESSO!');
+    }
+
+    public function listPdf (Request $request)
+    {
+        $dateNow = date('d/m/Y');
+        $timeNow = date('H:i');
+        $reportTitle = 'LISTAGEM DE AUTOMÓVEIS';
+        $pdfRequest = $request -> only('branchCheckArray');
+        $array = ($pdfRequest['branchCheckArray']);
+        $array = explode(',', $array);
+        $newArray = array();
+            for ($i = 0; $i < sizeof($array); $i ++)
+            {
+                array_push($newArray, $array[$i]);
+            }
+        $dataCar = Car :: find($newArray); // return only array data.
+        $reportPdf = PDF :: loadview('home.car.list.reports.sintetic.index', compact('dataCar', 'reportTitle', 'dateNow', 'timeNow')) -> setPaper('a4', 'landscape')-> stream('listagem-de-automoveis.pdf');
+        return $reportPdf;
     }
 }

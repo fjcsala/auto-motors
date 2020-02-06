@@ -10,7 +10,7 @@
                 font-size: 10;
             }
         </style>
-        <title>{{ $reportTitle }}</title>
+        <title> {{ $reportTitle }} </title>
     </head>
     <body>
         <!-- tables -->
@@ -33,34 +33,34 @@
         <table class="table table-sm table-bordered text-center">
             <thead>
                 <tr>
-                    <!-- social_name -->
-                    <th class="text-left" width="300px">RAZÃO SOCIAL</th>
-                    <!-- cnpj -->
-                    <th>CNPJ</th>
-                    <!-- ie -->
-                    <th>IE</th>
-                    <!-- city / state -->
-                    <th>CIDADE / ESTADO</th>
+                    <!-- name -->
+                    <th class="text-left">NOME</th>
+                    <!-- cpf -->
+                    <th>CPF</th>
+                    <!-- function -->
+                    <th>FUNÇÃO</th>
+                    <!-- branch -->
+                    <th>FILIAL</th>
                     <!-- status -->
-                    <th>SITUAÇÃO</th>
+                    <th>STATUS</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($dataBranch as $branch)
+                @foreach ($dataEmployee as $employee)
                     <tr>
-                        <!-- social_name -->
-                        <td class="text-left">{{ $branch -> social_name }}</td>
-                        <!-- cnpj -->
-                        <td>{{ $branch -> cnpj }}</td>
-                        <!-- ie -->
-                        <td>{{ $branch -> ie }}</td>
-                        <!-- city / state -->
-                        <td>{{ $branch -> city}} / {{ $branch -> state }}</td>
+                        <!-- name -->
+                        <td class="text-left">{{ $employee -> full_name }}</td>
+                        <!-- cpf -->
+                        <td>{{ $employee -> cpf }}</td>
+                        <!-- function -->
+                        <td>{{ $employee -> function }}</td>
+                        <!-- branch -->
+                        <td>{{ $employee -> branch -> social_name }}</td>
                         <!-- status -->
-                        @if ($branch -> status === 0)
-                            <td>Inativa</td>
+                        @if ($employee -> status === 0)
+                            <td>Inativo</td>
                         @else
-                            <td>Ativa</td>
+                            <td>Ativo</td>
                         @endif
                     </tr>
                 @endforeach

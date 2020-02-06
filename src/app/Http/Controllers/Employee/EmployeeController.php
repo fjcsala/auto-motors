@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Branch;
+use PDF;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -226,5 +227,23 @@ class EmployeeController extends Controller
         } else {
             return redirect() -> route('login') -> withErrors(['errors' => 'LOGIN INVÁLIDO!']) -> withInput();
         }
+    }
+
+    public function listPdf (Request $request)
+    {
+        $dateNow = date('d/m/Y');
+        $timeNow = date('H:i');
+        $reportTitle = 'LISTAGEM DE FUNCIONÁRIOS';
+        $pdfRequest = $request -> only('branchCheckArray');
+        $array = ($pdfRequest['branchCheckArray']);
+        $array = explode(',', $array);
+        $newArray = array();
+            for ($i = 0; $i < sizeof($array); $i ++)
+            {
+                array_push($newArray, $array[$i]);
+            }
+        $dataEmployee = Employee :: find($newArray); // return only array data.
+        $reportPdf = PDF :: loadview('home.employee.list.reports.sintetic.index', compact('dataEmployee', 'reportTitle', 'dateNow', 'timeNow')) -> setPaper('a4', 'landscape')-> stream('listagem-de-funcionarios.pdf');
+        return $reportPdf;
     }
 }

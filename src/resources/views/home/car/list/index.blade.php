@@ -40,6 +40,8 @@
         <thead class="thead-light align-middle">
             <!-- cols -->
             <tr>
+                <!-- check -->
+                <th scope="col"></th>
                 <!-- name -->
                 <th scope="col" class="text-left">NOME</th>
                 <!-- category -->
@@ -66,37 +68,29 @@
 
                 <!-- rows -->
                 <tr>
-
+                    <!-- check -->
+                    <td class="align-middle"><input type="checkbox" id="branchCheck" name="branchCheck" data-js="branchCheck" value="{{ $data -> id }}"></td>
                     <!-- name -->
                     <td class="align-middle text-left"> {{ $data -> name }} </td>
-
                     <!-- category -->
                     <td class="align-middle"> {{ $data -> category }} </td>
-
                     <!-- year -->
                     <td class="align-middle"> {{ $data -> year }} </td>
-
                     <!-- model -->
                     <td class="align-middle"> {{ $data -> model }} </td>
-
                     <!-- color -->
                     <td class="align-middle"> {{ $data -> color }} </td>
-
                     <!-- production branch -->
                     <td class="align-middle"> {{ $data -> branch -> social_name }} </td>
-
                     <!-- chassi -->
                     <td class="align-middle"> {{ $data -> chassi }} </td>
-                        
                     <!-- action buttons -->
                     <td>
                         <form action="" data-js="modal">
                             <!-- view -->
                             <a class="btn btn-info btn-sm" href="{{ url("/home/car/view/{$data -> id}") }}" role="button" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        
                             <!-- edit -->
                             <a class="btn btn-primary btn-sm" href="{{ url("/home/car/edit/{$data -> id}") }}" role="button" title="Editar"><i class="fas fa-edit"></i></a>
-
                             <!-- delete -->
                             <a class="btn btn-danger btn-sm" data-js="remove" href="{{ url("/home/car/edit/{$data -> id}/remove") }}" data-toggle="modal" data-target="#removeCar" role="button" title="Remover"><i class="fas fa-trash-alt"></i></a>
                         </form>
@@ -171,8 +165,15 @@
 
 @section ('footer')
 
-    <div class=text-right>
-        <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
-    </div>
+    <form method="post" action="{{ route('car.list.pdf') }}" target="_blank">
+        {{ csrf_field() }}
+        <input type="hidden" id="branchCheckArray" name="branchCheckArray" data-js="branchCheckArray" value="">
+        <div class=text-right>
+            <button class="btn btn-danger" type="submit" title="Gerar PDF.">Gerar PDF</button>
+            <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
+        </div>
+    </form>
+
+    <script src="{{ url('assets/js/pdf.js') }}"></script>
 
 @endsection

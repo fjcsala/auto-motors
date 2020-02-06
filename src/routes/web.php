@@ -22,7 +22,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::put  ('/home/car/edit/{id}/update',          ['as' => 'car.update',          'uses' => 'Car\CarController@update']);
         Route::get  ('/home/car/edit/{id}/remove',          ['as' => 'car.remove',          'uses' => 'Car\CarController@remove']);
         Route::get  ('/home/car/list',                      ['as' => 'car.list',            'uses' => 'Car\CarController@list']);
-        Route::get  ('/home/car/list/pdf',                  ['as' => 'car.list.pdf',        'uses' => 'Car\CarController@listPdf']);
+        Route::post  ('/home/car/list/pdf/',                ['as' => 'car.list.pdf',        'uses' => 'Car\CarController@listPdf']);
         Route::get  ('/home/car/view/{id}',                 ['as' => 'car.view',            'uses' => 'Car\CarController@view']);
 
         Route::get  ('/home/branch/register',               ['as' => 'branch.register',     'uses' => 'Branch\BranchController@register']);
@@ -45,7 +45,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get  ('/home/employee/edit/{id}/inactive',   ['as' => 'employee.inactive',   'uses' => 'Employee\EmployeeController@inactive']);
         Route::get  ('/home/employee/edit/{id}/remove',     ['as' => 'employee.remove',     'uses' => 'Employee\EmployeeController@remove']);
         Route::get  ('/home/employee/list',                 ['as' => 'employee.list',       'uses' => 'Employee\EmployeeController@list']);
-        Route::get  ('/home/employee/list/pdf',             ['as' => 'employee.list.pdf',   'uses' => 'Employee\EmployeeController@listPdf']);
+        Route::post  ('/home/employee/list/pdf/',           ['as' => 'employee.list.pdf',   'uses' => 'Employee\EmployeeController@listPdf']);
         Route::get  ('/home/employee/view/{id}',            ['as' => 'employee.view',       'uses' => 'Employee\EmployeeController@view']);
     });
 

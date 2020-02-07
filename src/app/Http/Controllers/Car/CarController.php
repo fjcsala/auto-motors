@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Branch;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CarExport;
 
 class CarController extends Controller
 {
@@ -144,5 +146,10 @@ class CarController extends Controller
         $dataCar = Car :: find($newArray); // return only array data.
         $reportPdf = PDF :: loadview('home.car.list.reports.sintetic.index', compact('dataCar', 'reportTitle', 'dateNow', 'timeNow')) -> setPaper('a4', 'landscape')-> stream('listagem-de-automoveis.pdf');
         return $reportPdf;
+    }
+
+    public function exportXls ()
+    {
+        return Excel :: download(new CarExport, 'listagem-de-automoveis.xlsx');
     }
 }

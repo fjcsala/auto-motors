@@ -22,7 +22,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::put  ('/home/car/edit/{id}/update',          ['as' => 'car.update',          'uses' => 'Car\CarController@update']);
         Route::get  ('/home/car/edit/{id}/remove',          ['as' => 'car.remove',          'uses' => 'Car\CarController@remove']);
         Route::get  ('/home/car/list',                      ['as' => 'car.list',            'uses' => 'Car\CarController@list']);
-        Route::post  ('/home/car/list/pdf/',                ['as' => 'car.list.pdf',        'uses' => 'Car\CarController@listPdf']);
+        Route::post ('/home/car/list/pdf/',                 ['as' => 'car.list.pdf',        'uses' => 'Car\CarController@listPdf']);
+        Route::get  ('/home/car/list/xls/',                 ['as' => 'car.list.xls',        'uses' => 'Car\CarController@exportXls']);
         Route::get  ('/home/car/view/{id}',                 ['as' => 'car.view',            'uses' => 'Car\CarController@view']);
 
         Route::get  ('/home/branch/register',               ['as' => 'branch.register',     'uses' => 'Branch\BranchController@register']);
@@ -34,6 +35,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get  ('/home/branch/edit/{id}/remove',       ['as' => 'branch.remove',       'uses' => 'Branch\BranchController@remove']);
         Route::get  ('/home/branch/list',                   ['as' => 'branch.list',         'uses' => 'Branch\BranchController@list']);
         Route::post ('/home/branch/list/pdf/',              ['as' => 'branch.list.pdf',     'uses' => 'Branch\BranchController@listPdf']);
+        Route::get  ('/home/branch/list/xls/',              ['as' => 'branch.list.xls',     'uses' => 'Branch\BranchController@exportXls']);
         Route::get  ('/home/branch/view/{id}',              ['as' => 'branch.view',         'uses' => 'Branch\BranchController@view']);
         Route::get  ('/home/branch/ie-mask/{uf}',           ['as' => 'branch.ie-mask',      'uses' => 'Branch\BranchController@ieMask']);
 
@@ -45,7 +47,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::get  ('/home/employee/edit/{id}/inactive',   ['as' => 'employee.inactive',   'uses' => 'Employee\EmployeeController@inactive']);
         Route::get  ('/home/employee/edit/{id}/remove',     ['as' => 'employee.remove',     'uses' => 'Employee\EmployeeController@remove']);
         Route::get  ('/home/employee/list',                 ['as' => 'employee.list',       'uses' => 'Employee\EmployeeController@list']);
-        Route::post  ('/home/employee/list/pdf/',           ['as' => 'employee.list.pdf',   'uses' => 'Employee\EmployeeController@listPdf']);
+        Route::post ('/home/employee/list/pdf/',            ['as' => 'employee.list.pdf',   'uses' => 'Employee\EmployeeController@listPdf']);
+        Route::get  ('/home/employee/list/xls/',            ['as' => 'employee.list.xls',   'uses' => 'Employee\EmployeeController@exportXls']);
         Route::get  ('/home/employee/view/{id}',            ['as' => 'employee.view',       'uses' => 'Employee\EmployeeController@view']);
     });
 

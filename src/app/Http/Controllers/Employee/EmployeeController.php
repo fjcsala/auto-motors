@@ -9,6 +9,8 @@ use App\Models\Branch;
 use PDF;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\EmployeeExport;
 
 class EmployeeController extends Controller
 {
@@ -243,5 +245,10 @@ class EmployeeController extends Controller
         $dataEmployee = Employee :: find($newArray); // return only array data.
         $reportPdf = PDF :: loadview('home.employee.list.reports.sintetic.index', compact('dataEmployee', 'reportTitle', 'dateNow', 'timeNow')) -> setPaper('a4', 'landscape')-> stream('listagem-de-funcionarios.pdf');
         return $reportPdf;
+    }
+
+    public function exportXls ()
+    {
+        return Excel :: download(new EmployeeExport, 'listagem-de-funcionarios.xlsx');
     }
 }

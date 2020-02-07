@@ -35,7 +35,7 @@ class EmployeeExport implements FromQuery, WithHeadings, WithMapping
             $employee->full_name,
             $employee->cpf,
             $employee->function,
-            $employee->id_branch,
+            $employee->branch->social_name,
         ];
     }
 }

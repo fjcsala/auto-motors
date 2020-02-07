@@ -40,7 +40,7 @@ class CarExport implements FromQuery, WithHeadings, WithMapping
             $car->year,
             $car->model,
             $car->color,
-            $car->id_branch,
+            $car->branch->social_name,
             $car->chassi,
         ];
     }

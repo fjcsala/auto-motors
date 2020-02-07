@@ -48,7 +48,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get  ('/home/employee/edit/{id}/remove',     ['as' => 'employee.remove',     'uses' => 'Employee\EmployeeController@remove']);
         Route::get  ('/home/employee/list',                 ['as' => 'employee.list',       'uses' => 'Employee\EmployeeController@list']);
         Route::post ('/home/employee/list/pdf/',            ['as' => 'employee.list.pdf',   'uses' => 'Employee\EmployeeController@listPdf']);
-        Route::get  ('/home/employee/list/xls/',            ['as' => 'employee.list.xls',   'uses' => 'Car\CarController@exportXls']);
+        Route::get  ('/home/employee/list/xls/',            ['as' => 'employee.list.xls',   'uses' => 'Employee\EmployeeController@exportXls']);
         Route::get  ('/home/employee/view/{id}',            ['as' => 'employee.view',       'uses' => 'Employee\EmployeeController@view']);
     });
 

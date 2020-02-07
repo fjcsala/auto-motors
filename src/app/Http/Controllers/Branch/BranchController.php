@@ -9,6 +9,8 @@ use App\Models\Employee;
 use App\Models\Car;
 use App\Models\Ie;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BranchExport;
 
 class BranchController extends Controller
 {
@@ -195,5 +197,10 @@ class BranchController extends Controller
         // download('listagem-de-filiais.pdf') // download file.
         // stream('listagem-de-filiais.pdf') // open in browser.
         // setPaper('a4', 'landscape') // set a4 paper and landscape orientation. default orientation retract.
+    }
+
+    public function exportXls ()
+    {
+        return Excel :: download(new BranchExport, 'listagem-de-filiais.xlsx');
     }
 }

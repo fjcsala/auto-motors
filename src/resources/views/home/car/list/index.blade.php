@@ -169,7 +169,7 @@
         {{ csrf_field() }}
         <input type="hidden" id="branchCheckArray" name="branchCheckArray" data-js="branchCheckArray" value="">
         <div class=text-right>
-            <a class="btn btn-primary" href="#" role="button" title="Exportar Excel.">Exportar Excel</a>
+            <a class="btn btn-primary" href="{{ route('car.list.xls') }}" role="button" title="Exportar Excel.">Exportar Excel</a>
             <button class="btn btn-danger" type="submit" title="Exportar PDF.">Exportar PDF</button>
             <a class="btn btn-info" href="{{ route('dashboard') }}" role="button" title="Retornar à Dashboard.">Voltar</a>
         </div>
